@@ -1,0 +1,35 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main.Master.cs" Inherits="testmain.Site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Home Page</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link rel="stylesheet" href="Style.css" />
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <div class="header">
+                <a href="home.aspx" class="logo">ShareLog</a>
+                <div class="header-right">
+                    <asp:LinkButton runat="server" ID="signinbutton"  href="signin.aspx">Signin</asp:LinkButton>
+                    <asp:LinkButton runat="server" href="signup.aspx">Create Account</asp:LinkButton>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="content">
+                <asp:ContentPlaceHolder ID="main" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+            <div class="clear"></div>
+
+            <div class="footer">
+                <asp:Label runat="server" ID="lblfooter" Text="@CopyRights"></asp:Label>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

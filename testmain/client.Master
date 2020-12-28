@@ -1,0 +1,38 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="client.Master.cs" Inherits="testmain.Site2" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+            <link rel="stylesheet" href="Style.css" />
+
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <div class="header">
+                 <a href="home.aspx" class="logo">ShareLog</a>
+                <div class="header-right">
+                    <div class="dropdown">
+                        <asp:Button CssClass="dropbtn" ID="btnusername" runat="server"/>
+                        <div class="dropdown-content">
+                            <a href="profile.aspx">Profile</a>
+                            <a href="#">Account</a>
+                            <a href="#">Wallet</a>
+                            <asp:LinkButton runat="server" ID="btnmine">Mine</asp:LinkButton>
+                            <asp:LinkButton runat="server" ID="butclogout" OnClick="butclogout_Click">Logout</asp:LinkButton>
+                         </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <asp:ContentPlaceHolder ID="clientContent" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

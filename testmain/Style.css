@@ -1,0 +1,171 @@
+﻿body {
+    background-image: linear-gradient(to bottom, #f9cf00, #e7dfdd 40%);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    font-family: Consolas;
+    width:60%;
+    margin-left:auto;
+    margin-right:auto;
+    overflow-x:hidden;
+}
+.main_lable {
+    font-size: 48px;
+    color: white;
+    font-weight:bold;
+}
+.second_lable {
+    font-size: 18px;
+    color: white;
+}
+
+.footer {
+    position: absolute;
+    bottom: 10px;
+    width: 99%;
+}
+
+.clear {
+    clear: both;
+}
+.table {
+    text-align: center;
+    margin:auto;
+    margin-top: 20px;
+}
+.table td{
+    padding:10px;
+}
+.content {
+    text-align: center;
+    margin-top:50px;
+    position: relative;
+    width: 99%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.grid {
+    margin-left: auto;
+    margin-right: auto;
+    border: none;
+}
+.admin-menu {
+    width: 200px;
+    margin-top:50px;
+}
+
+    .admin-menu a {
+        background-color: #eee; 
+        color: black; 
+        display: block; 
+        padding: 12px; 
+        text-decoration: none; 
+    }
+
+        .admin-menu a:hover {
+            background-color: #ccc; /* Dark grey background on mouse-over */
+        }
+
+        .admin-menu a.active {
+            background-color: #4CAF50; /* Add a green color to the "active/current" link */
+            color: white;
+        }
+        .admin-menu a.disabled {
+            pointer-events:none;
+            cursor:default;
+        }
+/* Style the header with a grey background and some padding */
+.header {
+    /*overflow-y:visible;*/
+    padding: 5px 10px;
+}
+
+    /* Style the header links */
+    .header a {
+        float: left;
+        color: white;
+        text-align: center;
+        padding: 12px;
+        text-decoration: none;
+        font-size: 18px;
+        line-height: 25px;
+        border-radius: 4px;
+    }
+
+        /* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
+        .header a.logo {
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        /* Change the background color on mouse-over */
+        .header a:hover {
+            background-color: #dcb239;
+            color: black;
+        }
+
+        /* Style the active/current link*/
+
+/* Float the link section to the right */
+.header-right {
+    float: right;
+    overflow-y:visible;
+}
+.lbl-get-started label {
+    padding-top: initial;
+    font-size: 20px;
+}
+.lbl-get-started a {
+    text-decoration: none;
+    text-shadow: 3px;
+}
+.dropbtn {
+    background-color: #f9cf00;
+    color: white;
+    padding: 16px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+    /* Links inside the dropdown */
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        right:0;
+    }
+
+        /* Change color of dropdown links on hover */
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+            color: #f9cf00;
+        }
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: #dcb239;
+    color:black;
+}

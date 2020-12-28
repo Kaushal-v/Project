@@ -1,0 +1,35 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="admin.master.cs" Inherits="testmain.admin" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Dash Board</title>
+        <link rel="stylesheet" href="Style.css" />
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <div class="header">
+                <a href="home.aspx" class="logo">ShareLog</a>
+            </div>
+            <div class="clear"></div>
+            <div class="admin-menu">
+                <a href="#" class="active disabled">Hola!!(admin)</a>
+                <a href="#">Profile</a>
+                <a href="users.aspx">Users</a>
+                <a href="#">Shares</a>
+                <a href="#">Blockchain</a>
+                <asp:LinkButton ID="btnalogout" runat="server" OnClick="btnlogout_Click">Logout</asp:LinkButton>
+            </div>
+            <div class="content">
+                <asp:ContentPlaceHolder ID="adminContent" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
