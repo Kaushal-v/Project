@@ -17,6 +17,8 @@ namespace testmain
         readonly SqlConnection con = new SqlConnection();
         protected void Page_Load(object sender, EventArgs e)
         {
+            blockchain b1 = new blockchain(2, 10);
+            Session["obj_blockchain"] = b1;
             string constr = ConfigurationManager.ConnectionStrings["ConString"].ConnectionString;
             con.ConnectionString = constr;
             try
@@ -36,13 +38,12 @@ namespace testmain
             }
             catch(Exception ex){}
             con.Open();
-            SqlDataAdapter da = new SqlDataAdapter("select * from share", con);
+            SqlDataAdapter da = new SqlDataAdapter("select * from share_master", con);
             DataTable dt = new DataTable();
             da.Fill(dt);
             share_info.DataSource = dt;
             share_info.DataBind();
             con.Close();
-            share_info.Visible = false;
         }
 
         protected void btnsignup_Click(object sender, EventArgs e)

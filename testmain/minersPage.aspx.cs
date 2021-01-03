@@ -11,14 +11,18 @@ namespace testmain
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["type"].ToString() == "admin")
+            try
             {
-                Response.Redirect("adminDefault.aspx");
+                if (Session["type"].ToString() == "admin")
+                {
+                    Response.Redirect("adminDefault.aspx");
+                }
+                if (Session["type"].ToString() == "sub")
+                {
+                    Response.Redirect("clientDefault.aspx");
+                }
             }
-            if (Session["type"].ToString() == "sub")
-            {
-                Response.Redirect("clientDefault.aspx");
-            }
+            catch(Exception ex) { }
         }
     }
 }

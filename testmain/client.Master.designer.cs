@@ -33,13 +33,22 @@ namespace testmain
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// btnusername control.
+        /// btnfirstname control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnusername;
+        protected global::System.Web.UI.WebControls.Button btnfirstname;
+
+        /// <summary>
+        /// btnchips control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnchips;
 
         /// <summary>
         /// btnmine control.
@@ -51,13 +60,13 @@ namespace testmain
         protected global::System.Web.UI.WebControls.LinkButton btnmine;
 
         /// <summary>
-        /// butclogout control.
+        /// btnlogout control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton butclogout;
+        protected global::System.Web.UI.WebControls.LinkButton btnlogout;
 
         /// <summary>
         /// clientContent control.

@@ -17,6 +17,16 @@ namespace testmain
         readonly SqlConnection con = new SqlConnection();
         protected void Page_Load(object sender, EventArgs e)
         {
+            LinkButton btn = (LinkButton)Master.FindControl("btnhome");
+            btn.CssClass = "nav-link";
+            btn = (LinkButton)Master.FindControl("btnusers");
+            btn.CssClass = "nav-link active";
+            btn = (LinkButton)Master.FindControl("btnshares");
+            btn.CssClass = "nav-link";
+            btn = (LinkButton)Master.FindControl("btntransactions");
+            btn.CssClass = "nav-link";
+            btn = (LinkButton)Master.FindControl("btnblockchain");
+            btn.CssClass = "nav-link";
             string constr = ConfigurationManager.ConnectionStrings["ConString"].ConnectionString;
             con.ConnectionString = constr;
             try
@@ -32,7 +42,7 @@ namespace testmain
             }
             catch (Exception ex) { }
             con.Open();
-            SqlDataAdapter da = new SqlDataAdapter("select * from users", con);
+            SqlDataAdapter da = new SqlDataAdapter("select * from user_master", con);
             DataTable dt = new DataTable();
             da.Fill(dt);
             user_info.DataSource = dt;

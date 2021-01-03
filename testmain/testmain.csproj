@@ -67,8 +67,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="adminAccount.aspx">
+      <BrowseToURL>~/account.aspx</BrowseToURL>
+    </Content>
     <Content Include="adminDefault.aspx" />
+    <Content Include="clientAccount.aspx" />
     <Content Include="clientDefault.aspx" />
+    <Content Include="error.aspx" />
     <Content Include="home.aspx" />
     <Content Include="minersPage.aspx" />
     <Content Include="profile.aspx" />
@@ -79,6 +84,13 @@
     <Content Include="users.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="adminAccount.aspx.cs">
+      <DependentUpon>adminAccount.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="adminAccount.aspx.designer.cs">
+      <DependentUpon>adminAccount.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin.Master.cs">
       <DependentUpon>admin.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -93,12 +105,27 @@
     <Compile Include="adminDefault.aspx.designer.cs">
       <DependentUpon>adminDefault.aspx</DependentUpon>
     </Compile>
+    <Compile Include="blockchain.cs" />
+    <Compile Include="clientAccount.aspx.cs">
+      <DependentUpon>clientAccount.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="clientAccount.aspx.designer.cs">
+      <DependentUpon>clientAccount.aspx</DependentUpon>
+    </Compile>
     <Compile Include="clientDefault.aspx.cs">
       <DependentUpon>clientDefault.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="clientDefault.aspx.designer.cs">
       <DependentUpon>clientDefault.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="error.aspx.cs">
+      <DependentUpon>error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="error.aspx.designer.cs">
+      <DependentUpon>error.aspx</DependentUpon>
     </Compile>
     <Compile Include="home.aspx.cs">
       <DependentUpon>home.aspx</DependentUpon>

@@ -8,28 +8,66 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <link rel="stylesheet" href="Style.css" />
+	<link rel="shortcut icon" href="admin/favicon.ico"> 
+    
+    <!-- FontAwesome JS-->
+    <script defer src="admin/assets/plugins/fontawesome/js/all.min.js"></script>
+    
+    <!-- App CSS -->  
+    <link rel="stylesheet" href="admin/assets/css/portal.css">
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-            <div class="header">
-                <a href="home.aspx" class="logo">ShareLog</a>
-                <div class="header-right">
-                    <asp:LinkButton runat="server" ID="signinbutton"  href="signin.aspx">Signin</asp:LinkButton>
-                    <asp:LinkButton runat="server" href="signup.aspx">Create Account</asp:LinkButton>
-                </div>
-            </div>
-            <div class="clear"></div>
+         <div>   
+             <header class="app-header fixed-top">
+        <div class="app-branding app-sidepanel" style="border:none;">
+		    <a class="app-logo" href="home.aspx"><img class="logo-icon mr-2" src="assets/images/app-logo.svg" alt="logo"><span class="logo-text">ShareLog</span></a>
+		</div><!--//app-branding--> 
+        <div class="app-header-inner">  
+	        <div class="container-fluid py-2">
+		        <div class="app-header-content"> 
+		            <div class="row justify-content-between align-items-center">
+				    <div class="col-auto">
+					    <a id="sidepanel-toggler" class="sidepanel-toggler d-inline-block d-xl-none" href="#">
+						    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" role="img"><title>Menu</title><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg>
+					    </a>
+				    </div><!--//col-->		            
+		            <div class="app-utilities col-auto">					        
+			            <div class="app-utility-item">
+				            <asp:LinkButton runat="server" ID="btnsignin" href="Signin.aspx" title="Signin">Signin
+					            <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
+					            
+					        </asp:LinkButton>
+					    </div><!--//app-utility-item-->
+			            
+			            <div class="app-utility-item">
+				            <asp:LinkButton runat="server" ID="btnsignup" href="signup.aspx" title="Sign up">Create Account</asp:LinkButton>
+			            </div><!--//app-user-dropdown--> 
+		            </div><!--//app-utilities-->
+		        </div><!--//row-->
+	            </div><!--//app-header-content-->
+	        </div><!--//container-fluid-->
+        </div><!--//app-header-inner-->
+    </header>
             <div class="content">
                 <asp:ContentPlaceHolder ID="main" runat="server">
                 </asp:ContentPlaceHolder>
             </div>
-            <div class="clear"></div>
-
-            <div class="footer">
-                <asp:Label runat="server" ID="lblfooter" Text="@CopyRights"></asp:Label>
-            </div>
         </div>
+        <footer class="app-footer">
+		        <div class="container text-center py-3">
+                    <small class="copyright">@CopyRighs ShareLog 2020</small>
+		       </div>
+	    </footer><!--//app-footer-->
     </form>
+	<script src="admin/assets/plugins/popper.min.js"></script>
+    <script src="admin/assets/plugins/bootstrap/js/bootstrap.min.js"></script>  
+
+    <!-- Charts JS -->
+    <script src="admin/assets/plugins/chart.js/chart.min.js"></script> 
+    <script src="admin/assets/js/index-charts.js"></script> 
+    
+    <!-- Page Specific JS -->
+    <script src="admin/assets/js/app.js"></script> 
 </body>
 </html>

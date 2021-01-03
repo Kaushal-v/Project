@@ -8,31 +8,76 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
             <link rel="stylesheet" href="Style.css" />
+    <link rel="shortcut icon" href="admin/favicon.ico"> 
+    
+    <!-- FontAwesome JS-->
+    <script defer src="admin/assets/plugins/fontawesome/js/all.min.js"></script>
+    
+    <!-- App CSS -->  
+    <link rel="stylesheet" href="admin/assets/css/portal.css">
 
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
-            <div class="header">
-                 <a href="home.aspx" class="logo">ShareLog</a>
-                <div class="header-right">
-                    <div class="dropdown">
-                        <asp:Button CssClass="dropbtn" ID="btnusername" runat="server"/>
-                        <div class="dropdown-content">
-                            <a href="profile.aspx">Profile</a>
-                            <a href="#">Account</a>
-                            <a href="#">Wallet</a>
-                            <asp:LinkButton runat="server" ID="btnmine">Mine</asp:LinkButton>
-                            <asp:LinkButton runat="server" ID="butclogout" OnClick="butclogout_Click">Logout</asp:LinkButton>
-                         </div>
-                    </div>
-                </div>
-            </div>
-            <div>
+            <header class="app-header fixed-top">
+        <div class="app-branding app-sidepanel" style="border:none;">
+		    <a class="app-logo" href="clientDefault.aspx"><img class="logo-icon mr-2" src="assets/images/app-logo.svg" alt="logo"><span class="logo-text">ShareLog</span></a>
+		</div><!--//app-branding--> 
+        <div class="app-header-inner">  
+	        <div class="container-fluid py-2">
+		        <div class="app-header-content"> 
+		            <div class="row justify-content-between align-items-center">
+				    <div class="col-auto">
+					    <a id="sidepanel-toggler" class="sidepanel-toggler d-inline-block d-xl-none" href="#">
+						    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" role="img"><title>Menu</title><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg>
+					    </a>
+				    </div><!--//col-->		            
+		            <div class="app-utilities col-auto">					        
+			            <div class="app-utility-item">
+				            <a href="#">Buy / Sell
+					            <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
+					            
+					        </a>
+					    </div><!--//app-utility-item-->
+			            
+			            <div class="app-utility-item app-user-dropdown dropdown">
+				            <a class="dropdown-toggle" id="user-dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false"><asp:Button CssClass="btn" runat="server" ID="btnfirstname"></asp:Button></a>
+				            <ul class="dropdown-menu" aria-labelledby="user-dropdown-toggle">
+								<li><asp:LinkButton runat="server" ID="btnchips" CssClass="dropdown-item disabled" Text="Chips "></asp:LinkButton></li>
+                                <li><a class="dropdown-item" href="account.aspx">Account</a></li>
+                                <li><a class="dropdown-item" href="transaction.aspx">Transaction</a></li>
+                                <li><asp:LinkButton runat="server" ID="btnmine" CssClass="dropdown-item" href="mine.aspx">Mine</asp:LinkButton></li>
+								<li><hr class="dropdown-divider"></li>
+								<li><asp:LinkButton runat="server" ID="btnlogout" OnClick="butclogout_Click" CssClass="dropdown-item">Log Out</asp:LinkButton></li>
+							</ul>
+			            </div><!--//app-user-dropdown-->
+		            </div><!--//app-utilities-->
+		        </div><!--//row-->
+	            </div><!--//app-header-content-->
+	        </div><!--//container-fluid-->
+        </div><!--//app-header-inner-->
+    </header>
+            <div class="content">
                 <asp:ContentPlaceHolder ID="clientContent" runat="server">
                 </asp:ContentPlaceHolder>
             </div>
+            <footer class="app-footer">
+		        <div class="container text-center py-3">
+                <small class="copyright">@CopyRights ShareLog 2020</small>
+		       
+		        </div>
+	        </footer><!--//app-footer-->
         </div>
     </form>
+    <script src="admin/assets/plugins/popper.min.js"></script>
+    <script src="admin/assets/plugins/bootstrap/js/bootstrap.min.js"></script>  
+
+    <!-- Charts JS -->
+    <script src="admin/assets/plugins/chart.js/chart.min.js"></script> 
+    <script src="admin/assets/js/index-charts.js"></script> 
+    
+    <!-- Page Specific JS -->
+    <script src="admin/assets/js/app.js"></script> 
 </body>
 </html>

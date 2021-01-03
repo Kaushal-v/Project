@@ -35,8 +35,8 @@ namespace testmain
                 }
             }
             catch (Exception ex) { }
-            LinkButton signinbutton = (LinkButton)Master.FindControl("signinbutton");
-            signinbutton.Visible = false;
+            Master.FindControl("btnsignin").Visible = false;
+            Master.FindControl("btnsignup").Visible = false;
         }
 
         protected void Signin_Click(object sender, EventArgs e)
@@ -44,34 +44,30 @@ namespace testmain
             string u_name = u_namet.Text;
             string pass = passt.Text;
             con.Open();
-            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM active_users Where lower_user_name='" + u_name + "' and password='" + pass + "'", con);
+            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM user_master Where user_name='" + u_name + "' and user_password='" + pass + "'", con);
             DataTable dt = new DataTable();
             da.Fill(dt);
             if (1 == dt.Rows.Count)
             {
-                DateTime now = DateTime.Now;
-                string timenow = string.Format("{0:yyyy-MM-dd H:mm:ss}", now);
-                SqlCommand cmd1 = new SqlCommand("update active_users set last_login='" + timenow + "' where id='" + dt.Rows[0].Field<int>("id") + "'", con);
-                cmd1.ExecuteNonQuery();
-                if (dt.Rows[0].Field<string>("type").Equals("miner") && dt.Rows[0].Field<string>("password").Equals(pass))
+                if (dt.Rows[0].Field<string>("user_type").Equals("miner") && dt.Rows[0].Field<string>("user_password").Equals(pass))
                 {
                     Session["u_name"] = u_name;
                     Session["pass"] = pass;
-                    Session["type"] = dt.Rows[0].Field<string>("type");
+                    Session["type"] = dt.Rows[0].Field<string>("user_type");
                     Response.Redirect("minersPage.aspx");
                 }
-                else if(dt.Rows[0].Field<string>("type").Equals("admin") && dt.Rows[0].Field<string>("password").Equals(pass))
+                else if(dt.Rows[0].Field<string>("user_type").Equals("admin") && dt.Rows[0].Field<string>("user_password").Equals(pass))
                 {
                     Session["u_name"] = u_name;
                     Session["pass"] = pass;
-                    Session["type"] = dt.Rows[0].Field<string>("type");
+                    Session["type"] = dt.Rows[0].Field<string>("user_type");
                     Response.Redirect("adminDefault.aspx");
                 }
-                else if (dt.Rows[0].Field<string>("password")==pass)
+                else if (dt.Rows[0].Field<string>("user_password")==pass)
                 {
                     Session["u_name"] = u_name;
                     Session["pass"] = pass;
-                    Session["type"] = dt.Rows[0].Field<string>("type");
+                    Session["type"] = dt.Rows[0].Field<string>("user_type");
                     Response.Redirect("clientDefault.aspx");
                 }
                 else

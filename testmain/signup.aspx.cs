@@ -36,13 +36,15 @@ namespace testmain
                 }
             }
             catch (Exception ex) { }
+            Master.FindControl("btnsignin").Visible = false;
+            Master.FindControl("btnsignup").Visible = false;
         }
 
         protected void Signup_Click(object sender, EventArgs e)
         {
             if (!alert)
             {
-                string u_name = u_namet.Text;
+                string u_name = u_namet.Text.ToLower();
                 string l_name = l_namet.Text;
                 string f_name = f_namet.Text;
                 string mail = mailt.Text;
@@ -57,13 +59,7 @@ namespace testmain
                 DateTime now = DateTime.Now;
                 string timenow = string.Format("{0:yyyy-MM-dd H:mm:ss}", now);
                 con.Open();
-                SqlCommand cmd = new SqlCommand("insert into users(user_name, first_name, last_name, display_name, date_created, mail_address ,contact_no, password, type, active) values('" + u_name + "','" + f_name + "','" + l_name + "','" + d_name + "','" + timenow + "','" + mail + "','" + con_no + "','" + pass + "','"+type+"','true')", con);
-                cmd.ExecuteNonQuery();
-                SqlDataAdapter adapter = new SqlDataAdapter("select id from users where user_name='" + u_name + "'", con);
-                DataTable dt = new DataTable();
-                adapter.Fill(dt);
-                int id = dt.Rows[0].Field<int>("id");
-                cmd = new SqlCommand("insert into active_users(id,lower_user_name,password,last_login,type) values('" + id + "','" + u_name + "','" + pass + "','" + timenow + "','"+type+"')", con);
+                SqlCommand cmd = new SqlCommand("insert into user_master(user_name, user_first_name, user_last_name, user_display_name, user_date_created, user_mail_address ,user_contact_no, user_password, user_type, user_active, user_last_login) values('" + u_name + "','" + f_name + "','" + l_name + "','" + d_name + "','" + timenow + "','" + mail + "','" + con_no + "','" + pass + "','"+type+"','true','"+timenow+"')", con);
                 cmd.ExecuteNonQuery();
                 con.Close();
                 if (type == "miner")
@@ -92,7 +88,7 @@ namespace testmain
         {
             string u_name = u_namet.Text;
             con.Open();
-            SqlDataAdapter adapter = new SqlDataAdapter("select * from users where user_name='" + u_name + "'", con);
+            SqlDataAdapter adapter = new SqlDataAdapter("select * from user_master where user_name='" + u_name + "'", con);
             DataTable dt = new DataTable();
             adapter.Fill(dt);
             if (dt.Rows.Count == 1)
