@@ -29,6 +29,7 @@ namespace testmain
             lbllname.Text = dt.Rows[0].Field<string>("user_last_name");
             lbluname.Text = dt.Rows[0].Field<string>("user_name");
             lblmail.Text = dt.Rows[0].Field<string>("user_mail_address");
+            lblconno.Text = dt.Rows[0].Field<string>("user_contact_no");
             con.Close();
             LinkButton btn = (LinkButton)Master.FindControl("btnhome");
             btn.CssClass = "nav-link";

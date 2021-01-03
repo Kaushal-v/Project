@@ -98,6 +98,7 @@
 								    <div class="row justify-content-between align-items-center">
 									    <div class="col-auto">
 										    <div class="item-label text-left"><strong>Contact No</strong></div>
+											<div class="item-data text-left"><asp:Label runat="server" ID="lblconno"></asp:Label></div>
 									        <asp:TextBox ReadOnly="true" ID="tbconno" runat="server" CssClass="item-data tb"></asp:TextBox>
 									    </div><!--//col-->
 									    <div class="col text-right">
@@ -113,17 +114,6 @@
 									    </div><!--//col-->
 									    <div class="col text-right">
 										    <a class="btn-sm app-btn-secondary" href="#">Change</a>
-									    </div><!--//col-->
-								    </div><!--//row-->
-							    </div><!--//item-->
-							    <div class="item border-bottom py-3">
-								    <div class="row justify-content-between align-items-center">
-									    <div class="col-auto">
-										    <div class="item-label text-left"><strong>Two-Factor Authentication</strong></div>
-									        <div class="item-data">You haven't set up two-factor authentication. </div>
-									    </div><!--//col-->
-									    <div class="col text-right">
-										    <a class="btn-sm app-btn-secondary" href="#">Set up</a>
 									    </div><!--//col-->
 								    </div><!--//row-->
 							    </div><!--//item-->

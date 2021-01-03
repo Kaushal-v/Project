@@ -45,7 +45,7 @@
 				            <a class="dropdown-toggle" id="user-dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false"><asp:Button CssClass="btn" runat="server" ID="btnfirstname"></asp:Button></a>
 				            <ul class="dropdown-menu" aria-labelledby="user-dropdown-toggle">
 								<li><asp:LinkButton runat="server" ID="btnchips" CssClass="dropdown-item disabled" Text="Chips "></asp:LinkButton></li>
-                                <li><a class="dropdown-item" href="account.aspx">Account</a></li>
+                                <li><a class="dropdown-item" href="clientAccount.aspx">Account</a></li>
                                 <li><a class="dropdown-item" href="transaction.aspx">Transaction</a></li>
                                 <li><asp:LinkButton runat="server" ID="btnmine" CssClass="dropdown-item" href="mine.aspx">Mine</asp:LinkButton></li>
 								<li><hr class="dropdown-divider"></li>
