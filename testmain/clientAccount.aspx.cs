@@ -14,7 +14,6 @@ namespace testmain
     public partial class clientAccount : System.Web.UI.Page
     {
         readonly SqlConnection con = new SqlConnection();
-
         protected void Page_Load(object sender, EventArgs e)
         {
             cbminer.Attributes["onclick"] = "return false";
@@ -36,7 +35,6 @@ namespace testmain
             }
             con.Close();
         }
-
         protected void btnedit_Click(object sender, EventArgs e)
         {
             cbminer.Attributes["onclick"] = "return true";
@@ -48,7 +46,6 @@ namespace testmain
             tbmail.Visible = true;
             btnsave.Visible = true;
         }
-
         protected void btnsave_Click(object sender, EventArgs e)
         {
             string u_name = Session["u_name"].ToString();

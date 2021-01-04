@@ -6,7 +6,7 @@
                     <Columns>
                         <asp:TemplateField HeaderText="#">
                             <ItemTemplate>
-                                <asp:Label ID="lblid" runat="server" Text='<%# Bind("id") %>'> </asp:Label>
+                                <asp:Label ID="lblid" runat="server" Text='<%# Bind("user_id") %>'> </asp:Label>
                             </ItemTemplate>
 				        </asp:TemplateField>
                         <asp:TemplateField HeaderText="User Name">
@@ -16,7 +16,7 @@
 				        </asp:TemplateField>
                         <asp:TemplateField HeaderText="User Type">
                             <ItemTemplate>
-                                <asp:Label ID="lblprice" runat="server" Text='<%# Bind("type") %>'></asp:Label>
+                                <asp:Label ID="lblprice" runat="server" Text='<%# Bind("user_type") %>'></asp:Label>
                             </ItemTemplate>
 				        </asp:TemplateField>
                     </Columns>

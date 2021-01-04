@@ -45,6 +45,36 @@
                             </asp:GridView>
 		                </div><!--//row-->
 			        </div><!--//app-card-header-->
+                    <div class="row g-4 mb-4" style="padding-top:50px;">
+				    <div class="col-12 col-lg-4">
+					    <div class="app-card app-card-stat shadow-sm h-100">
+						    <div class="app-card-body p-3 p-lg-4">
+							    <h4 class="stats-type mb-1">Total Sales</h4>
+							    <div class="stats-figure">$12,628</div>
+						    </div><!--//app-card-body-->
+						    <a class="app-card-link-mask" href="#"></a>
+					    </div><!--//app-card-->
+				    </div><!--//col-->
+				    
+				    <div class="col-12 col-lg-4">
+					    <div class="app-card app-card-stat shadow-sm h-100">
+						    <div class="app-card-body p-3 p-lg-4">
+							    <h4 class="stats-type mb-1">Sold Shares</h4>
+							    <div class="stats-figure"><asp:Label runat="server" ID="lblsoldshares"></asp:Label></div>
+						    </div><!--//app-card-body-->
+						    <a class="app-card-link-mask" href="#"></a>
+					    </div><!--//app-card-->
+				    </div><!--//col-->
+				    <div class="col-12 col-lg-4">
+					    <div class="app-card app-card-stat shadow-sm h-100">
+						    <div class="app-card-body p-3 p-lg-4">
+							    <h4 class="stats-type mb-1">Shares</h4>
+							    <div class="stats-figure"><asp:Label runat="server" ID="lbltotal_shares"></asp:Label></div>
+						    </div><!--//app-card-body-->
+						    <a class="app-card-link-mask" href="shares.aspx"></a>
+					    </div><!--//app-card-->
+				    </div><!--//col-->
+			    </div><!--//row-->
                 </div>
             </div>
         </div>

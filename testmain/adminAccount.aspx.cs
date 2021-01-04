@@ -18,7 +18,15 @@ namespace testmain
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            string u_name = Session["u_name"].ToString();
+            string u_name="";
+            try
+            {
+                u_name = Session["u_name"].ToString();
+            }
+            catch(Exception ex)
+            {
+                Server.Transfer("signin.aspx");
+            }
             string constr = ConfigurationManager.ConnectionStrings["ConString"].ConnectionString;
             con.ConnectionString = constr;
             con.Open();

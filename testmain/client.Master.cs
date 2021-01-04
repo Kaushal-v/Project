@@ -15,11 +15,11 @@ namespace testmain
     public partial class Site2 : System.Web.UI.MasterPage
     {
         readonly SqlConnection con = new SqlConnection();
-
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
+                btnchips.Text = "Chips ";
                 string u_name = Session["u_name"].ToString();
                 if (Session["type"].ToString() == "sub")
                 {
@@ -33,26 +33,25 @@ namespace testmain
                 da.Fill(dt);
                 btnfirstname.Text = dt.Rows[0].Field<string>("user_first_name").ToUpperInvariant();
                 con.Close();
-                if (Session["obj_blockchain"] != null && btnchips.Text=="Chips ")
+                double bal = 0;
+                if (Session["obj_blockchain"] != null)
                 {
-                    double bal;
                     blockchain b1 = (blockchain)Session["obj_blockchain"];
                     try
                     {
                         bal = b1.getBalance(u_name);
                     }
-                    catch(Exception ex)
-                    {
-                        bal = 0;
-                    }
-                    btnchips.Text += bal.ToString();
+                    catch(Exception ex){ }
                 }
+                btnchips.Text += bal.ToString();
             }
             catch (Exception ex) {  }
         }
         protected void butclogout_Click(object sender, EventArgs e)
         {
+            blockchain b1 = (blockchain)Session["obj_blockchain"];
             Session.Clear();
+            Session["obj_blockchain"] = b1;
             Response.Redirect("signin.aspx");   
         }
     }

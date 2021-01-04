@@ -18,6 +18,8 @@ namespace testmain
         protected void Page_Load(object sender, EventArgs e)
         {
             blockchain b1 = new blockchain(2, 10);
+            b1.CreateTransaction(new Transaction("manav_09", "saurabh_09", 20));
+            b1.mineBlock("dhaval_09");
             Session["obj_blockchain"] = b1;
             string constr = ConfigurationManager.ConnectionStrings["ConString"].ConnectionString;
             con.ConnectionString = constr;
@@ -25,15 +27,15 @@ namespace testmain
             {
                 if (Session["type"].ToString() == "miner")
                 {
-                    Response.Redirect("minersPage.aspx");
+                    Server.Transfer("minersPage.aspx");
                 }
                 if (Session["type"].ToString() == "admin")
                 {
-                    Response.Redirect("adminDefault.aspx");
+                    Server.Transfer("adminDefault.aspx");
                 }
                 if (Session["type"].ToString() == "sub")
                 {
-                    Response.Redirect("clientDefault.aspx");
+                    Server.Transfer("clientDefault.aspx");
                 }
             }
             catch(Exception ex){}
@@ -48,7 +50,7 @@ namespace testmain
 
         protected void btnsignup_Click(object sender, EventArgs e)
         {
-            Response.Redirect("signup.aspx");
+            Server.Transfer("signup.aspx");
         }
     }
 }
