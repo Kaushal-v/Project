@@ -45,6 +45,7 @@ namespace testmain
             tblname.Visible = true;
             tbmail.Visible = true;
             btnsave.Visible = true;
+            btncancel.Visible = true;
         }
         protected void btnsave_Click(object sender, EventArgs e)
         {

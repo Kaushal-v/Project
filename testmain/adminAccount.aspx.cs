@@ -98,6 +98,7 @@ namespace testmain
             tblname.Visible = true;
             tbmail.Visible = true;
             btnsave.Visible = true;
+            btncancel.Visible = true;
         }
 
         //protected void tbuname_TextChanged(object sender, EventArgs e)

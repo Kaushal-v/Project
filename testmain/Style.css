@@ -100,3 +100,6 @@
 .tb:focus{
     border:none;
 }
+.bg-pic{
+    background-size:cover;
+}

@@ -71,6 +71,7 @@
 						    </div><!--//app-card-body-->
 						    <div class="app-card-footer p-4 mt-auto">
 							   <asp:LinkButton runat="server" ID="btnsave" OnClick="btnsave_Click" CssClass="btn app-btn-secondary" Visible="false">Save Profile</asp:LinkButton>
+								<asp:LinkButton runat="server" ID="btncancel" href="adminAccount.aspx" CssClass="btn app-btn-secondary" Visible="false">Cancel</asp:LinkButton>
 						    </div><!--//app-card-footer-->
 						   
 						</div><!--//app-card-->

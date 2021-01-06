@@ -31,7 +31,7 @@
 							    <h4 class="stats-type mb-1">Shares</h4>
 							    <div class="stats-figure"><asp:Label runat="server" ID="lbltotal_shares"></asp:Label></div>
 						    </div><!--//app-card-body-->
-						    <a class="app-card-link-mask" href="shares.aspx"></a>
+						    <a class="app-card-link-mask" href="share.aspx"></a>
 					    </div><!--//app-card-->
 				    </div><!--//col-->
 				    <div class="col-6 col-lg-3">

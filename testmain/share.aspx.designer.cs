@@ -11,107 +11,80 @@ namespace testmain
 {
 
 
-    public partial class acount
+    public partial class share
     {
 
         /// <summary>
-        /// btnedit control.
+        /// btnaddshare control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnedit;
+        protected global::System.Web.UI.WebControls.LinkButton btnaddshare;
 
         /// <summary>
-        /// lblfname control.
+        /// lblsharedetails control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblfname;
+        protected global::System.Web.UI.WebControls.Label lblsharedetails;
 
         /// <summary>
-        /// tbfname control.
+        /// gvsharedetails control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbfname;
+        protected global::System.Web.UI.WebControls.GridView gvsharedetails;
 
         /// <summary>
-        /// lbllname control.
+        /// tbsname control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbllname;
+        protected global::System.Web.UI.WebControls.TextBox tbsname;
 
         /// <summary>
-        /// tblname control.
+        /// tbsprice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tblname;
+        protected global::System.Web.UI.WebControls.TextBox tbsprice;
 
         /// <summary>
-        /// lbluname control.
+        /// tbsavailc control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbluname;
+        protected global::System.Web.UI.WebControls.TextBox tbsavailc;
 
         /// <summary>
-        /// tbuname control.
+        /// lblincorrect control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbuname;
+        protected global::System.Web.UI.WebControls.Label lblincorrect;
 
         /// <summary>
-        /// lblunamenotavail control.
+        /// btnsaveshare control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblunamenotavail;
-
-        /// <summary>
-        /// lblmail control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblmail;
-
-        /// <summary>
-        /// tbmail control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbmail;
-
-        /// <summary>
-        /// btnsave control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnsave;
+        protected global::System.Web.UI.WebControls.LinkButton btnsaveshare;
 
         /// <summary>
         /// btncancel control.
@@ -121,23 +94,5 @@ namespace testmain
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btncancel;
-
-        /// <summary>
-        /// lblconno control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblconno;
-
-        /// <summary>
-        /// tbconno control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbconno;
     }
 }

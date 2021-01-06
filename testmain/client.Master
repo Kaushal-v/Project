@@ -40,7 +40,7 @@
 				            <ul class="dropdown-menu" aria-labelledby="user-dropdown-toggle">
 								<li><asp:LinkButton runat="server" ID="btnchips" CssClass="dropdown-item disabled" Text="Chips "></asp:LinkButton></li>
                                 <li><a class="dropdown-item" href="clientAccount.aspx">Account</a></li>
-                                <li><a class="dropdown-item" href="transaction.aspx">Transaction</a></li>
+                                <li><a class="dropdown-item" href="clientTransactions.aspx">Transactions</a></li>
                                 <li><asp:LinkButton runat="server" ID="btnmine" CssClass="dropdown-item" href="mine.aspx">Mine</asp:LinkButton></li>
 								<li><hr class="dropdown-divider"></li>
 								<li><asp:LinkButton runat="server" ID="btnlogout" OnClick="butclogout_Click" CssClass="dropdown-item">Log Out</asp:LinkButton></li>

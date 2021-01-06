@@ -72,16 +72,21 @@ namespace testmain
                 }
                 else
                 {
-                    string msg = "Username or Password is incorrect!!";
-                    ClientScript.RegisterStartupScript(this.GetType(), "", "alert('" + msg + "');", true);
+                    lblconfirm.Visible = true;
+                    passt.Text = "";
                 }
             }
             else
             {
-                string msg = "Username or Password is incorrect!!";
-                ClientScript.RegisterStartupScript(this.GetType(), "", "alert('" + msg + "');", true);
+                lblconfirm.Visible = true;
+                passt.Text = "";
             }
             con.Close();
+        }
+
+        protected void passt_TextChanged(object sender, EventArgs e)
+        {
+            lblconfirm.Visible = false;
         }
     }
 }

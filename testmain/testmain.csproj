@@ -73,13 +73,17 @@
     <Content Include="adminDefault.aspx" />
     <Content Include="clientAccount.aspx" />
     <Content Include="clientDefault.aspx" />
+    <Content Include="clientTransactions.aspx" />
     <Content Include="error.aspx" />
+    <Content Include="Global.asax" />
     <Content Include="home.aspx" />
     <Content Include="minersPage.aspx" />
     <Content Include="profile.aspx" />
+    <Content Include="share.aspx" />
     <Content Include="signin.aspx" />
     <Content Include="signup.aspx" />
     <Content Include="Style.css" />
+    <Content Include="adminTransactions.aspx" />
     <Content Include="Web.config" />
     <Content Include="users.aspx" />
   </ItemGroup>
@@ -120,12 +124,22 @@
     <Compile Include="clientDefault.aspx.designer.cs">
       <DependentUpon>clientDefault.aspx</DependentUpon>
     </Compile>
+    <Compile Include="clientTransactions.aspx.cs">
+      <DependentUpon>clientTransactions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="clientTransactions.aspx.designer.cs">
+      <DependentUpon>clientTransactions.aspx</DependentUpon>
+    </Compile>
     <Compile Include="error.aspx.cs">
       <DependentUpon>error.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="error.aspx.designer.cs">
       <DependentUpon>error.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="home.aspx.cs">
       <DependentUpon>home.aspx</DependentUpon>
@@ -149,6 +163,13 @@
       <DependentUpon>profile.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="share.aspx.cs">
+      <DependentUpon>share.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="share.aspx.designer.cs">
+      <DependentUpon>share.aspx</DependentUpon>
+    </Compile>
     <Compile Include="signin.aspx.cs">
       <DependentUpon>signin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -176,6 +197,13 @@
     </Compile>
     <Compile Include="client.Master.designer.cs">
       <DependentUpon>client.Master</DependentUpon>
+    </Compile>
+    <Compile Include="adminTransactions.aspx.cs">
+      <DependentUpon>adminTransactions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="adminTransactions.aspx.designer.cs">
+      <DependentUpon>adminTransactions.aspx</DependentUpon>
     </Compile>
     <Compile Include="users.aspx.cs">
       <DependentUpon>users.aspx</DependentUpon>

@@ -34,9 +34,9 @@ namespace testmain
                 btnfirstname.Text = dt.Rows[0].Field<string>("user_first_name").ToUpperInvariant();
                 con.Close();
                 double bal = 0;
-                if (Session["obj_blockchain"] != null)
+                if (Application["obj_blockchain"] != null)
                 {
-                    blockchain b1 = (blockchain)Session["obj_blockchain"];
+                    blockchain b1 = (blockchain)Application["obj_blockchain"];
                     try
                     {
                         bal = b1.getBalance(u_name);
@@ -49,9 +49,7 @@ namespace testmain
         }
         protected void butclogout_Click(object sender, EventArgs e)
         {
-            blockchain b1 = (blockchain)Session["obj_blockchain"];
             Session.Clear();
-            Session["obj_blockchain"] = b1;
             Response.Redirect("signin.aspx");   
         }
     }

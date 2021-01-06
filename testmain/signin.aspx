@@ -5,7 +5,7 @@
 	    <div class="col-12 auth-main-col text-center p-5">
 		    <div class="d-flex flex-column align-content-center">
 			    <div class="app-auth-body mx-auto">	
-				    <div class="app-auth-branding mb-4"><a class="app-logo" href="index.html"><img class="logo-icon mr-2" src="assets/images/app-logo.svg" alt="logo"></a></div>
+				    <div class="app-auth-branding mb-4"><a class="app-logo" href="home.aspx"><img class="logo-icon mr-2" src="assets/images/app-logo.svg" alt="logo"></a></div>
 					<h2 class="auth-heading text-center mb-5">Log in to ShareLog</h2>
 			        <div class="auth-form-container text-left">
 						<div class="auth-form login-form">         
@@ -15,7 +15,8 @@
 							</div><!--//form-group-->
 							<div class="password mb-3">
 								<label class="sr-only" for="signin-password">Password</label>
-								<asp:TextBox ID="passt" runat="server" TextMode="password" CssClass="form-control signin-password" placeholder="Password" required="required"></asp:TextBox>
+								<asp:TextBox ID="passt" runat="server" TextMode="password" CssClass="form-control signin-password" placeholder="Password" required="required" OnTextChanged="passt_TextChanged"></asp:TextBox>
+								<div class="text-right"><asp:Label runat="server" Visible="false" ForeColor="Red" ID="lblconfirm">Username or Password is incorrect!!</asp:Label></div>
 								<div class="extra mt-3 row justify-content-between">
 									<div class="col-6">
 										<div class="form-check">
