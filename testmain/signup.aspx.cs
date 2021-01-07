@@ -79,8 +79,7 @@ namespace testmain
             }
             else
             {
-                string msg = "User name is not available!!";
-                ClientScript.RegisterStartupScript(this.GetType(), "", "alert('" + msg + "');", true);
+                lblunamenot.Visible = true;
             }
         }
 

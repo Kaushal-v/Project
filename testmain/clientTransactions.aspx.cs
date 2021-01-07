@@ -25,6 +25,11 @@ namespace testmain
             gvtransactiondetails.DataSource = dt;
             gvtransactiondetails.DataBind();
             con.Close();
+        }       
+        protected void gvtransactiondetails_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvtransactiondetails.PageIndex = e.NewPageIndex;
+            DataBind();
         }
     }
 }

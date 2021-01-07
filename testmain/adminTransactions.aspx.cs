@@ -34,7 +34,20 @@ namespace testmain
             da.Fill(dt);
             gvtransactiondetails.DataSource = dt;
             gvtransactiondetails.DataBind();
+            blockchain b1 = (blockchain)Application["obj_blockchain"];
+            if (b1.pendingTransactions != null)
+            {
+
+                gvpendingtransactions.DataSource = b1.pendingTransactions;
+                gvpendingtransactions.DataBind();
+            }
             con.Close();
+        }
+
+        protected void gvtransactiondetails_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvtransactiondetails.PageIndex = e.NewPageIndex;
+            gvtransactiondetails.DataBind();
         }
     }
 }

@@ -18,6 +18,7 @@
 							</div>
 							<div class="email mb-3">
 								<asp:TextBox runat="server" ID="u_namet" CssClass="form-control signup-name" OnTextChanged="u_namet_TextChanged" placeholder="User name" required="required"></asp:TextBox>
+								<div class="text-right"><asp:Label runat="server" Visible="false" ForeColor="Red" ID="lblunamenot">Username is not available!!</asp:Label></div>
 							</div>
                             <div class="email mb-3">
 								<asp:TextBox runat="server" ID="mailt" CssClass="form-control signup-name" placeholder="Email"></asp:TextBox>

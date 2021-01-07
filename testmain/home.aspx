@@ -18,23 +18,11 @@
 				        <div class="app-card app-card-stats-table h-100 shadow-sm">
 					        <div class="app-card-header p-3">
 						        <div class="row justify-content-between align-items-center">
-							   <asp:GridView ID="share_info" runat="server" DataKeyField="id" AutoGenerateColumns="False" style="border:none; margin-top:50px; margin-left: auto; margin-right:auto;" Width="70%">
+							   <asp:GridView ID="share_info" runat="server" DataKeyField="id" AutoGenerateColumns="False" style="border:none; margin-top:50px; margin-left: auto; margin-right:auto;" Width="70%" PageSize="5">
                                 <Columns>
-                                    <asp:TemplateField HeaderText="#">
-                                        <ItemTemplate>
-                                            <asp:Label ID="lblid" runat="server" Text='<%# Bind("share_id") %>'> </asp:Label>
-                                        </ItemTemplate>
-				                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Name">
-                                        <ItemTemplate>
-                                            <asp:Label ID="lblname" runat="server" Text='<%# Bind("share_name") %>'> </asp:Label>
-                                        </ItemTemplate>
-				                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Price">
-                                        <ItemTemplate>
-                                            <asp:Label ID="lblprice" runat="server" Text='<%# Bind("share_price") %>'></asp:Label>
-                                        </ItemTemplate>
-				                    </asp:TemplateField>
+									<asp:BoundField DataField="share_id" HeaderText="#"/>
+									<asp:BoundField DataField="share_name" HeaderText="Share Name"/>
+									<asp:BoundField DataField="share_price" HeaderText="Price"/>                                   
 									<asp:TemplateField HeaderText="Change">
                                         <ItemTemplate>
                                             <asp:Label ID="lblchange" runat="server" Text="0"></asp:Label>
