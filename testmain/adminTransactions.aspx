@@ -29,7 +29,7 @@
 												<div class="app-card-header p-3">
 													<h3 class="app-page-title" style="font-size:15px;">Verified Transactions</h3>
 													<div class="row justify-content-between align-items-center">
-														 <asp:GridView ID="gvtransactiondetails" BorderStyle="None" runat="server" OnPageIndexChanging="gvtransactiondetails_PageIndexChanging" Width="100%" AutoGenerateColumns="False" DataKeyNames="block_hash" EmptyDataText="No records has been added." AllowPaging="True" PageSize="10" PagerStyle-HorizontalAlign="Center">
+														 <asp:GridView ID="gvtransactiondetails" BorderStyle="None" runat="server" OnPageIndexChanging="gvtransactiondetails_PageIndexChanging" Width="100%" AutoGenerateColumns="False" DataKeyNames="block_hash" EmptyDataText="No records has been added." AllowPaging="True" PageSize="5" PagerStyle-HorizontalAlign="Center">
 															<Columns>
 																<asp:BoundField DataField="block_hash" HeaderText="Hash"/>
 																<asp:BoundField DataField="transaction_sender_hash" HeaderText="Sender Hash"/>

@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/admin.Master" CodeBehind="share.aspx.cs" Inherits="testmain.share" %>
+
 <asp:Content runat="server" ContentPlaceHolderID="adminContent">
     <div class="app-wrapper">
 	    
@@ -26,23 +27,9 @@
 													<div class="row justify-content-between align-items-center">
 													   <asp:GridView ID="gvsharedetails" BorderStyle="None" runat="server" Width="100%" OnRowDeleting="gvsharedetails_RowDeleting" AutoGenerateColumns="False" DataKeyNames="share_id" EmptyDataText="No records has been added.">
 															<Columns>
-																<asp:TemplateField HeaderText="ID">
-																	 <ItemTemplate>
-																		<asp:Label ID="lblid" runat="server" Text='<%# Bind("share_id") %>'> </asp:Label>
-																	</ItemTemplate>
-																</asp:TemplateField>
-
-																<asp:TemplateField HeaderText="Name">
-																	<ItemTemplate>
-																		<asp:Label ID="lblname" runat="server" Text='<%# Bind("share_name") %>'> </asp:Label>
-																	</ItemTemplate>
-																</asp:TemplateField>
-
-																<asp:TemplateField HeaderText="Price">
-																	<ItemTemplate>
-																		<asp:Label ID="lblprice" runat="server" Text='<%# Bind("share_price") %>'></asp:Label>
-																	</ItemTemplate>
-																</asp:TemplateField>
+																<asp:BoundField DataField="share_id" HeaderText="#"/>
+																<asp:BoundField DataField="share_name" HeaderText="Share Name"/>
+																<asp:BoundField DataField="share_price" HeaderText="Price"/>                                   																								
 																<asp:TemplateField HeaderText="Change">
 																	<ItemTemplate>
 																		<asp:Label ID="lblchange" runat="server" Text="0"></asp:Label>
@@ -51,14 +38,10 @@
 																<asp:TemplateField HeaderText="Available Count">
 																	<ItemTemplate>
 																		<asp:Label ID="lblavailc" runat="server" Text='<%# Bind("share_available_count") %>'></asp:Label>
-																		<asp:LinkButton ID="btnadd" runat="server" Text="Add"></asp:LinkButton>
+																		<asp:LinkButton ID="btnadd" OnClick="btnadd_Click" runat="server" Text="Add"></asp:LinkButton>
 																	</ItemTemplate>
 																</asp:TemplateField>
-																<asp:TemplateField HeaderText="Sold Count">
-																   <ItemTemplate>
-																		<asp:Label ID="lblsoldc" runat="server" Text='<%# Bind("share_sold_count") %>'></asp:Label>
-																	</ItemTemplate>
-																</asp:TemplateField>
+																<asp:BoundField DataField="share_sold_count" HeaderText="Price"/>                                   																								
 																<asp:TemplateField HeaderText="Chart">
 																   <ItemTemplate>
 
@@ -66,7 +49,7 @@
 																</asp:TemplateField>
 																<asp:TemplateField HeaderText="Edit">
 																   <ItemTemplate>
-																		<asp:LinkButton ID="btndelete" runat="server" CommandName="delete" CommandArgument='<%#Bind("share_id") %>' Text="Delete"></asp:LinkButton>
+																		<asp:LinkButton ID="btndelete" runat="server" Text="Delete"></asp:LinkButton>
 																	</ItemTemplate>
 																</asp:TemplateField>
 															</Columns>

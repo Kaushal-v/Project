@@ -23,7 +23,7 @@ namespace testmain
             {
                 if (Session["type"].ToString() == "miner")
                 {
-                    Server.Transfer("minersPage.aspx");
+                    Server.Transfer("clientDefault.aspx");
                 }
                 if (Session["type"].ToString() == "admin")
                 {

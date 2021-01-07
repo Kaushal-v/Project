@@ -81,5 +81,10 @@ namespace testmain
             con.Close();
             Response.Redirect("share.aspx");
         }
+
+        protected void btnadd_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("adminTransactions.aspx");
+        }
     }
 }

@@ -34,7 +34,7 @@ namespace testmain
             }
         }
 
-        protected void btnlogout_Click(object sender, EventArgs e)
+        protected void btnlogoutc_Click(object sender, EventArgs e)
         {
             Session.Clear();
             Response.Redirect("signin.aspx");

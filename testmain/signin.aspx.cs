@@ -23,7 +23,7 @@ namespace testmain
             {
                 if (Session["type"].ToString() == "miner")
                 {
-                    Response.Redirect("minersPage.aspx");
+                    Response.Redirect("ClientDefault.aspx");
                 }
                 if (Session["type"].ToString() == "admin")
                 {
@@ -54,7 +54,7 @@ namespace testmain
                     Session["u_name"] = u_name;
                     Session["pass"] = pass;
                     Session["type"] = dt.Rows[0].Field<string>("user_type");
-                    Response.Redirect("minersPage.aspx");
+                    Response.Redirect("clientDefault.aspx");
                 }
                 else if(dt.Rows[0].Field<string>("user_type").Equals("admin") && dt.Rows[0].Field<string>("user_password").Equals(pass))
                 {

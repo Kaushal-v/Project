@@ -44,10 +44,11 @@ namespace testmain
                     catch(Exception ex){ }
                 }
                 btnchips.Text += bal.ToString();
+                lblpanelchips.Text = btnchips.Text;
             }
             catch (Exception ex) {  }
         }
-        protected void butclogout_Click(object sender, EventArgs e)
+        protected void btnlogoutc_Click(object sender, EventArgs e)
         {
             Session.Clear();
             Response.Redirect("signin.aspx");   

@@ -24,7 +24,7 @@ namespace testmain
             {
                 if (Session["type"].ToString() == "miner")
                 {
-                    Response.Redirect("minersPage.aspx");
+                    Response.Redirect("ClientDefault.aspx");
                 }
                 if (Session["type"].ToString() == "admin")
                 {
@@ -62,20 +62,10 @@ namespace testmain
                 SqlCommand cmd = new SqlCommand("insert into user_master(user_name, user_first_name, user_last_name, user_display_name, user_date_created, user_mail_address ,user_contact_no, user_password, user_type, user_active, user_last_login) values('" + u_name + "','" + f_name + "','" + l_name + "','" + d_name + "','" + timenow + "','" + mail + "','" + con_no + "','" + pass + "','"+type+"','true','"+timenow+"')", con);
                 cmd.ExecuteNonQuery();
                 con.Close();
-                if (type == "miner")
-                {
-                    Session["u_name"] = u_name;
-                    Session["pass"] = pass;
-                    Session["type"] = type;
-                    Response.Redirect("minersPage.aspx");
-                }
-                else
-                {
-                    Session["u_name"] = u_name;
-                    Session["pass"] = pass;
-                    Session["type"] = type;
-                    Response.Redirect("profile.aspx");
-                }
+                Session["u_name"] = u_name;
+                Session["pass"] = pass;
+                Session["type"] = type;
+                Response.Redirect("clientDefault.aspx");
             }
             else
             {

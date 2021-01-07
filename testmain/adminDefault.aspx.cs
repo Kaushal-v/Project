@@ -20,14 +20,10 @@ namespace testmain
             con.ConnectionString = constr;
             try
             {
-                if (Session["type"].ToString() == "miner")
-                {
-                    Response.Redirect("minersPage.aspx");
-                }
-                if (Session["type"].ToString() == "sub")
+                if (Session["type"].ToString() != "admin")
                 {
                     Response.Redirect("clientDefault.aspx");
-                }
+                }           
             }
             catch (Exception ex) { }
             con.Open();
