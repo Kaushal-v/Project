@@ -32,7 +32,13 @@ namespace testmain
                 DataTable dt = new DataTable();
                 da.Fill(dt);
                 btnfirstname.Text = dt.Rows[0].Field<string>("user_first_name").ToUpperInvariant();
-                con.Close();
+                da = new SqlDataAdapter("select * from share_master", con);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                ddlpanelshare.DataTextField = ds.Tables[0].Columns["share_name"].ToString();
+                ddlpanelshare.DataValueField = ds.Tables[0].Columns["share_id"].ToString();
+                ddlpanelshare.DataSource = ds.Tables[0];
+                ddlpanelshare.DataBind();  
                 double bal = 0;
                 if (Application["obj_blockchain"] != null)
                 {
@@ -52,6 +58,11 @@ namespace testmain
         {
             Session.Clear();
             Response.Redirect("signin.aspx");   
+        }
+
+        protected void btnpanelconfirm_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

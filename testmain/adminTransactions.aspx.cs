@@ -49,5 +49,11 @@ namespace testmain
             gvtransactiondetails.PageIndex = e.NewPageIndex;
             gvtransactiondetails.DataBind();
         }
+
+        protected void gvpendingtransactions_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvpendingtransactions.PageIndex = e.NewPageIndex;
+            gvpendingtransactions.DataBind();
+        }
     }
 }

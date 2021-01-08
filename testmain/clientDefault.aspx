@@ -17,12 +17,12 @@
 						        </div><!--//row-->
 						    </div><!--//app-card-header-->
 						    <div class="app-card-body px-4 w-100">
-							    <asp:GridView ID="share_info" runat="server" DataKeyField="id" AutoGenerateColumns="False" style="border:none; margin-top:50px; margin-left: auto; margin-right:auto;" Width="100%" PageSize="5">
+							    <asp:GridView ID="gvshare_info" runat="server" DataKeyField="id" AutoGenerateColumns="False" style="border:none; margin-top:50px; margin-left: auto; margin-right:auto;" Width="100%" PageSize="5">
                                 <Columns>
 									<asp:BoundField DataField="share_id" HeaderText="#"/>
 									<asp:BoundField DataField="share_name" HeaderText="Share Name"/>
 									<asp:BoundField DataField="share_price" HeaderText="Price"/>                                   
-									<asp:TemplateField HeaderText="Change">
+									<asp:TemplateField HeaderText="Purchesed Count">
                                         <ItemTemplate>
                                             <asp:Label ID="lblchange" runat="server" Text="0"></asp:Label>
                                         </ItemTemplate>

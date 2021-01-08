@@ -13,7 +13,7 @@ namespace testmain
         protected void Application_Start(object sender, EventArgs e)
         {
             blockchain b1 = new blockchain(2, 10);
-            b1.CreateTransaction(new Transaction("user1Address", "user2Address", 5));
+            b1.CreateTransaction(new Transaction("user1Address", "dhaval_09", 5));
             Application["obj_blockchain"] = b1;
         }
 

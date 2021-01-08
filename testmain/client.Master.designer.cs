@@ -78,6 +78,24 @@ namespace testmain
         protected global::System.Web.UI.WebControls.Panel panelbuysell;
 
         /// <summary>
+        /// btnpanelbuy control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnpanelbuy;
+
+        /// <summary>
+        /// btnpanelsell control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnpanelsell;
+
+        /// <summary>
         /// lblpanelchips control.
         /// </summary>
         /// <remarks>
@@ -85,6 +103,24 @@ namespace testmain
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblpanelchips;
+
+        /// <summary>
+        /// ddlpanelshare control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlpanelshare;
+
+        /// <summary>
+        /// tbpanelcount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbpanelcount;
 
         /// <summary>
         /// btnpanelconfirm control.

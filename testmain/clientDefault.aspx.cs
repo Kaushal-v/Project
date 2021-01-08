@@ -25,14 +25,34 @@ namespace testmain
                 }
             }
             catch (Exception ex) { }
+            string u_name = Session["u_name"].ToString();
             string constr = ConfigurationManager.ConnectionStrings["ConString"].ConnectionString;
             con.ConnectionString = constr;
             con.Open();
-            SqlDataAdapter da = new SqlDataAdapter("select * from share_master", con);
+            SqlDataAdapter da;
+            da = new SqlDataAdapter("select user_id from user_master where user_name='"+u_name+"'", con);
             DataTable dt = new DataTable();
             da.Fill(dt);
-            share_info.DataSource = dt;
-            share_info.DataBind();
+            int user_id = dt.Rows[0].Field<int>("user_id");
+            try
+            {
+                da = new SqlDataAdapter("select * from share_master, share_holder_master where share_master.share_id=share_holder_master.share_id and share_holder_master.user_id='" + user_id + "'", con);
+                if (gvshare_info.Columns[3].Visible != false)
+                {
+                    gvshare_info.Columns[3].Visible = false;
+                    BoundField bfield = new BoundField();
+                    bfield.HeaderText = "Purchesed Count";
+                    bfield.DataField = "holder_share_count";
+                    gvshare_info.Columns.Add(bfield);
+                }
+            }
+            catch(Exception ex)
+            {
+                da = new SqlDataAdapter("select * from share_master", con);
+            }
+            da.Fill(dt);
+            gvshare_info.DataSource = dt;
+            gvshare_info.DataBind();
             con.Close();
         }
     }
