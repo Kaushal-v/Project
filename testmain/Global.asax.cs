@@ -14,6 +14,7 @@ namespace testmain
         {
             blockchain b1 = new blockchain(2, 10);
             b1.CreateTransaction(new Transaction("user1Address", "dhaval_09", 5));
+            b1.mineBlock("dhaval_09");
             Application["obj_blockchain"] = b1;
         }
 

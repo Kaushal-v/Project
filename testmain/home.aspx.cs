@@ -18,23 +18,7 @@ namespace testmain
         protected void Page_Load(object sender, EventArgs e)
         {
             string constr = ConfigurationManager.ConnectionStrings["ConString"].ConnectionString;
-            con.ConnectionString = constr;
-            try
-            {
-                if (Session["type"].ToString() == "miner")
-                {
-                    Server.Transfer("clientDefault.aspx");
-                }
-                if (Session["type"].ToString() == "admin")
-                {
-                    Server.Transfer("adminDefault.aspx");
-                }
-                if (Session["type"].ToString() == "sub")
-                {
-                    Server.Transfer("clientDefault.aspx");
-                }
-            }
-            catch(Exception ex){}
+            con.ConnectionString = constr;         
             con.Open();
             SqlDataAdapter da = new SqlDataAdapter("select * from share_master", con);
             DataTable dt = new DataTable();

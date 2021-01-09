@@ -28,19 +28,7 @@ namespace testmain
             btn = (LinkButton)Master.FindControl("btnblockchain");
             btn.CssClass = "nav-link";
             string constr = ConfigurationManager.ConnectionStrings["ConString"].ConnectionString;
-            con.ConnectionString = constr;
-            try
-            {
-                if (Session["type"].ToString() == "miner")
-                {
-                    Response.Redirect("minersPage.aspx");
-                }
-                if (Session["type"].ToString() == "sub")
-                {
-                    Response.Redirect("clientDefault.aspx");
-                }
-            }
-            catch (Exception ex) { }
+            con.ConnectionString = constr;     
             con.Open();
             SqlDataAdapter da = new SqlDataAdapter("select * from user_master", con);
             DataTable dt = new DataTable();

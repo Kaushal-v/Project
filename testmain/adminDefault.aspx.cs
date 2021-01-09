@@ -15,32 +15,38 @@ namespace testmain
     {
         readonly SqlConnection con = new SqlConnection();
         protected void Page_Load(object sender, EventArgs e)
-        {
+        {           
             string constr = ConfigurationManager.ConnectionStrings["ConString"].ConnectionString;
             con.ConnectionString = constr;
             try
             {
                 if (Session["type"].ToString() != "admin")
                 {
-                    Response.Redirect("clientDefault.aspx");
+                    Response.Redirect("signin.aspx");
                 }           
             }
-            catch (Exception ex) { }
-            con.Open();
-            SqlDataAdapter da = new SqlDataAdapter("select count(*) as cout from user_master", con);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            lbltotal_users.Text = dt.Rows[0].Field<int>("cout").ToString();
-            da = new SqlDataAdapter("select count(*) as cout from share_master", con);
-            dt = new DataTable();
-            da.Fill(dt);
-            lbltotal_shares.Text = dt.Rows[0].Field<int>("cout").ToString();
-            da = new SqlDataAdapter("select sum(share_sold_count) as cout from share_master", con);
-            dt = new DataTable();
-            da.Fill(dt);
-            lblsoldshares.Text = dt.Rows[0].Field<int>("cout").ToString();
-        }
-
-        
+            catch (Exception ex) {
+                Response.Redirect("signin.aspx");            }
+            try
+            {
+                con.Open();
+                SqlDataAdapter da = new SqlDataAdapter("select count(*) as cout from user_master", con);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                lbltotal_users.Text = dt.Rows[0].Field<int>("cout").ToString();
+                da = new SqlDataAdapter("select count(*) as cout from share_master", con);
+                dt = new DataTable();
+                da.Fill(dt);
+                lbltotal_shares.Text = dt.Rows[0].Field<int>("cout").ToString();
+                da = new SqlDataAdapter("select sum(share_sold_count) as cout from share_master", con);
+                dt = new DataTable();
+                da.Fill(dt);
+                lblsoldshares.Text = dt.Rows[0].Field<int>("cout").ToString();
+            }
+            catch(Exception ex) {
+                lbltotal_shares.Text = "0";
+                lblsoldshares.Text = "0";
+            }
+        }        
     }
 }

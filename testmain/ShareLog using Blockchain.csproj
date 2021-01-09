@@ -81,7 +81,6 @@
     <Content Include="Global.asax" />
     <Content Include="home.aspx" />
     <Content Include="minersPage.aspx" />
-    <Content Include="profile.aspx" />
     <Content Include="share.aspx" />
     <Content Include="signin.aspx" />
     <Content Include="signup.aspx" />
@@ -157,13 +156,6 @@
     </Compile>
     <Compile Include="minersPage.aspx.designer.cs">
       <DependentUpon>minersPage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="profile.aspx.cs">
-      <DependentUpon>profile.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="profile.aspx.designer.cs">
-      <DependentUpon>profile.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="share.aspx.cs">

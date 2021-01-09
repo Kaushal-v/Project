@@ -25,7 +25,7 @@ namespace testmain
             }
             catch(Exception ex)
             {
-                Server.Transfer("signin.aspx");
+                Response.Redirect("signin.aspx");
             }
             string constr = ConfigurationManager.ConnectionStrings["ConString"].ConnectionString;
             con.ConnectionString = constr;

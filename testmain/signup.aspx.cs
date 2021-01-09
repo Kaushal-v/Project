@@ -19,23 +19,7 @@ namespace testmain
         protected void Page_Load(object sender, EventArgs e)
         {
             string constr = ConfigurationManager.ConnectionStrings["ConString"].ConnectionString;
-            con.ConnectionString = constr;
-            try
-            {
-                if (Session["type"].ToString() == "miner")
-                {
-                    Response.Redirect("ClientDefault.aspx");
-                }
-                if (Session["type"].ToString() == "admin")
-                {
-                    Response.Redirect("adminDefault.aspx");
-                }
-                if (Session["type"].ToString() == "sub")
-                {
-                    Response.Redirect("clientDefault.aspx");
-                }
-            }
-            catch (Exception ex) { }
+            con.ConnectionString = constr;            
             Master.FindControl("btnsignin").Visible = false;
             Master.FindControl("btnsignup").Visible = false;
         }
@@ -65,6 +49,10 @@ namespace testmain
                 Session["u_name"] = u_name;
                 Session["pass"] = pass;
                 Session["type"] = type;
+                SqlDataAdapter da = new SqlDataAdapter("SELECT user_id FROM user_master Where user_name='" + u_name + "'", con);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                Session["u_id"] = dt.Rows[0].Field<int>("user_id");
                 Response.Redirect("clientDefault.aspx");
             }
             else

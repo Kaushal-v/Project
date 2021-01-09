@@ -22,11 +22,11 @@
 									<asp:BoundField DataField="share_id" HeaderText="#"/>
 									<asp:BoundField DataField="share_name" HeaderText="Share Name"/>
 									<asp:BoundField DataField="share_price" HeaderText="Price"/>                                   
-									<asp:TemplateField HeaderText="Purchesed Count">
+									<%--<asp:TemplateField HeaderText="Purchesed Count">
                                         <ItemTemplate>
                                             <asp:Label ID="lblchange" runat="server" Text="0"></asp:Label>
                                         </ItemTemplate>
-				                    </asp:TemplateField>
+				                    </asp:TemplateField>--%>
                                 </Columns>
                                 <AlternatingRowStyle BackColor="White" />
                             </asp:GridView>

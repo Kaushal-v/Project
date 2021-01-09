@@ -122,6 +122,14 @@ public class blockchain
         }
         return bal;
     }
+    public string getAddress(string u_name)
+    {
+        using (SHA256 sha256 = SHA256.Create())
+        {            
+            byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(u_name));
+            return Encoding.Default.GetString(bytes);
+        }
+    }
 }
 //class Program
 //{

@@ -41,7 +41,7 @@
 																		<asp:LinkButton ID="btnadd" OnClick="btnadd_Click" runat="server" Text="Add"></asp:LinkButton>
 																	</ItemTemplate>
 																</asp:TemplateField>
-																<asp:BoundField DataField="share_sold_count" HeaderText="Price"/>                                   																								
+																<asp:BoundField DataField="share_sold_count" HeaderText="Sold"/>                                   																								
 																<asp:TemplateField HeaderText="Chart">
 																   <ItemTemplate>
 

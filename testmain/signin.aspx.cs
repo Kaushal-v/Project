@@ -18,23 +18,7 @@ namespace testmain
         protected void Page_Load(object sender, EventArgs e)
         {
             string constr = ConfigurationManager.ConnectionStrings["ConString"].ConnectionString;
-            con.ConnectionString = constr;
-            try
-            {
-                if (Session["type"].ToString() == "miner")
-                {
-                    Response.Redirect("ClientDefault.aspx");
-                }
-                if (Session["type"].ToString() == "admin")
-                {
-                    Response.Redirect("adminDefault.aspx");
-                }
-                if (Session["type"].ToString() == "sub")
-                {
-                    Response.Redirect("clientDefault.aspx");
-                }
-            }
-            catch (Exception ex) { }
+            con.ConnectionString = constr;            
             Master.FindControl("btnsignin").Visible = false;
             Master.FindControl("btnsignup").Visible = false;
         }
@@ -52,6 +36,7 @@ namespace testmain
                 if (dt.Rows[0].Field<string>("user_type").Equals("miner") && dt.Rows[0].Field<string>("user_password").Equals(pass))
                 {
                     Session["u_name"] = u_name;
+                    Session["u_id"] = dt.Rows[0].Field<int>("user_id"); ;
                     Session["pass"] = pass;
                     Session["type"] = dt.Rows[0].Field<string>("user_type");
                     Response.Redirect("clientDefault.aspx");
@@ -59,6 +44,7 @@ namespace testmain
                 else if(dt.Rows[0].Field<string>("user_type").Equals("admin") && dt.Rows[0].Field<string>("user_password").Equals(pass))
                 {
                     Session["u_name"] = u_name;
+                    Session["u_id"] = dt.Rows[0].Field<int>("user_id"); ;
                     Session["pass"] = pass;
                     Session["type"] = dt.Rows[0].Field<string>("user_type");
                     Response.Redirect("adminDefault.aspx");
@@ -67,6 +53,7 @@ namespace testmain
                 {
                     Session["u_name"] = u_name;
                     Session["pass"] = pass;
+                    Session["u_id"] = dt.Rows[0].Field<int>("user_id"); ;
                     Session["type"] = dt.Rows[0].Field<string>("user_type");
                     Response.Redirect("clientDefault.aspx");
                 }

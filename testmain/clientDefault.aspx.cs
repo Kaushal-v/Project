@@ -36,15 +36,22 @@ namespace testmain
             int user_id = dt.Rows[0].Field<int>("user_id");
             try
             {
-                da = new SqlDataAdapter("select * from share_master, share_holder_master where share_master.share_id=share_holder_master.share_id and share_holder_master.user_id='" + user_id + "'", con);
-                if (gvshare_info.Columns[3].Visible != false)
-                {
-                    gvshare_info.Columns[3].Visible = false;
-                    BoundField bfield = new BoundField();
-                    bfield.HeaderText = "Purchesed Count";
-                    bfield.DataField = "holder_share_count";
-                    gvshare_info.Columns.Add(bfield);
-                }
+                //da = new SqlDataAdapter("select * from share_master, share_holder_master where share_master.share_id=share_holder_master.share_id and share_holder_master.user_id='" + user_id + "'", con);
+                //if (dt.Rows[0].Field<string>("share_name") != "")
+                //{
+                //    if (gvshare_info.Columns[3].Visible != false)
+                //    {
+                //        gvshare_info.Columns[3].Visible = false;
+                //        BoundField bfield = new BoundField();
+                //        bfield.HeaderText = "Purchesed Count";
+                //        bfield.DataField = "holder_share_count";
+                //        gvshare_info.Columns.Add(bfield);
+                //    }
+                //}
+                //else
+                //{
+                    da = new SqlDataAdapter("select * from share_master", con);
+                //}
             }
             catch(Exception ex)
             {
