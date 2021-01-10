@@ -24,8 +24,19 @@ namespace testmain
                     Response.Redirect("adminDefault.aspx");
                 }
             }
-            catch (Exception ex) { }
-            string u_name = Session["u_name"].ToString();
+            catch (Exception) 
+            {
+                Response.Redirect("signin.aspx");
+            }
+            string u_name = "";
+            try
+            {
+                u_name = Session["u_name"].ToString();
+            }
+            catch (Exception)
+            {
+                Response.Redirect("signin.aspx");
+            }
             string constr = ConfigurationManager.ConnectionStrings["ConString"].ConnectionString;
             con.ConnectionString = constr;
             con.Open();
@@ -53,7 +64,7 @@ namespace testmain
                     da = new SqlDataAdapter("select * from share_master", con);
                 //}
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 da = new SqlDataAdapter("select * from share_master", con);
             }

@@ -17,7 +17,15 @@ namespace testmain
         protected void Page_Load(object sender, EventArgs e)
         {
             cbminer.Attributes["onclick"] = "return false";
-            string u_name = Session["u_name"].ToString();
+            string u_name = "";
+            try
+            {
+                u_name = Session["u_name"].ToString();
+            }
+            catch (Exception)
+            {
+                Response.Redirect("signin.aspx");
+            }
             string constr = ConfigurationManager.ConnectionStrings["ConString"].ConnectionString;
             con.ConnectionString = constr;
             con.Open();
@@ -49,7 +57,15 @@ namespace testmain
         }
         protected void btnsave_Click(object sender, EventArgs e)
         {
-            string u_name = Session["u_name"].ToString();
+            string u_name = "";
+            try
+            {
+                u_name = Session["u_name"].ToString();
+            }
+            catch (Exception)
+            {
+                Response.Redirect("signin.aspx");
+            }
             con.Open();
             SqlDataAdapter da = new SqlDataAdapter("select * from user_master where user_name='" + u_name + "' ", con);
             DataTable dt = new DataTable();

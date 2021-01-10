@@ -13,8 +13,9 @@ namespace testmain
         protected void Application_Start(object sender, EventArgs e)
         {
             blockchain b1 = new blockchain(2, 10);
-            b1.CreateTransaction(new Transaction("user1Address", "dhaval_09", 5));
-            b1.mineBlock("dhaval_09");
+            string dhaval = b1.getAddress("dhaval_09");
+            b1.CreateTransaction(new Transaction("user1Address", dhaval, 5));
+            b1.mineBlock(dhaval);
             Application["obj_blockchain"] = b1;
         }
 

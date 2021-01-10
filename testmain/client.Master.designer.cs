@@ -123,6 +123,24 @@ namespace testmain
         protected global::System.Web.UI.WebControls.TextBox tbpanelcount;
 
         /// <summary>
+        /// lblconfirm control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblconfirm;
+
+        /// <summary>
+        /// btnpanel2cancel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnpanel2cancel;
+
+        /// <summary>
         /// btnpanelconfirm control.
         /// </summary>
         /// <remarks>

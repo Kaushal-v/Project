@@ -74,6 +74,7 @@
       <BrowseToURL>~/account.aspx</BrowseToURL>
     </Content>
     <Content Include="adminDefault.aspx" />
+    <Content Include="blockchain.png" />
     <Content Include="clientAccount.aspx" />
     <Content Include="clientDefault.aspx" />
     <Content Include="clientTransactions.aspx" />

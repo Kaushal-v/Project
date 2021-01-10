@@ -25,7 +25,7 @@ namespace testmain
                     Response.Redirect("signin.aspx");
                 }           
             }
-            catch (Exception ex) {
+            catch (Exception) {
                 Response.Redirect("signin.aspx");            }
             try
             {
@@ -43,7 +43,7 @@ namespace testmain
                 da.Fill(dt);
                 lblsoldshares.Text = dt.Rows[0].Field<int>("cout").ToString();
             }
-            catch(Exception ex) {
+            catch(Exception) {
                 lbltotal_shares.Text = "0";
                 lblsoldshares.Text = "0";
             }

@@ -28,7 +28,7 @@ namespace testmain
                 da.Fill(dt);
                 btnfirstname.Text = dt.Rows[0].Field<string>("user_first_name").ToUpperInvariant();
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 Response.Redirect("signin.aspx");
             }

@@ -30,7 +30,7 @@ namespace testmain
 
         protected void btnsignup_Click(object sender, EventArgs e)
         {
-            Server.Transfer("signup.aspx");
+            Response.Redirect("signup.aspx");
         }
     }
 }

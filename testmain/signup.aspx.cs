@@ -79,9 +79,9 @@ namespace testmain
             con.Close();
         }
 
-        protected void google_Click(object sender, EventArgs e)
-        {
+        //protected void google_Click(object sender, EventArgs e)
+        //{
 
-        }
+        //}
     }
 }

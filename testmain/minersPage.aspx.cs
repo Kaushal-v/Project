@@ -28,7 +28,10 @@ namespace testmain
                     Response.Redirect("clientDefault.aspx");
                 }
             }
-            catch(Exception ex) { }
+            catch(Exception)
+            {
+                Response.Redirect("signin.aspx");
+            }
             string constr = ConfigurationManager.ConnectionStrings["ConString"].ConnectionString;
             con.ConnectionString = constr;
             blockchain b1 = (blockchain)Application["obj_blockchain"];
@@ -49,27 +52,38 @@ namespace testmain
         protected void btnmine_Click(object sender, EventArgs e)
         {
             blockchain b1 = (blockchain)Application["obj_blockchain"];
-            string u_name = Session["u_name"].ToString();
-            b1.mineBlock(u_name);
-            string constr = ConfigurationManager.ConnectionStrings["ConString"].ConnectionString;
-            con.ConnectionString = constr;
-            string hash = b1.chain.Last().hash;
-            string pre_hash = b1.chain.Last().previousHash;
-            string timestamp = b1.chain.Last().timeStamp;
-            con.Open();
-            SqlCommand cmd = new SqlCommand("insert into blockchain_master(block_hash,block_previous_hash,block_timestamp) values('" + hash + "','" + pre_hash + "','" + timestamp + "')", con);
-            cmd.ExecuteNonQuery();
-            block block = b1.chain.Last();
-            foreach (Transaction t in block.transactions)
+            if (b1.pendingTransactions.Count >0 )
             {
-                string sender_hash = t.from;
-                string receiver_hash = t.to;
-                double amount = t.amount;
-                cmd = new SqlCommand("insert into transaction_master(block_hash,transaction_sender_hash,transaction_receiver_hash,transaction_chips) values('" + hash + "','" + sender_hash + "','" + receiver_hash + "','" + amount + "')", con);
+                string u_name = "";
+                try
+                {
+                    u_name = Session["u_name"].ToString();
+                }
+                catch (Exception)
+                {
+                    Response.Redirect("signin.aspx");
+                }
+                b1.mineBlock(b1.getAddress(u_name));
+                string constr = ConfigurationManager.ConnectionStrings["ConString"].ConnectionString;
+                con.ConnectionString = constr;
+                string hash = b1.chain.Last().hash;
+                string pre_hash = b1.chain.Last().previousHash;
+                string timestamp = b1.chain.Last().timeStamp;
+                con.Open();
+                SqlCommand cmd = new SqlCommand("insert into blockchain_master(block_hash,block_previous_hash,block_timestamp) values('" + hash + "','" + pre_hash + "','" + timestamp + "')", con);
                 cmd.ExecuteNonQuery();
+                block block = b1.chain.Last();
+                foreach (Transaction t in block.transactions)
+                {
+                    string sender_hash = t.from;
+                    string receiver_hash = t.to;
+                    double amount = t.amount;
+                    cmd = new SqlCommand("insert into transaction_master(block_hash,transaction_sender_hash,transaction_receiver_hash,transaction_chips) values('" + hash + "','" + sender_hash + "','" + receiver_hash + "','" + amount + "')", con);
+                    cmd.ExecuteNonQuery();
+                }
+                con.Close();
+                Response.Redirect("minersPage.aspx");
             }
-            con.Close();
-            Response.Redirect("minersPage.aspx");
         }
     }
 }

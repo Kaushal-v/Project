@@ -94,8 +94,10 @@ Blockchain technology operates on a 24×7 basis, which means any day or any time
 					    </div><!--//app-card-->
 				    </div><!--//col-->
 			    </div><!--//row-->
-                </div>
-            </div>
-        </div>
-    </div>
+			</div>
+		</div>
+	</div>
+			</div>
+		</div>
+	
 </asp:Content>

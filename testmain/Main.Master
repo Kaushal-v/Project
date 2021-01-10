@@ -21,7 +21,7 @@
          <div>   
              <header class="app-header fixed-top">
         <div class="app-branding app-sidepanel" style="border:none;">
-		    <a class="app-logo" href="home.aspx"><img class="logo-icon mr-2" src="assets/images/app-logo.svg" alt="logo"><span class="logo-text">ShareLog</span></a>
+		    <a class="app-logo" href="home.aspx"><img class="logo-icon mr-2" src="blockchain.png" alt="logo"><span class="logo-text">ShareLog</span></a>
 		</div><!--//app-branding--> 
         <div class="app-header-inner">  
 	        <div class="container-fluid py-2">

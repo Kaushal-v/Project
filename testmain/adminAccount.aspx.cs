@@ -23,7 +23,7 @@ namespace testmain
             {
                 u_name = Session["u_name"].ToString();
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 Response.Redirect("signin.aspx");
             }

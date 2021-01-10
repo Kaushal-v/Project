@@ -1,6 +1,33 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/admin.Master" CodeBehind="share.aspx.cs" Inherits="testmain.share" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>  
 
 <asp:Content runat="server" ContentPlaceHolderID="adminContent">
+	<asp:LinkButton ID="btnad" runat="server"></asp:LinkButton>
+	<asp:Panel ID="paneladdshare" runat="server" CssClass="app-card app-card-stat shadow-lg w-auto">
+			<div class="app-card-body p-2 p-lg-4">
+										<br />										
+										<div class="align-content-end" style="float:left;width:100%;padding-top:4px;">
+											<h3 class="stats-type mb-4 text-right"><asp:Label runat="server" ID="lblpanelsharename"></asp:Label></h3>
+										</div>
+										<div class="align-content-center">
+											<div class="auth-form login-form">         												
+												<div class="password mb-3">		
+													<div class="text-left"><label>Insert amount of shares:</label></div>
+													<asp:TextBox ID="tbpanelcount" runat="server" TextMode="Number" min="1" max="100" CssClass="form-control" placeholder="Count" required="required" ></asp:TextBox>
+													<div class="text-right"><asp:Label runat="server" Visible="false" ForeColor="Red" ID="lblconfirm">Enter correct count!!</asp:Label></div>
+												</div>
+											</div>
+										</div>
+										<div class="text-left" style="width:50%;float:left;padding:10px;">
+											<asp:LinkButton ID="btnpanelcancel" OnClick="btnpanelcancel_Click" CssClass="text-left" runat="server" Text="Cancel"></asp:LinkButton>
+										</div>
+										<div class="text-right" style="width:50%;float:left;padding:10px;">
+											<asp:LinkButton ID="btnpanelconfirm" OnClick="btnpanelconfirm_Click" CssClass="btn-sm app-btn-secondary" runat="server" Text="Add"></asp:LinkButton>
+										</div>
+										<br />
+									</div>
+		</asp:Panel>
+		<cc1:ModalPopupExtender ID="popupaddshare" runat="server" TargetControlID="btnad" PopupControlID="paneladdshare"></cc1:ModalPopupExtender>
     <div class="app-wrapper">
 	    
 	    <div class="app-content pt-3 p-md-3 p-lg-4">
@@ -25,7 +52,7 @@
 														</div><!--//app-card-header-->
 												<div class="app-card-header p-3">
 													<div class="row justify-content-between align-items-center">
-													   <asp:GridView ID="gvsharedetails" BorderStyle="None" runat="server" Width="100%" OnRowDeleting="gvsharedetails_RowDeleting" AutoGenerateColumns="False" DataKeyNames="share_id" EmptyDataText="No records has been added.">
+													   <asp:GridView ID="gvsharedetails" BorderStyle="None" runat="server" Width="100%" OnRowCommand="gvsharedetails_RowCommand" OnRowDeleting="gvsharedetails_RowDeleting" AutoGenerateColumns="False" DataKeyNames="share_id" EmptyDataText="No records has been added.">
 															<Columns>
 																<asp:BoundField DataField="share_id" HeaderText="#"/>
 																<asp:BoundField DataField="share_name" HeaderText="Share Name"/>
@@ -38,7 +65,7 @@
 																<asp:TemplateField HeaderText="Available Count">
 																	<ItemTemplate>
 																		<asp:Label ID="lblavailc" runat="server" Text='<%# Bind("share_available_count") %>'></asp:Label>
-																		<asp:LinkButton ID="btnadd" OnClick="btnadd_Click" runat="server" Text="Add"></asp:LinkButton>
+																		<asp:LinkButton ID="btnadd" CommandName="addshare" CommandArgument='<%# Bind("share_id") %>' runat="server" Text="Add"></asp:LinkButton>
 																	</ItemTemplate>
 																</asp:TemplateField>
 																<asp:BoundField DataField="share_sold_count" HeaderText="Sold"/>                                   																								
