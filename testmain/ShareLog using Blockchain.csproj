@@ -73,6 +73,7 @@
     <Content Include="adminAccount.aspx">
       <BrowseToURL>~/account.aspx</BrowseToURL>
     </Content>
+    <Content Include="adminBlockchain.aspx" />
     <Content Include="adminDefault.aspx" />
     <Content Include="blockchain.png" />
     <Content Include="clientAccount.aspx" />
@@ -104,6 +105,13 @@
     </Compile>
     <Compile Include="admin.Master.designer.cs">
       <DependentUpon>admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="adminBlockchain.aspx.cs">
+      <DependentUpon>adminBlockchain.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="adminBlockchain.aspx.designer.cs">
+      <DependentUpon>adminBlockchain.aspx</DependentUpon>
     </Compile>
     <Compile Include="adminDefault.aspx.cs">
       <DependentUpon>adminDefault.aspx</DependentUpon>

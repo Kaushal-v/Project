@@ -50,9 +50,10 @@ namespace testmain
         }
 
         protected void btnmine_Click(object sender, EventArgs e)
-        {
+        {           
             blockchain b1 = (blockchain)Application["obj_blockchain"];
-            if (b1.pendingTransactions.Count >0 )
+
+            if (b1.pendingTransactions.Count!=0)
             {
                 string u_name = "";
                 try

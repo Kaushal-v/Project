@@ -114,6 +114,15 @@ namespace testmain
         protected global::System.Web.UI.WebControls.DropDownList ddlpanelshare;
 
         /// <summary>
+        /// lblpanelsharec control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblpanelsharec;
+
+        /// <summary>
         /// tbpanelcount control.
         /// </summary>
         /// <remarks>
@@ -130,6 +139,15 @@ namespace testmain
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblconfirm;
+
+        /// <summary>
+        /// lblnotamount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblnotamount;
 
         /// <summary>
         /// btnpanel2cancel control.
@@ -175,6 +193,15 @@ namespace testmain
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btnbuysell;
+
+        /// <summary>
+        /// btntransfer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btntransfer;
 
         /// <summary>
         /// btnfirstname control.

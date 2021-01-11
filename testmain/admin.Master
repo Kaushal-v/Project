@@ -122,7 +122,7 @@
 					    </li><!--//nav-item-->
 					    <li class="nav-item">
 					        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-					        <asp:LinkButton runat="server" ID="btnblockchain" CssClass="nav-link" href="blockchain.aspx">
+					        <asp:LinkButton runat="server" ID="btnblockchain" CssClass="nav-link" href="adminBlockchain.aspx">
 						        <span class="nav-icon">
 						        <!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
 						        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-columns-gap" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

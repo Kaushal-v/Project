@@ -33,10 +33,10 @@ namespace testmain
             SqlDataAdapter da = new SqlDataAdapter("select * from user_master where user_name='" + u_name + "' ", con);
             DataTable dt = new DataTable();
             da.Fill(dt);
-            lblfname.Text = dt.Rows[0].Field<string>("user_first_name");
-            lbllname.Text = dt.Rows[0].Field<string>("user_last_name");
+            tbfname.Text = lblfname.Text = dt.Rows[0].Field<string>("user_first_name");
+            tblname.Text = lbllname.Text = dt.Rows[0].Field<string>("user_last_name");
             lbluname.Text = dt.Rows[0].Field<string>("user_name");
-            lblmail.Text = dt.Rows[0].Field<string>("user_mail_address");
+            tbmail.Text = lblmail.Text = dt.Rows[0].Field<string>("user_mail_address");
             lblconno.Text = dt.Rows[0].Field<string>("user_contact_no");
             con.Close();
             LinkButton btn = (LinkButton)Master.FindControl("btnhome");
@@ -99,7 +99,7 @@ namespace testmain
             tbmail.Visible = true;
             btnsave.Visible = true;
             btncancel.Visible = true;
-        }
+        }       
 
         //protected void tbuname_TextChanged(object sender, EventArgs e)
         //{

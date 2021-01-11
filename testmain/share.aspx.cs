@@ -35,7 +35,6 @@ namespace testmain
             }
             catch(Exception) 
             {
-                Response.Redirect("signin.aspx");
             }
             LinkButton btn = (LinkButton)Master.FindControl("btnhome");
             btn.CssClass = "nav-link";
@@ -143,8 +142,9 @@ namespace testmain
             }
             else
             {
-                lblconfirm.Visible = true;
+                lblconfirm.Visible = true;                
             }
+            popupaddshare.Show();
         }
     }
 }

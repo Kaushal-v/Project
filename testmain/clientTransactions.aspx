@@ -16,15 +16,39 @@
 										<div class="col-12">
 											<div class="app-card app-card-stats-table h-100 shadow-sm">
 												<div class="app-card-header p-3">
-													<div class="row justify-content-between align-items-center">													
+													<div class="row justify-content-between align-items-center" style="overflow-x:auto">													
 														<asp:GridView ID="gvtransactiondetails" BorderStyle="None" runat="server" OnPageIndexChanging="gvtransactiondetails_PageIndexChanging" Width="100%" AutoGenerateColumns="False" DataKeyNames="block_hash" EmptyDataText="No records has been added." AllowPaging="True" PageSize="10" PagerStyle-HorizontalAlign="Center">
 															<Columns>
-																<asp:BoundField DataField="block_hash" HeaderText="Hash"/>
-																<asp:BoundField DataField="transaction_sender_hash" HeaderText="Sender Hash"/>
-																<asp:BoundField DataField="transaction_receiver_hash" HeaderText="Receiver Hash"/>
-																<asp:BoundField DataField="transaction_chips" HeaderText="Chips"/>
-																<asp:BoundField DataField="block_previous_hash" HeaderText="Previous Hash"/>
-																<asp:BoundField DataField="block_timestamp" HeaderText="Time Stamp"/>
+																<asp:TemplateField HeaderText="Hash">
+																	<ItemTemplate>
+																		<asp:Label width="250" Style="word-wrap: normal; word-break: break-all;" ID="lblblockhash" runat="server" Text='<%#  Bind("block_hash")%>'></asp:Label>
+																	</ItemTemplate>
+																</asp:TemplateField>
+																<asp:TemplateField HeaderText="Sender Hash">
+																	<ItemTemplate>
+																		<asp:Label width="250" Style="word-wrap: normal; word-break: break-all;" ID="lblblockhash" runat="server" Text='<%#  Bind("transaction_sender_hash")%>'></asp:Label>
+																	</ItemTemplate>
+																</asp:TemplateField>
+																<asp:TemplateField HeaderText="Receiver Hash">
+																	<ItemTemplate>
+																		<asp:Label width="250" Style="word-wrap: normal; word-break: break-all;" ID="lblblockhash" runat="server" Text='<%#  Bind("transaction_receiver_hash")%>'></asp:Label>
+																	</ItemTemplate>
+																</asp:TemplateField>
+																<asp:TemplateField HeaderText="Chips">
+																	<ItemTemplate>
+																		<asp:Label ID="lblblockhash" runat="server" Text='<%#  Bind("transaction_chips")%>'></asp:Label>
+																	</ItemTemplate>
+																</asp:TemplateField>
+																<asp:TemplateField HeaderText="Previous Hash">
+																	<ItemTemplate>
+																		<asp:Label width="250" Style="word-wrap: normal; word-break: break-all;" ID="lblblockhash" runat="server" Text='<%#  Bind("block_previous_hash")%>'></asp:Label>
+																	</ItemTemplate>
+																</asp:TemplateField>
+																<asp:TemplateField HeaderText="Time Stamp">
+																	<ItemTemplate>
+																		<asp:Label width="150" Style="word-wrap: normal; word-break: break-all;" ID="lblblockhash" runat="server" Text='<%#  Bind("block_timestamp")%>'></asp:Label>
+																	</ItemTemplate>
+																</asp:TemplateField>																
 															</Columns>
 														</asp:GridView>												
 													</div>

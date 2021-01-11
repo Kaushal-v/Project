@@ -22,7 +22,7 @@ namespace testmain
             SqlDataAdapter da = new SqlDataAdapter("select * from blockchain_master,transaction_master where blockchain_master.block_hash=transaction_master.block_hash;", con);
             DataTable dt = new DataTable();
             da.Fill(dt);
-            gvtransactiondetails.DataSource = dt;
+            gvtransactiondetails.DataSource = dt;            
             gvtransactiondetails.DataBind();
             con.Close();
         }       

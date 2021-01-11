@@ -28,7 +28,12 @@ public class block
             string s = String.Join(" ", this.transactions.Select(o => o.from.ToString() + o.to.ToString() + o.amount.ToString()));
             string rawData = this.previousHash + this.timeStamp + s + nonce;
             byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(rawData));
-            return Encoding.Default.GetString(bytes);
+            StringBuilder builder = new StringBuilder();
+            for (int i = 0; i < bytes.Length; i++)
+            {
+                builder.Append(bytes[i].ToString("x2"));
+            }
+            return builder.ToString();            
         }
     }
     public void mineBlock(int proofOfDeficulty)
@@ -127,7 +132,12 @@ public class blockchain
         using (SHA256 sha256 = SHA256.Create())
         {            
             byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(u_name));
-            return Encoding.Default.GetString(bytes);
+            StringBuilder builder = new StringBuilder();
+            for (int i = 0; i < bytes.Length; i++)
+            {
+                builder.Append(bytes[i].ToString("x2"));
+            }
+            return builder.ToString();            
         }
     }
 }

@@ -35,12 +35,12 @@
 										<br />
 									</div>
 								</asp:Panel>
-		<asp:Panel ID="panelbuysell" runat="server" CssClass="app-card app-card-stat shadow-lg w-25">
+		<asp:Panel ID="panelbuysell" runat="server" CssClass="app-card app-card-stat shadow-lg" style="width:300px;">
 			<div class="app-card-body p-2 p-lg-4">
 										<br />
 										<div class="text-left" style="float:left;width:50%;">
-											<asp:LinkButton runat="server" ID="btnpanelbuy" Text="Buy">Buy</asp:LinkButton>
-											<asp:LinkButton runat="server" ID="btnpanelsell" Text="Sell"></asp:LinkButton>
+											<asp:LinkButton style="margin-right:10px;" OnClick="btnpanelbuy_Click" runat="server" CssClass="active" ID="btnpanelbuy" Text="Buy">Buy</asp:LinkButton>
+											<asp:LinkButton runat="server" ID="btnpanelsell" OnClick="btnpanelsell_Click" Text="Sell"></asp:LinkButton>
 										</div>
 										<div class="text-right" style="float:left;width:50%;padding-top:4px;">
 											<h3 class="stats-type mb-4 text-right"><asp:Label runat="server" ID="lblpanelchips"></asp:Label></h3>
@@ -51,8 +51,10 @@
 													<asp:DropDownList OnTextChanged="ddlpanelshare_SelectedIndexChanged" ID="ddlpanelshare" OnSelectedIndexChanged="ddlpanelshare_SelectedIndexChanged" CssClass="form-control" runat="server"></asp:DropDownList>
 												</div><!--//form-group-->
 												<div class="password mb-3">			
+													<div class="text-left"><asp:Label runat="server" Visible="false" ID="lblpanelsharec">Available Shares </asp:Label></div>
 													<asp:TextBox ID="tbpanelcount" runat="server" TextMode="Number" max="50" min="1" CssClass="form-control" placeholder="Count" required="required" ></asp:TextBox>
 													<div class="text-right"><asp:Label runat="server" Visible="false" ForeColor="Red" ID="lblconfirm">Enter correct details!!</asp:Label></div>
+													<div class="text-right"><asp:Label runat="server" Visible="false" ForeColor="Red" ID="lblnotamount">You do not have enough amount!!</asp:Label></div>
 												</div>
 											</div>
 										</div>
@@ -60,7 +62,7 @@
 											<asp:LinkButton ID="btnpanel2cancel" CssClass="text-left" runat="server" Text="Cancel"></asp:LinkButton>
 										</div>
 										<div class="text-right" style="width:50%;float:left;padding:10px;">
-											<asp:LinkButton ID="btnpanelconfirm" OnClick="btnpanelconfirm_Click" CssClass="btn-sm app-btn-secondary" runat="server" Text="Confirm"></asp:LinkButton>
+											<asp:LinkButton ID="btnpanelconfirm" OnClick="btnpanelconfirm_Click" CssClass="btn-sm app-btn-secondary" runat="server" Text="Buy"></asp:LinkButton>
 										</div>
 										<br />
 									</div>
@@ -81,6 +83,7 @@
 		            <div class="app-utilities col-auto">					        
 			            <div class="app-utility-item">
 				            <asp:LinkButton runat="server" ID="btnbuysell" CssClass="p-4">Buy / Sell</asp:LinkButton>
+							 <asp:LinkButton runat="server" ID="btntransfer" CssClass="p-4">Transfer</asp:LinkButton>
 					    </div><!--//app-utility-item-->
 			            
 			            <div class="app-utility-item app-user-dropdown dropdown">
