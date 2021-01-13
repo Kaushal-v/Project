@@ -45,7 +45,7 @@
 											<div class="app-card app-card-stats-table h-100 shadow-sm">
 												<div class="app-card-header p-3 border-bottom-0">
 															<div class="row align-items-center gx-3">
-																<div class="col-auto">
+																<div class="col-auto">																	
 																	<h4 class="app-card-title" style="font-size:25px;"><asp:Label Visible="false" runat="server" ID="lblsharedetails">Share Details</asp:Label></h4>
 																</div><!--//col-->
 															</div><!--//row-->

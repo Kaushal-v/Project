@@ -16,7 +16,7 @@
 							<div class="password mb-3">
 								<label class="sr-only" for="signin-password">Password</label>
 								<asp:TextBox ID="passt" runat="server" TextMode="password" CssClass="form-control signin-password" placeholder="Password" required="required" OnTextChanged="passt_TextChanged"></asp:TextBox>
-								<div class="text-right"><asp:Label runat="server" Visible="false" ForeColor="Red" ID="lblconfirm">Incorrect username or password!!</asp:Label></div>
+								<div class="text-right"><asp:Label runat="server" Visible="false" ForeColor="Red" Font-Size="Small" ID="lblconfirm">Incorrect username or password!!</asp:Label></div>
 								<div class="extra mt-3 row justify-content-between">
 									<div class="col-6">
 										<div class="form-check">

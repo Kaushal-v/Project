@@ -67,10 +67,12 @@ public class blockchain
     public List<Transaction> pendingTransactions;
     public int proofOfDifficulty;
     public double reward;
+    public string name;
 
-    public blockchain(int proofOfDifficulty, long reward)
+    public blockchain(int proofOfDifficulty, long reward ,string name)
     {
         this.proofOfDifficulty = proofOfDifficulty;
+        this.name = name;
         this.reward = reward;
         pendingTransactions = new List<Transaction>();
         chain = new List<block> { createGenesisBlock() };

@@ -170,45 +170,80 @@ namespace testmain
                     }
                     else
                     {
+                        lblconfirm.Visible = false;
                         lblnotamount.Visible = true;
                     }
                     con.Close();
                 }
                 else
                 {
+                    lblnotamount.Visible = false;
                     lblconfirm.Visible = true;
                 }
             }
-            else if (btnpanelbuy.Text.Equals("Sell"))
+            else if (btnpanelconfirm.Text.Equals("Sell"))
             {
-                share_id = ddlpanelshare.SelectedItem.Value;
-                string u_name = "";
-                int u_id = 0;
-                lblconfirm.Visible = false;
-                try
+                if (ddlpanelshare.SelectedItem.Value != "Select" && tbpanelcount.Text != "")
                 {
-                    u_name = Session["u_name"].ToString();
-                    u_id = Convert.ToInt32(Session["u_id"]);
+                    share_id = ddlpanelshare.SelectedItem.Value;
+                    string u_name = "";
+                    int u_id = 0;
+                    lblconfirm.Visible = false;
+                    try
+                    {
+                        u_name = Session["u_name"].ToString();
+                        u_id = Convert.ToInt32(Session["u_id"]);
+                    }
+                    catch (Exception)
+                    {
+                        Response.Redirect("signin.aspx");
+                    }
+                    string companyName = "ShareLog";
+                    blockchain b1 = (blockchain)Application["obj_blockchain"];
+                    string companyHash = b1.getAddress(companyName);
+                    con.Open();
+                    SqlDataAdapter da = new SqlDataAdapter("Select share_price from share_master where share_id='" + share_id + "'", con);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    double share_price = dt.Rows[0].Field<double>("share_price");
+                    string halfShare = lblpanelsharec.Text.Substring(18);
+                    halfShare.Trim();
+                    double share_count = Convert.ToDouble(halfShare);
+                    int count = Convert.ToInt32(tbpanelcount.Text);
+                    if (count <= share_count)
+                    {
+                        double total_price = count * share_price;
+                        lblnotamount.Visible = false;
+                        string u_nameHash = b1.getAddress(u_name);
+                        b1.CreateTransaction(new Transaction(companyHash, u_nameHash, total_price));
+                        DateTime now = DateTime.Now;
+                        da = new SqlDataAdapter("Select holder_share_count from share_holder_master where share_id='" + share_id + "' and user_id='" + u_id + "'", con);
+                        dt = new DataTable();
+                        da.Fill(dt);
+                        int avail_count = dt.Rows[0].Field<int>("holder_share_count") - count;
+                        string timenow = string.Format("{0:yyyy-MM-dd H:mm:ss}", now);
+                        SqlCommand cmd = new SqlCommand("update share_holder_master set holder_share_count='" + avail_count + "' ,share_holder_last_updated_time='" + timenow + "' where user_id='" + u_id + "' and share_id='" + share_id + "'", con);
+                        cmd.ExecuteNonQuery();
+                        da = new SqlDataAdapter("Select share_available_count,share_sold_count from share_master where share_id='" + share_id + "'", con);
+                        dt = new DataTable();
+                        da.Fill(dt);
+                        int total_avail_count = dt.Rows[0].Field<int>("share_available_count") + count;
+                        int sold_count = dt.Rows[0].Field<int>("share_sold_count") - count;
+                        cmd = new SqlCommand("update share_master set share_available_count = '" + total_avail_count + "',share_sold_count = '" + sold_count + "' where share_id='" + share_id + "'", con);
+                        cmd.ExecuteNonQuery();
+                        Response.Redirect("clientDefault.aspx");
+                    }
+                    else
+                    {
+                        lblconfirm.Visible = false;
+                        lblnotamount.Visible = true;
+                    }
+                    con.Close();
                 }
-                catch (Exception)
+                else
                 {
-                    Response.Redirect("signin.aspx");
-                }
-                string companyName = "ShareLog";
-                blockchain b1 = (blockchain)Application["obj_blockchain"];
-                string companyHash = b1.getAddress(companyName);
-                con.Open();
-                SqlDataAdapter da = new SqlDataAdapter("Select share_price from share_master where share_id='" + share_id + "'", con);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                double share_price = dt.Rows[0].Field<double>("share_price");
-                string halfShare = lblpanelsharec.Text.Substring(18);
-                halfShare.Trim();
-                double share_count = Convert.ToDouble(halfShare);
-                int count = Convert.ToInt32(tbpanelcount.Text);
-                if (share_count <= count)
-                {
-
+                    lblnotamount.Visible = false;
+                    lblconfirm.Visible = true;
                 }
             }
             popupbuysell.Show();
@@ -258,6 +293,8 @@ namespace testmain
 
         protected void btnpanelbuy_Click(object sender, EventArgs e)
         {
+            lblnotamount.Visible = false;
+            lblconfirm.Visible = false;
             tbpanelcount.Text = "";
             lblprice.Visible = false;
             lblpanelsharec.Visible = false;
@@ -270,6 +307,8 @@ namespace testmain
 
         protected void btnpanelsell_Click(object sender, EventArgs e)
         {
+            lblnotamount.Visible = false;
+            lblconfirm.Visible = false;
             tbpanelcount.Text = "";
             lblprice.Visible = false;           
             int u_id = Convert.ToInt32(Session["u_id"].ToString());
