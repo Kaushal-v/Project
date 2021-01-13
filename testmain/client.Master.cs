@@ -181,7 +181,35 @@ namespace testmain
             }
             else if (btnpanelbuy.Text.Equals("Sell"))
             {
-                
+                share_id = ddlpanelshare.SelectedItem.Value;
+                string u_name = "";
+                int u_id = 0;
+                lblconfirm.Visible = false;
+                try
+                {
+                    u_name = Session["u_name"].ToString();
+                    u_id = Convert.ToInt32(Session["u_id"]);
+                }
+                catch (Exception)
+                {
+                    Response.Redirect("signin.aspx");
+                }
+                string companyName = "ShareLog";
+                blockchain b1 = (blockchain)Application["obj_blockchain"];
+                string companyHash = b1.getAddress(companyName);
+                con.Open();
+                SqlDataAdapter da = new SqlDataAdapter("Select share_price from share_master where share_id='" + share_id + "'", con);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                double share_price = dt.Rows[0].Field<double>("share_price");
+                string halfShare = lblpanelsharec.Text.Substring(18);
+                halfShare.Trim();
+                double share_count = Convert.ToDouble(halfShare);
+                int count = Convert.ToInt32(tbpanelcount.Text);
+                if (share_count <= count)
+                {
+
+                }
             }
             popupbuysell.Show();
         }
@@ -194,21 +222,45 @@ namespace testmain
             ddlpanelshare.Items.FindByValue(share_id).Selected = true;
             string constr = ConfigurationManager.ConnectionStrings["ConString"].ConnectionString;
             con.ConnectionString = constr;
-            if (share_id != "Select" && btnpanelconfirm.Text.Equals("Sell"))
+            SqlDataAdapter da;
+            DataTable dt;
+            if (share_id != "Select")
             {
+                if (btnpanelconfirm.Text.Equals("Sell"))
+                {
+                    lblpanelsharec.Text = "Available Shares: ";
+                    con.Open();
+                    da = new SqlDataAdapter("Select holder_share_count from share_holder_master where share_id='" + share_id + "' and user_id='" + u_id + "'", con);
+                    dt = new DataTable();
+                    da.Fill(dt);
+                    lblpanelsharec.Text += dt.Rows[0].Field<int>("holder_share_count").ToString();
+                    lblpanelsharec.Visible = true;
+                    con.Close();
+                }                
+                lblprice.Text = "Share Price: ";
                 con.Open();
-                SqlDataAdapter da = new SqlDataAdapter("Select holder_share_count from share_holder_master where share_id='" + share_id + "' and user_id='" + u_id + "'", con);
-                DataTable dt = new DataTable();
+                da = new SqlDataAdapter("Select share_price from share_master where share_id='" + share_id + "'", con);
+                dt = new DataTable();
                 da.Fill(dt);
-                lblpanelsharec.Text += dt.Rows[0].Field<int>("holder_share_count").ToString();
-                lblpanelsharec.Visible = true;
+                lblprice.Text += dt.Rows[0].Field<Double>("share_price").ToString();
+                lblprice.Visible = true;
                 con.Close();
+            }
+            else
+            {
+                lblpanelsharec.Text = "Available Shares: ";
+                lblprice.Text = "Share Price: ";
+                lblprice.Visible = false;
+                lblpanelsharec.Visible = false;
             }
             popupbuysell.Show();
         }
 
         protected void btnpanelbuy_Click(object sender, EventArgs e)
         {
+            tbpanelcount.Text = "";
+            lblprice.Visible = false;
+            lblpanelsharec.Visible = false;
             bind_data_default();
             lblpanelsharec.Text = "avalable Shares ";
             lblpanelsharec.Visible = false;
@@ -218,6 +270,8 @@ namespace testmain
 
         protected void btnpanelsell_Click(object sender, EventArgs e)
         {
+            tbpanelcount.Text = "";
+            lblprice.Visible = false;           
             int u_id = Convert.ToInt32(Session["u_id"].ToString());
             share_id = ddlpanelshare.SelectedItem.Value;
             btnpanelconfirm.Text = "Sell";
@@ -239,6 +293,6 @@ namespace testmain
             }
             ddlpanelshare.Items.Insert(0, new ListItem("Select", "Select"));           
             popupbuysell.Show();
-        }
+        }       
     }
 }

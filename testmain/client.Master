@@ -48,10 +48,11 @@
 										<div class="align-content-center">
 											<div class="auth-form login-form">         
 												<div class="email mb-3">
-													<asp:DropDownList OnTextChanged="ddlpanelshare_SelectedIndexChanged" ID="ddlpanelshare" OnSelectedIndexChanged="ddlpanelshare_SelectedIndexChanged" CssClass="form-control" runat="server"></asp:DropDownList>
+													<asp:DropDownList AutoPostBack="true" ID="ddlpanelshare" OnSelectedIndexChanged="ddlpanelshare_SelectedIndexChanged" CssClass="form-control" runat="server"></asp:DropDownList>
+													<div class="text-left"><asp:Label runat="server" Visible="false" ID="lblprice">Share Price: </asp:Label></div>
 												</div><!--//form-group-->
 												<div class="password mb-3">			
-													<div class="text-left"><asp:Label runat="server" Visible="false" ID="lblpanelsharec">Available Shares </asp:Label></div>
+													<div class="text-left"><asp:Label runat="server" Visible="false" ID="lblpanelsharec">Available Shares: </asp:Label></div>
 													<asp:TextBox ID="tbpanelcount" runat="server" TextMode="Number" max="50" min="1" CssClass="form-control" placeholder="Count" required="required" ></asp:TextBox>
 													<div class="text-right"><asp:Label runat="server" Visible="false" ForeColor="Red" ID="lblconfirm">Enter correct details!!</asp:Label></div>
 													<div class="text-right"><asp:Label runat="server" Visible="false" ForeColor="Red" ID="lblnotamount">You do not have enough amount!!</asp:Label></div>

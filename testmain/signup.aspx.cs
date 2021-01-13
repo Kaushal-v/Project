@@ -14,7 +14,8 @@ namespace testmain
     public partial class signup : System.Web.UI.Page
     {
         readonly SqlConnection con = new SqlConnection();
-        Boolean alert = true;
+        Boolean boolu_name = true;
+        Boolean boolpass = true;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -22,11 +23,16 @@ namespace testmain
             con.ConnectionString = constr;            
             Master.FindControl("btnsignin").Visible = false;
             Master.FindControl("btnsignup").Visible = false;
+            if (IsPostBack && u_namet.Text!="" && passt.Text!="")
+            {
+                u_namet_changed();
+                passt_changed();
+            }
         }
 
         protected void Signup_Click(object sender, EventArgs e)
         {
-            if (!alert)
+            if (!boolu_name && !boolpass)
             {
                 string u_name = u_namet.Text.ToLower();
                 string l_name = l_namet.Text;
@@ -53,15 +59,22 @@ namespace testmain
                 DataTable dt = new DataTable();
                 da.Fill(dt);
                 Session["u_id"] = dt.Rows[0].Field<int>("user_id");
+                blockchain b1 = (blockchain)Application["obj_blockchain"];
+                string u_hash = b1.getAddress(u_name);
+                b1.CreateTransaction(new Transaction("null", u_hash, 10));
                 Response.Redirect("clientDefault.aspx");
             }
-            else
+            else if (boolu_name)
             {
                 lblunamenot.Visible = true;
             }
+            else
+            {
+                lblunamenot.Visible = false;
+                lblpassnotcorrect.Visible = true;
+            }
         }
-
-        protected void u_namet_TextChanged(object sender, EventArgs e)
+        protected void u_namet_changed()
         {
             string u_name = u_namet.Text;
             con.Open();
@@ -70,13 +83,33 @@ namespace testmain
             adapter.Fill(dt);
             if (dt.Rows.Count == 1)
             {
-                alert = true;
+                boolu_name = true;
             }
             else
             {
-                alert = false;
+                boolu_name = false;
             }
             con.Close();
+        }
+        protected void u_namet_TextChanged(object sender, EventArgs e)
+        {
+            u_namet_changed();
+        }
+        protected void passt_changed()
+        {
+            string pass = passt.Text;
+            if (pass.Length < 8)
+            {
+                boolpass = true;
+            }
+            else
+            {
+                boolpass = false;
+            }
+        }
+        protected void passt_TextChanged(object sender, EventArgs e)
+        {
+            passt_changed();
         }
 
         //protected void google_Click(object sender, EventArgs e)

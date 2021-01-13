@@ -12,7 +12,7 @@ namespace testmain
 
         protected void Application_Start(object sender, EventArgs e)
         {
-            blockchain b1 = new blockchain(2, 10);
+            blockchain b1 = new blockchain(2, 5);
             string dhaval = b1.getAddress("dhaval_09");
             b1.CreateTransaction(new Transaction("user1Address", dhaval, 5));
             b1.mineBlock(dhaval);

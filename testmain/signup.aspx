@@ -21,13 +21,14 @@
 								<div class="text-right"><asp:Label runat="server" Visible="false" ForeColor="Red" ID="lblunamenot">Username is not available!!</asp:Label></div>
 							</div>
                             <div class="email mb-3">
-								<asp:TextBox runat="server" ID="mailt" CssClass="form-control signup-name" placeholder="Email"></asp:TextBox>
+								<asp:TextBox runat="server" ID="mailt" TextMode="Email" CssClass="form-control signup-name" placeholder="Email"></asp:TextBox>
 							</div>
                             <div class="email mb-3">
-								<asp:TextBox runat="server" ID="con_not" CssClass="form-control signup-name" placeholder="Contact No" required="required"></asp:TextBox>
+								<asp:TextBox runat="server" ID="con_not" TextMode="Phone" MaxLength="10" CssClass="form-control signup-name" placeholder="Contact No" required="required"></asp:TextBox>
 							</div>
                             <div class="email mb-3">
-								<asp:TextBox runat="server" ID="passt" CssClass="form-control signup-name" placeholder="Password" required="required"></asp:TextBox>
+								<asp:TextBox runat="server" ID="passt" TextMode="Password" CssClass="form-control signup-name" OnTextChanged="passt_TextChanged" placeholder="Password" required="required"></asp:TextBox>
+								<div class="text-right"><asp:Label runat="server" Visible="false" ForeColor="Red" ID="lblpassnotcorrect">Please chose password more than 8 characters!!</asp:Label></div>
 							</div>
 							 <div class="email mb-3">
                                 <lable style="margin-left:12px;">As Miner:</lable>
