@@ -53,7 +53,7 @@ namespace testmain
                     {
                         btnmine.Visible = false;
                     }
-                }
+                    }
                 catch(Exception) 
                 {
                     Response.Redirect("signin.aspx");
@@ -332,6 +332,16 @@ namespace testmain
             }
             ddlpanelshare.Items.Insert(0, new ListItem("Select", "Select"));           
             popupbuysell.Show();
-        }       
+        }
+
+        protected void btnpanel2cancel_Click(object sender, EventArgs e)
+        {
+            ddlpanelshare.ClearSelection();
+            tbpanelcount.Text = "";            
+            lblprice.Visible = false;
+            lblpanelsharec.Visible = false;
+            lblnotamount.Visible = false;
+            lblconfirm.Visible = false;
+        }        
     }
 }

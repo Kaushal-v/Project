@@ -28,6 +28,75 @@ namespace testmain
             btn.CssClass = "nav-link active";
             string constr = ConfigurationManager.ConnectionStrings["ConString"].ConnectionString;
             con.ConnectionString = constr;
+            blockchain b1 = (blockchain)Application["obj_blockchain"];
+            lblpanelcurname.Text = lblname.Text = b1.name;
+            lblpanelcurproofofd.Text = lblproofofd.Text = b1.proofOfDifficulty.ToString();
+            lblpanelcurminereward.Text = lblminereward.Text = b1.reward.ToString();
+            lblblockmined.Text = b1.chain.Count.ToString();
+            lbltime.Text = b1.chain[0].timeStamp;
+        }
+
+        protected void btnpanelchangenameconfirm_Click(object sender, EventArgs e)
+        {
+            if (tbpanelchangename.Text != "")
+            {
+                lblpanelchangenameconfirm.Visible = false;
+                blockchain b1 = (blockchain)Application["obj_blockchain"];
+                b1.name = tbpanelchangename.Text;
+                Response.Redirect("adminBlockchain.aspx");
+            }
+            else
+            {
+                lblpanelchangenameconfirm.Visible = true;
+                popupchangename.Show();
+            }
+        }
+
+        protected void btnpanelchangenamecancel_Click(object sender, EventArgs e)
+        {
+            lblpanelchangenameconfirm.Visible = false;
+        }
+
+        protected void btnpanelchangeproofofdcancel_Click(object sender, EventArgs e)
+        {
+            lblpanelchangeproofofdconfirm.Visible = false;
+        }
+
+        protected void btnpanelchangeproofofdconfirm_Click(object sender, EventArgs e)
+        {
+            if (tbpanelchangeproofofd.Text != "")
+            {
+                lblpanelchangeproofofdconfirm.Visible = false;
+                blockchain b1 = (blockchain)Application["obj_blockchain"];
+                b1.proofOfDifficulty = Convert.ToInt32(tbpanelchangeproofofd.Text);
+                Response.Redirect("adminBlockchain.aspx");
+            }
+            else
+            {
+                lblpanelchangeproofofdconfirm.Visible = true;
+                popupchangeproofofd.Show();
+            }
+        }
+
+        protected void btnpanelchangeminerewardcancel_Click(object sender, EventArgs e)
+        {
+            lblpanelchangeminerewardconfirm.Visible = false;
+        }
+
+        protected void btnpanelchangeminerewardconfrim_Click(object sender, EventArgs e)
+        {
+            if (tbpanelchangeminereward.Text != "")
+            {
+                lblpanelchangeminerewardconfirm.Visible = false;
+                blockchain b1 = (blockchain)Application["obj_blockchain"];
+                b1.reward = Convert.ToDouble(tbpanelchangeminereward.Text);
+                Response.Redirect("adminBlockchain.aspx");
+            }
+            else
+            {
+                lblpanelchangeminerewardconfirm.Visible = true;
+                popupchangeminereward.Show();
+            }
         }
     }
 }

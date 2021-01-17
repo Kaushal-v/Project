@@ -64,15 +64,10 @@ namespace testmain
                 b1.CreateTransaction(new Transaction("null", u_hash, 10));
                 Response.Redirect("clientDefault.aspx");
             }
-            else if (boolu_name)
-            {
-                lblunamenot.Visible = true;
-            }
-            else
-            {
-                lblunamenot.Visible = false;
-                lblpassnotcorrect.Visible = true;
-            }
+            if (boolu_name) { lblunamenot.Visible = true; }
+            else { lblunamenot.Visible = false; }
+            if (boolpass) { lblpassnotcorrect.Visible = true; }
+            else { lblpassnotcorrect.Visible = false; }
         }
         protected void u_namet_changed()
         {

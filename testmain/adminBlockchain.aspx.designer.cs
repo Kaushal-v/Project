@@ -15,129 +15,264 @@ namespace testmain
     {
 
         /// <summary>
-        /// lblfname control.
+        /// panelchangename control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblfname;
+        protected global::System.Web.UI.WebControls.Panel panelchangename;
 
         /// <summary>
-        /// tbname control.
+        /// lblpanelcurname control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbname;
+        protected global::System.Web.UI.WebControls.Label lblpanelcurname;
 
         /// <summary>
-        /// lbllname control.
+        /// tbpanelchangename control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbllname;
+        protected global::System.Web.UI.WebControls.TextBox tbpanelchangename;
 
         /// <summary>
-        /// tblname control.
+        /// lblpanelchangenameconfirm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tblname;
+        protected global::System.Web.UI.WebControls.Label lblpanelchangenameconfirm;
 
         /// <summary>
-        /// lbluname control.
+        /// btnpanelchangenamecancel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbluname;
+        protected global::System.Web.UI.WebControls.LinkButton btnpanelchangenamecancel;
 
         /// <summary>
-        /// tbuname control.
+        /// btnpanelchangenameconfirm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbuname;
+        protected global::System.Web.UI.WebControls.LinkButton btnpanelchangenameconfirm;
 
         /// <summary>
-        /// lblunamenotavail control.
+        /// popupchangename control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblunamenotavail;
+        protected global::AjaxControlToolkit.ModalPopupExtender popupchangename;
 
         /// <summary>
-        /// lblmail control.
+        /// panelchangeproofofd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblmail;
+        protected global::System.Web.UI.WebControls.Panel panelchangeproofofd;
 
         /// <summary>
-        /// tbmail control.
+        /// lblpanelcurproofofd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbmail;
+        protected global::System.Web.UI.WebControls.Label lblpanelcurproofofd;
 
         /// <summary>
-        /// cbminer control.
+        /// tbpanelchangeproofofd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbminer;
+        protected global::System.Web.UI.WebControls.TextBox tbpanelchangeproofofd;
 
         /// <summary>
-        /// btnsave control.
+        /// lblpanelchangeproofofdconfirm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnsave;
+        protected global::System.Web.UI.WebControls.Label lblpanelchangeproofofdconfirm;
 
         /// <summary>
-        /// btncancel control.
+        /// btnpanelchangeproofofdcancel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btncancel;
+        protected global::System.Web.UI.WebControls.LinkButton btnpanelchangeproofofdcancel;
 
         /// <summary>
-        /// lblconno control.
+        /// btnpanelchangeproofofdconfirm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblconno;
+        protected global::System.Web.UI.WebControls.LinkButton btnpanelchangeproofofdconfirm;
 
         /// <summary>
-        /// tbconno control.
+        /// popupchangeproofofd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbconno;
+        protected global::AjaxControlToolkit.ModalPopupExtender popupchangeproofofd;
+
+        /// <summary>
+        /// panelchangeminereward control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel panelchangeminereward;
+
+        /// <summary>
+        /// lblpanelcurminereward control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblpanelcurminereward;
+
+        /// <summary>
+        /// tbpanelchangeminereward control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbpanelchangeminereward;
+
+        /// <summary>
+        /// lblpanelchangeminerewardconfirm control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblpanelchangeminerewardconfirm;
+
+        /// <summary>
+        /// btnpanelchangeminerewardcancel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnpanelchangeminerewardcancel;
+
+        /// <summary>
+        /// btnpanelchangeminerewardconfrim control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnpanelchangeminerewardconfrim;
+
+        /// <summary>
+        /// popupchangeminereward control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.ModalPopupExtender popupchangeminereward;
+
+        /// <summary>
+        /// lblname control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblname;
+
+        /// <summary>
+        /// btnchangename control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnchangename;
+
+        /// <summary>
+        /// lblproofofd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblproofofd;
+
+        /// <summary>
+        /// btnchangeproofofd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnchangeproofofd;
+
+        /// <summary>
+        /// lblminereward control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblminereward;
+
+        /// <summary>
+        /// btnchangeminereward control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnchangeminereward;
+
+        /// <summary>
+        /// lblblockmined control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblblockmined;
+
+        /// <summary>
+        /// lbltime control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbltime;
     }
 }

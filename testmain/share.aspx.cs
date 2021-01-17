@@ -56,40 +56,10 @@ namespace testmain
             gvsharedetails.DataBind();
             con.Close();
         }
-
-        protected void btnaddshare_Click(object sender, EventArgs e)
-        {
-            lblsharedetails.Visible = true;
-            gvsharedetails.Visible = false;
-            btncancel.Visible = true;
-            btnaddshare.Visible = false;
-            btnsaveshare.Visible = true;
-            tbsname.Visible = true;
-            tbsprice.Visible = true;
-            tbsavailc.Visible = true;
-        }
-
+        
         protected void btnsaveshare_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (tbsavailc.Text != "" && tbsname.Text != "" && tbsprice.Text != "")
-                {
-                    con.Open();
-                    SqlCommand cmd = new SqlCommand("insert into share_master(share_name, share_price, share_available_count, share_sold_count) values('" + tbsname.Text + "','" + tbsprice.Text + "','" + tbsavailc.Text + "','0')", con);
-                    cmd.ExecuteNonQuery();
-                    con.Close();
-                    Response.Redirect("share.aspx");
-                }
-                else
-                {
-                    lblincorrect.Visible = true;
-                }
-            }
-            catch (Exception)
-            {
-                lblincorrect.Visible = true;
-            }
+           
         }
         protected void gvsharedetails_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
@@ -145,6 +115,36 @@ namespace testmain
                 lblconfirm.Visible = true;                
             }
             popupaddshare.Show();
+        }
+
+        protected void btnpanel2cancel_Click(object sender, EventArgs e)
+        {
+            lblpanel2confirm.Visible = false;
+            Response.Redirect("share.aspx");
+        }
+
+        protected void btnpanel2confirm_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (tbshare_availc.Text != "" && tbshare_name.Text != "" && tbshare_price.Text != "")
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("insert into share_master(share_name, share_price, share_available_count, share_sold_count) values('" + tbshare_name.Text + "','" + tbshare_price.Text + "','" + tbshare_availc.Text + "','0')", con);
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                    Response.Redirect("share.aspx");
+                }
+                else
+                {
+                    lblpanel2confirm.Visible = true;
+                }
+            }
+            catch (Exception)
+            {
+                lblpanel2confirm.Visible = true;
+            }
+            popupaddwholeshare.Show();
         }
     }
 }

@@ -10,9 +10,8 @@
 					    <div class="app-card app-card-stat shadow-sm h-100">
 						    <div class="app-card-body p-3 p-lg-4">
 							    <h4 class="stats-type mb-1">Total Sales</h4>
-							    <div class="stats-figure">$12,628</div>
-						    </div><!--//app-card-body-->
-						    <a class="app-card-link-mask" href="#"></a>
+							    <div class="stats-figure"><asp:Label runat="server" ID="lbltotalsales"></asp:Label>C</div>
+						    </div><!--//app-card-body-->						    
 					    </div><!--//app-card-->
 				    </div><!--//col-->
 				    
@@ -22,7 +21,6 @@
 							    <h4 class="stats-type mb-1">Sold Shares</h4>
 							    <div class="stats-figure"><asp:Label runat="server" ID="lblsoldshares"></asp:Label></div>
 						    </div><!--//app-card-body-->
-						    <a class="app-card-link-mask" href="#"></a>
 					    </div><!--//app-card-->
 				    </div><!--//col-->
 				    <div class="col-6 col-lg-3">
@@ -50,13 +48,8 @@
 					        <div class="app-card-header p-3">
 						        <div class="row justify-content-between align-items-center">
 							        <div class="col-auto">
-						                <h4 class="app-card-title">Line Chart Example</h4>
-							        </div><!--//col-->
-							        <div class="col-auto">
-								        <div class="card-header-action">
-									        <a href="charts.html">More charts</a>
-								        </div><!--//card-header-actions-->
-							        </div><!--//col-->
+						                <h4 class="app-card-title">Sales Chart</h4>
+							        </div><!--//col-->							        
 						        </div><!--//row-->
 					        </div><!--//app-card-header-->
 					        <div class="app-card-body p-3 p-lg-4">
@@ -69,7 +62,7 @@
 									</select>
 							    </div>
 						        <div class="chart-container">
-				                    <canvas id="canvas-linechart" ></canvas>
+				                    <canvas id="canvas-linechart"></canvas>
 						        </div>
 					        </div><!--//app-card-body-->
 				        </div><!--//app-card-->

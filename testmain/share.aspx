@@ -27,6 +27,33 @@
 										<br />
 									</div>
 		</asp:Panel>
+	<asp:Panel ID="paneladdwholeshare" runat="server" CssClass="app-card app-card-stat shadow-lg">
+			<div class="app-card-body p-2 p-lg-4">
+										<br />									
+										<div class="align-content-center">
+											<div class="auth-form login-form">         
+												<div class="email mb-3">
+													<asp:TextBox ID="tbshare_name" runat="server" CssClass="form-control" placeholder="Name" required="required" ></asp:TextBox>
+												</div><!--//form-group-->
+												<div class="email mb-3">
+													<asp:TextBox ID="tbshare_price" runat="server" TextMode="Number" min="0" CssClass="form-control" placeholder="Price" required="required" ></asp:TextBox>
+												</div>
+												<div class="password mb-3">			
+													<asp:TextBox ID="tbshare_availc" runat="server" TextMode="Number" MaxLength="2" min="0" CssClass="form-control" placeholder="Count" required="required" ></asp:TextBox>
+													<div class="text-right"><asp:Label runat="server" Visible="false" Font-Size="Small" ForeColor="Red" ID="lblpanel2confirm">Enter correct details!!</asp:Label></div>
+												</div>
+											</div>
+										</div>
+										<div class="text-left" style="width:50%;float:left;padding:10px;">
+											<asp:LinkButton ID="btnpanel2cancel" OnClick="btnpanel2cancel_Click" CssClass="text-left" runat="server" Text="Cancel"></asp:LinkButton>
+										</div>
+										<div class="text-right" style="width:50%;float:left;padding:10px;">
+											<asp:LinkButton ID="btnpanel2confirm" OnClick="btnpanel2confirm_Click" CssClass="btn-sm app-btn-secondary" runat="server" Text="Save"></asp:LinkButton>
+										</div>
+										<br />
+									</div>
+		</asp:Panel>
+		<cc1:ModalPopupExtender ID="popupaddwholeshare" runat="server" TargetControlID="btnaddshare" PopupControlID="paneladdwholeshare"></cc1:ModalPopupExtender>
 		<cc1:ModalPopupExtender ID="popupaddshare" runat="server" TargetControlID="btnad" PopupControlID="paneladdshare"></cc1:ModalPopupExtender>
     <div class="app-wrapper">
 	    
@@ -37,7 +64,7 @@
 				<div class="row g-4 mb-4">
                 <div class="col-12">
 				        <div class="app-card app-card-stats-table h-100 shadow-sm">
-							<div class="text-right" style="padding:30px 30px 0px 30px;"><h3><asp:LinkButton ID="btnaddshare" OnClick="btnaddshare_Click" CssClass="btn-lg app-btn-secondary" runat="server" Text="Add Share"></asp:LinkButton></h3></div>
+							<div class="text-right" style="padding:30px 30px 0px 30px;"><h3><asp:LinkButton ID="btnaddshare" CssClass="btn-lg app-btn-secondary" runat="server" Text="Add Share"></asp:LinkButton></h3></div>
 					        <div class="app-card-header p-3">
 						        <div class="row justify-content-between align-items-center">
 									<div class="row g-4 mb-4">
@@ -80,31 +107,7 @@
 																	</ItemTemplate>
 																</asp:TemplateField>
 															</Columns>
-														</asp:GridView>
-														 <div class="auth-form-container text-left">
-															<div class="auth-form login-form col-4"> 
-																		<div class="row justify-content-between align-items-center">
-																				<div class="email mb-3 w-100">
-																					<asp:TextBox ID="tbsname" runat="server" CssClass="form-control" placeholder="Share Name" Visible="false" required="required"></asp:TextBox>
-																				</div>
-																		</div>
-																		<div class="row justify-content-between align-items-center">
-																				<div class="email mb-3">
-																					<asp:TextBox ID="tbsprice" runat="server" CssClass="form-control" placeholder="Price" Visible="false" required="required"></asp:TextBox>
-																				</div>
-																		</div>
-																		<div class="row justify-content-between align-items-center">
-																				<div class="email mb-3 text-left">
-																					<asp:TextBox ID="tbsavailc" runat="server" CssClass="form-control" placeholder="Count" Visible="false" required="required"></asp:TextBox>
-																				</div>
-																				<asp:Label runat="server" ID="lblincorrect" Visible="false" ForeColor="Red" CssClass="text-left" Text="incorrect share details!!"></asp:Label>
-																		</div>
-																	<div class="app-card-footer p-4">
-																		<div class="email mb-3" style="float:left; padding-right:10px;"><asp:LinkButton ID="btnsaveshare" Visible="false" CssClass="btn-lg app-btn-secondary" OnClick="btnsaveshare_Click" runat="server" Text="Save"></asp:LinkButton></div>
-																	   <div class="email mb-3" style="float:left;"><asp:LinkButton ID="btncancel" Visible="false" href="share.aspx" CssClass="btn-lg app-btn-secondary" runat="server" Text="Cancel"></asp:LinkButton></div>
-																	</div>	
-																</div>
-															</div>
+														</asp:GridView>														
 														</div>
 													</div>
 											</div>
