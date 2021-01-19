@@ -70,7 +70,7 @@
 							    <h4 class="stats-type mb-1">Subscribers</h4>
 							    <div class="stats-figure"><asp:Label runat="server" ID="lblsubs"></asp:Label></div>
 						    </div><!--//app-card-body-->
-							<a class="app-card-link-mask" href="share.aspx"></a>
+							<a class="app-card-link-mask" href="adminUsers.aspx?type=sub"></a>
 					    </div><!--//app-card-->
 				    </div><!--//col-->
 				    <div class="col-6 col-lg-3">
@@ -79,7 +79,7 @@
 							    <h4 class="stats-type mb-1">Miners</h4>
 							    <div class="stats-figure"><asp:Label runat="server" ID="lblminers"></asp:Label></div>
 						    </div><!--//app-card-body-->
-						    <a class="app-card-link-mask" href="share.aspx"></a>
+						    <a class="app-card-link-mask" href="adminUsers.aspx?type=miner"></a>
 					    </div><!--//app-card-->
 				    </div><!--//col-->
 				    <div class="col-6 col-lg-3">
@@ -88,13 +88,16 @@
 							    <h4 class="stats-type mb-1">Admins</h4>
 							    <div class="stats-figure"><asp:Label runat="server" ID="lbladmins"></asp:Label></div>
 						    </div><!--//app-card-body-->
-						    <a class="app-card-link-mask" href="users.aspx"></a>
+						    <a class="app-card-link-mask" href="adminUsers.aspx?type=admin"></a>
 					    </div><!--//app-card-->
 				    </div><!--//col-->
 			    </div><!--//row-->		
                 <div class="col-12">
 				        <div class="app-card app-card-stats-table h-100 shadow-sm">
-							<div class="text-right" style="padding:30px 30px 0px 30px;"><h3><asp:LinkButton ID="btnadduser" CssClass="btn-lg app-btn-secondary" runat="server" Text="Add User"></asp:LinkButton></h3></div>
+							<div class="text-left" style="float:left; padding:30px 30px 0px 30px; width:50%;">
+								<div class="text-left" style="float:left;width:50%;"><asp:TextBox placeholder="Search User" runat="server" CssClass="text-left form-control w-50 btn-sm app-btn-secondary" ID="tbusersearch" TextMode="Search"></asp:TextBox></div>
+								<div class="text-left" style="float:left; width:50%;"><asp:LinkButton ID="btnsearchuser" CssClass="btn-sm text-right app-btn-secondary" runat="server" Text="Search"></asp:LinkButton></div></div>
+							<div class="text-right" style="float:left; padding:30px 30px 0px 30px; width:50%;"><h3><asp:LinkButton ID="btnadduser" CssClass="btn-lg app-btn-secondary" runat="server" Text="Add User"></asp:LinkButton></h3></div>
 					        <div class="app-card-header p-3">
 						        <div class="row justify-content-between align-items-center">
 									<div class="row g-4 mb-4">

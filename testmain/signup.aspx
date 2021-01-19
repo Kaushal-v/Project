@@ -11,23 +11,23 @@
 					<div class="auth-form-container text-left mx-auto">
 						<div class="auth-form auth-signup-form">         
 							<div class="email mb-3">
-								<asp:TextBox runat="server" ID="f_namet" CssClass="form-control signup-name" placeholder="First name" required="required"></asp:TextBox>
+								<asp:TextBox runat="server" ID="f_namet" CssClass="form-control" placeholder="First name" required="required"></asp:TextBox>
 							</div>
 							<div class="email mb-3">
-								<asp:TextBox runat="server" ID="l_namet" CssClass="form-control signup-name" placeholder="Last name" required="required"></asp:TextBox>
+								<asp:TextBox runat="server" ID="l_namet" CssClass="form-control" placeholder="Last name" required="required"></asp:TextBox>
 							</div>
 							<div class="email mb-3">
-								<asp:TextBox runat="server" ID="u_namet" CssClass="form-control signup-name" OnTextChanged="u_namet_TextChanged" placeholder="User name" required="required"></asp:TextBox>
+								<asp:TextBox runat="server" ID="u_namet" CssClass="form-control" OnTextChanged="u_namet_TextChanged" placeholder="User name" required="required"></asp:TextBox>
 								<div class="text-right"><asp:Label runat="server" Visible="false" ForeColor="Red" Font-Size="Small" ID="lblunamenot">Username is not available!!</asp:Label></div>
 							</div>
                             <div class="email mb-3">
-								<asp:TextBox runat="server" ID="mailt" TextMode="Email" CssClass="form-control signup-name" placeholder="Email"></asp:TextBox>
+								<asp:TextBox runat="server" ID="mailt" TextMode="Email" CssClass="form-control" placeholder="Email"></asp:TextBox>
 							</div>
                             <div class="email mb-3">
-								<asp:TextBox runat="server" ID="con_not" TextMode="number" CssClass="form-control signup-name" placeholder="Contact No" required="required"></asp:TextBox>
+								<asp:TextBox runat="server" ID="con_not" TextMode="number" CssClass="form-control" placeholder="Contact No" required="required"></asp:TextBox>
 							</div>
                             <div class="email mb-3">
-								<asp:TextBox runat="server" ID="passt" TextMode="Password" CssClass="form-control signup-name" OnTextChanged="passt_TextChanged" placeholder="Password" required="required"></asp:TextBox>
+								<asp:TextBox runat="server" ID="passt" TextMode="Password" CssClass="form-control" OnTextChanged="passt_TextChanged" placeholder="Password" required="required"></asp:TextBox>
 								<div class="text-right"><asp:Label runat="server" Visible="false" ForeColor="Red" Font-Size="Small" ID="lblpassnotcorrect">Please chose password more than 8 characters!!</asp:Label></div>
 							</div>
 							 <div class="email mb-3">

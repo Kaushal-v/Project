@@ -29,16 +29,19 @@ namespace testmain
             }
             string constr = ConfigurationManager.ConnectionStrings["ConString"].ConnectionString;
             con.ConnectionString = constr;
-            con.Open();
-            SqlDataAdapter da = new SqlDataAdapter("select * from user_master where user_name='" + u_name + "' ", con);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            tbfname.Text = lblfname.Text = dt.Rows[0].Field<string>("user_first_name");
-            tblname.Text = lbllname.Text = dt.Rows[0].Field<string>("user_last_name");
-            lbluname.Text = dt.Rows[0].Field<string>("user_name");
-            tbmail.Text = lblmail.Text = dt.Rows[0].Field<string>("user_mail_address");
-            lblconno.Text = dt.Rows[0].Field<string>("user_contact_no");
-            con.Close();
+            if (!IsPostBack)
+            {
+                con.Open();
+                SqlDataAdapter da = new SqlDataAdapter("select * from user_master where user_name='" + u_name + "' ", con);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                tbfname.Text = lblfname.Text = dt.Rows[0].Field<string>("user_first_name");
+                tblname.Text = lbllname.Text = dt.Rows[0].Field<string>("user_last_name");
+                lbluname.Text = dt.Rows[0].Field<string>("user_name");
+                tbmail.Text = lblmail.Text = dt.Rows[0].Field<string>("user_mail_address");
+                lblconno.Text = dt.Rows[0].Field<string>("user_contact_no");
+                con.Close();
+            }
             LinkButton btn = (LinkButton)Master.FindControl("btnhome");
             btn.CssClass = "nav-link";
             btn = (LinkButton)Master.FindControl("btnusers");

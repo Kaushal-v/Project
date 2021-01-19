@@ -11,6 +11,7 @@ namespace testmain
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            lblcuryear.Text = DateTime.Now.Year.ToString();
         }
     }
 }

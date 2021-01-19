@@ -75,6 +75,8 @@
     </Content>
     <Content Include="adminBlockchain.aspx" />
     <Content Include="adminDefault.aspx" />
+    <Content Include="adminUserProfile.aspx" />
+    <Content Include="adminUsers.aspx" />
     <Content Include="blockchain.png" />
     <Content Include="clientAccount.aspx" />
     <Content Include="clientDefault.aspx" />
@@ -119,6 +121,20 @@
     </Compile>
     <Compile Include="adminDefault.aspx.designer.cs">
       <DependentUpon>adminDefault.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="adminUserProfile.aspx.cs">
+      <DependentUpon>adminUserProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="adminUserProfile.aspx.designer.cs">
+      <DependentUpon>adminUserProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="adminUsers.aspx.cs">
+      <DependentUpon>adminUsers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="adminUsers.aspx.designer.cs">
+      <DependentUpon>adminUsers.aspx</DependentUpon>
     </Compile>
     <Compile Include="blockchain.cs" />
     <Compile Include="clientAccount.aspx.cs">

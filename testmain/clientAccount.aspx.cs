@@ -28,20 +28,23 @@ namespace testmain
             }
             string constr = ConfigurationManager.ConnectionStrings["ConString"].ConnectionString;
             con.ConnectionString = constr;
-            con.Open();
-            SqlDataAdapter da = new SqlDataAdapter("select * from user_master where user_name='" + u_name + "' ", con);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            lblfname.Text = dt.Rows[0].Field<string>("user_first_name");
-            lbllname.Text = dt.Rows[0].Field<string>("user_last_name");
-            lbluname.Text = dt.Rows[0].Field<string>("user_name");
-            lblconno.Text = dt.Rows[0].Field<string>("user_contact_no");
-            lblmail.Text = dt.Rows[0].Field<string>("user_mail_address");
-            if("miner"== dt.Rows[0].Field<string>("user_type"))
+            if (!IsPostBack)
             {
-                cbminer.Checked = true;
+                con.Open();
+                SqlDataAdapter da = new SqlDataAdapter("select * from user_master where user_name='" + u_name + "' ", con);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                tbfname.Text = lblfname.Text = dt.Rows[0].Field<string>("user_first_name");
+                tblname.Text = lbllname.Text = dt.Rows[0].Field<string>("user_last_name");
+                lbluname.Text = dt.Rows[0].Field<string>("user_name");
+                tbconno.Text = lblconno.Text = dt.Rows[0].Field<string>("user_contact_no");
+                tbmail.Text = lblmail.Text = dt.Rows[0].Field<string>("user_mail_address");
+                if ("miner" == dt.Rows[0].Field<string>("user_type"))
+                {
+                    cbminer.Checked = true;
+                }
+                con.Close();
             }
-            con.Close();
         }
         protected void btnedit_Click(object sender, EventArgs e)
         {
@@ -79,13 +82,14 @@ namespace testmain
             if (tbmail.Text == "") { tbmail.Text = mail; }
             if (tbfname.Text == "") { tbfname.Text = f_name; }
             if (tblname.Text == "") { tblname.Text = l_name; }
-            if (cbminer.Checked == true) { new_type = "miner"; }
+            if (cbminer.Checked == true) { new_type = "miner"; } else { new_type = "sub"; }
             if (mail != tbmail.Text || f_name != tbfname.Text || type != new_type || l_name != tblname.Text)
             {
                 DateTime now = DateTime.Now;
                 string timenow = string.Format("{0:yyyy-MM-dd H:mm:ss}", now);
-                SqlCommand cmd = new SqlCommand("update user_master set user_type='"+type+"',user_date_updated='" + timenow + "',user_first_name='" + tbfname.Text + "',user_last_name='" + tblname.Text + "',user_mail_address='" + tbmail.Text + "' where user_id='" + id + "'", con);
+                SqlCommand cmd = new SqlCommand("update user_master set user_type='"+new_type+"',user_date_updated='" + timenow + "',user_first_name='" + tbfname.Text + "',user_last_name='" + tblname.Text + "',user_mail_address='" + tbmail.Text + "' where user_id='" + id + "'", con);
                 cmd.ExecuteNonQuery();
+                Session["type"] = new_type;
             }
             con.Close();
             Response.Redirect("clientAccount.aspx");

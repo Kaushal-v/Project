@@ -52,8 +52,8 @@ namespace testmain
                     if (Session["type"].ToString() == "sub")
                     {
                         btnmine.Visible = false;
-                    }
-                    }
+                    }                    
+                }
                 catch(Exception) 
                 {
                     Response.Redirect("signin.aspx");
@@ -80,6 +80,7 @@ namespace testmain
                 con.Close();
             }
             catch (Exception) {  }
+            lblcuryear.Text = DateTime.Now.Year.ToString();
         }
         protected void btnlogoutc_Click(object sender, EventArgs e)
         {

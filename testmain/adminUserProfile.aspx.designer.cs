@@ -11,17 +11,35 @@ namespace testmain
 {
 
 
-    public partial class WebForm1
+    public partial class adminUserProfile
     {
 
         /// <summary>
-        /// paneladduser control.
+        /// lblmain control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel paneladduser;
+        protected global::System.Web.UI.WebControls.Label lblmain;
+
+        /// <summary>
+        /// btnedit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnedit;
+
+        /// <summary>
+        /// lblfname control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblfname;
 
         /// <summary>
         /// tbfname control.
@@ -33,6 +51,15 @@ namespace testmain
         protected global::System.Web.UI.WebControls.TextBox tbfname;
 
         /// <summary>
+        /// lbllname control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbllname;
+
+        /// <summary>
         /// tblname control.
         /// </summary>
         /// <remarks>
@@ -40,6 +67,15 @@ namespace testmain
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tblname;
+
+        /// <summary>
+        /// lbluname control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbluname;
 
         /// <summary>
         /// tbuname control.
@@ -51,13 +87,22 @@ namespace testmain
         protected global::System.Web.UI.WebControls.TextBox tbuname;
 
         /// <summary>
-        /// lblunamenot control.
+        /// lblunamenotavail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblunamenot;
+        protected global::System.Web.UI.WebControls.Label lblunamenotavail;
+
+        /// <summary>
+        /// lblmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblmail;
 
         /// <summary>
         /// tbmail control.
@@ -69,138 +114,39 @@ namespace testmain
         protected global::System.Web.UI.WebControls.TextBox tbmail;
 
         /// <summary>
-        /// tbconno control.
+        /// lblasminer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbconno;
+        protected global::System.Web.UI.WebControls.Label lblasminer;
 
         /// <summary>
-        /// tbpass control.
+        /// cbminer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbpass;
+        protected global::System.Web.UI.WebControls.CheckBox cbminer;
 
         /// <summary>
-        /// lblpassnotcorrect control.
+        /// btnsave control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblpassnotcorrect;
+        protected global::System.Web.UI.WebControls.LinkButton btnsave;
 
         /// <summary>
-        /// ddlusertype control.
+        /// btncancel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlusertype;
-
-        /// <summary>
-        /// lblselectvalid control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblselectvalid;
-
-        /// <summary>
-        /// btnpanelcancel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnpanelcancel;
-
-        /// <summary>
-        /// btnpanelconfirm control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnpanelconfirm;
-
-        /// <summary>
-        /// popupadduser control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.ModalPopupExtender popupadduser;
-
-        /// <summary>
-        /// lblguests control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblguests;
-
-        /// <summary>
-        /// lblsubs control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblsubs;
-
-        /// <summary>
-        /// lblminers control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblminers;
-
-        /// <summary>
-        /// lbladmins control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbladmins;
-
-        /// <summary>
-        /// tbusersearch control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbusersearch;
-
-        /// <summary>
-        /// btnsearchuser control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnsearchuser;
-
-        /// <summary>
-        /// btnadduser control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnadduser;
+        protected global::System.Web.UI.WebControls.LinkButton btncancel;
     }
 }

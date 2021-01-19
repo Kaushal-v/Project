@@ -156,7 +156,7 @@
             </div>
 		<footer class="app-footer app-wrapper">
 		    <div class="container text-center py-3">
-            <small class="copyright">@CopyRights ShareLog 2020</small>
+            <small class="copyright">@CopyRights ShareLog <asp:Label runat="server" ID="lblcuryear"></asp:Label></small>
 		       
 		    </div>
 	    </footer><!--//app-footer-->

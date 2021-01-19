@@ -32,6 +32,7 @@ namespace testmain
             {
                 Response.Redirect("signin.aspx");
             }
+            lblcuryear.Text = DateTime.Now.Year.ToString();
         }
 
         protected void btnlogoutc_Click(object sender, EventArgs e)
