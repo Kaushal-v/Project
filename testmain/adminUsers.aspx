@@ -11,12 +11,12 @@
 						        <div class="row justify-content-between align-items-center">
 									<div class="row g-4 mb-4">
 										<h1 class="app-page-title"><asp:Label runat="server" ID="lblmain"></asp:Label></h1>
-										 <asp:GridView ID="gvuser_info" runat="server" DataKeyField="user_id" AutoGenerateColumns="False" style="border:none; margin-top:50px; margin-left: auto; margin-right:auto;" Width="70%" PageSize="5">
+										 <asp:GridView ID="gvuser_info" runat="server" DataKeyField="user_id" OnRowCommand="gvuser_info_RowCommand" AutoGenerateColumns="False" style="border:none;" Width="100%" PageSize="5">
 											<Columns>
 												<asp:BoundField DataField="user_id" HeaderText="User ID"/>																						                                   
 												<asp:TemplateField HeaderText="User Name">
 													<ItemTemplate>
-														<asp:LinkButton ID="btnu_name" href='<%# "adminUserProfile.aspx?u_id=" + Eval("user_id") %>' runat="server" Text='<%# Bind("user_name") %>'></asp:LinkButton>
+														<asp:LinkButton ID="btnu_name" CommandName="getuser" CommandArgument='<%# Eval("user_id") %>' runat="server" Text='<%# Bind("user_name") %>'></asp:LinkButton>
 													</ItemTemplate>
 												</asp:TemplateField>
 												<asp:BoundField DataField="user_display_name" HeaderText="Name"/>

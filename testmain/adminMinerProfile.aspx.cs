@@ -11,7 +11,7 @@ using System.Configuration;
 
 namespace testmain
 {
-    public partial class adminUserProfile : System.Web.UI.Page
+    public partial class adminMinerProfile : System.Web.UI.Page
     {
         readonly SqlConnection con = new SqlConnection();
 
@@ -33,7 +33,7 @@ namespace testmain
             DataTable dt;
             cbminer.Attributes["onclick"] = "return false";
             try
-            {                
+            {               
                 if (Request.QueryString["u_id"] != null)
                 {
                     int u_id = Convert.ToInt32(Request.QueryString["u_id"]);
@@ -47,7 +47,7 @@ namespace testmain
                     if (!IsPostBack)
                     {
                         con.Open();
-                        da = new SqlDataAdapter("select * from user_master where user_id='" + u_id+ "' ", con);
+                        da = new SqlDataAdapter("select * from user_master where user_id='" + u_id + "' ", con);
                         dt = new DataTable();
                         da.Fill(dt);
                         tbfname.Text = lblfname.Text = dt.Rows[0].Field<string>("user_first_name");
@@ -60,7 +60,7 @@ namespace testmain
                             cbminer.Visible = true;
                             lblasminer.Visible = true;
                         }
-                        else if("sub" == dt.Rows[0].Field<string>("user_type"))
+                        else if ("sub" == dt.Rows[0].Field<string>("user_type"))
                         {
                             cbminer.Visible = true;
                             lblasminer.Visible = true;
@@ -75,11 +75,11 @@ namespace testmain
                     con.Open();
                     da = new SqlDataAdapter("select * from user_master where user_id='" + u_id + "'", con);
                     dt = new DataTable();
-                    da.Fill(dt);                    
+                    da.Fill(dt);
                     lblmain.Text = dt.Rows[0].Field<string>("user_name");
                     da = new SqlDataAdapter("select * from share_master, share_holder_master where share_master.share_id=share_holder_master.share_id and share_holder_master.user_id='" + u_id + "'", con);
                     da.Fill(dt);
-                    DataRow row = dt.Rows[0];                   
+                    DataRow row = dt.Rows[0];
                     if (string.IsNullOrEmpty(dt.Rows[0].Field<string>("share_name")))
                     {
                         dt.Rows.Remove(row);
@@ -87,29 +87,42 @@ namespace testmain
                     if (dt.Rows.Count == 0)
                     {
                         da = new SqlDataAdapter("select * from share_master", con);
-                        da.Fill(dt);                      
+                        da.Fill(dt);
                     }
                     gvhoder_share_info.DataSource = dt;
                     gvhoder_share_info.DataBind();
-                    con.Close();
+                    con.Close();                    
                     blockchain b1 = (blockchain)Application["obj_blockchain"];
                     List<Transaction> pendingtra = new List<Transaction>();
                     string userHash = b1.getAddress(u_name);
-                    foreach (Transaction tra in b1.pendingTransactions)
+                    foreach(Transaction tra in b1.pendingTransactions)
                     {
-                        if (tra.from == userHash || tra.to == userHash)
+                        if(tra.from==userHash || tra.to == userHash)
                         {
                             pendingtra.Add(tra);
                         }
                     }
                     gvminerpendingtransactions.DataSource = pendingtra;
                     gvminerpendingtransactions.DataBind();
+                    List<Transaction> userminedblocks = new List<Transaction>();
+                    foreach(block b in b1.chain){
+                        foreach (Transaction tra in b.transactions)
+                        {
+                            if (tra.from == null || tra.to == userHash)
+                            {
+                                userminedblocks.Add(new Transaction (b.hash,b.previousHash,tra.amount));
+                                break;
+                            }
+                        }
+                    }
+                    gvblocksmined.DataSource = userminedblocks;
+                    gvblocksmined.DataBind();
                 }
             }
             catch (Exception)
             {
 
-            }           
+            }
         }
 
         protected void btnsave_Click(object sender, EventArgs e)
@@ -126,7 +139,7 @@ namespace testmain
             if (tbmail.Text == "") { tbmail.Text = mail; }
             if (tbfname.Text == "") { tbfname.Text = f_name; }
             if (tblname.Text == "") { tblname.Text = l_name; }
-            string new_type = "";           
+            string new_type = "";
             if (cbminer.Checked == true) { new_type = "miner"; } else { new_type = "sub"; }
             if (mail != tbmail.Text || f_name != tbfname.Text || type != new_type || l_name != tblname.Text)
             {
@@ -136,7 +149,7 @@ namespace testmain
                 cmd.ExecuteNonQuery();
             }
             con.Close();
-            Response.Redirect("adminUserProfile.aspx?u_id="+u_id);
+            Response.Redirect("adminMinerProfile.aspx?u_id=" + u_id);
         }
 
         protected void btnedit_Click(object sender, EventArgs e)
@@ -155,7 +168,7 @@ namespace testmain
         protected void btncancel_Click(object sender, EventArgs e)
         {
             int u_id = Convert.ToInt32(Request.QueryString["u_id"]);
-            Response.Redirect("adminUserProfile.aspx?u_id="+u_id);
+            Response.Redirect("adminMinerProfile.aspx?u_id=" + u_id);
         }
     }
-}
+}   

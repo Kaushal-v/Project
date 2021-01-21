@@ -76,5 +76,35 @@ namespace testmain
                 con.Close();
             }
         }
+
+        protected void gvuser_info_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "getuser")
+            {
+                int u_id = Convert.ToInt32(e.CommandArgument);
+                try
+                {
+                    if (Request.QueryString["type"] != null)
+                    {
+                        string u_type = Request.QueryString["type"];
+                        if (u_type == "miner")
+                        {
+                            Response.Redirect("adminMinerProfile.aspx?u_id=" + u_id);
+                        }
+                        else if (u_type == "sub")
+                        {
+                            Response.Redirect("adminUserProfile.aspx?u_id=" + u_id);
+
+                        }
+                        else if (u_type == "admin")
+                        {
+                            Response.Redirect("adminadminProfile.aspx?u_id=" + u_id);
+
+                        }
+                    }
+                }
+                catch (Exception) { }
+            }
+        }
     }
 }

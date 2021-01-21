@@ -33,17 +33,17 @@
 															<Columns>
 																<asp:TemplateField HeaderText="Hash">
 																	<ItemTemplate>
-																		<asp:Label width="250" Style="word-wrap: normal; word-break: break-all;" ID="lblblockhash" runat="server" Text='<%#  Bind("block_hash")%>'></asp:Label>
+																		<asp:Label width="248" Style="word-wrap: normal; word-break: break-all;" ID="lblblockhash" runat="server" Text='<%#  Bind("block_hash")%>'></asp:Label>
 																	</ItemTemplate>
 																</asp:TemplateField>
 																<asp:TemplateField HeaderText="Sender Hash">
 																	<ItemTemplate>
-																		<asp:Label width="250" Style="word-wrap: normal; word-break: break-all;" ID="lblblockhash" runat="server" Text='<%#  Bind("transaction_sender_hash")%>'></asp:Label>
+																		<asp:Label width="248" Style="word-wrap: normal; word-break: break-all;" ID="lblblockhash" runat="server" Text='<%#  Bind("transaction_sender_hash")%>'></asp:Label>
 																	</ItemTemplate>
 																</asp:TemplateField>
 																<asp:TemplateField HeaderText="Receiver Hash">
 																	<ItemTemplate>
-																		<asp:Label width="250" Style="word-wrap: normal; word-break: break-all;" ID="lblblockhash" runat="server" Text='<%#  Bind("transaction_receiver_hash")%>'></asp:Label>
+																		<asp:Label width="248" Style="word-wrap: normal; word-break: break-all;" ID="lblblockhash" runat="server" Text='<%#  Bind("transaction_receiver_hash")%>'></asp:Label>
 																	</ItemTemplate>
 																</asp:TemplateField>
 																<asp:TemplateField HeaderText="Chips">
@@ -53,12 +53,12 @@
 																</asp:TemplateField>
 																<asp:TemplateField HeaderText="Previous Hash">
 																	<ItemTemplate>
-																		<asp:Label width="250" Style="word-wrap: normal; word-break: break-all;" ID="lblblockhash" runat="server" Text='<%#  Bind("block_previous_hash")%>'></asp:Label>
+																		<asp:Label width="248" Style="word-wrap: normal; word-break: break-all;" ID="lblblockhash" runat="server" Text='<%#  Bind("block_previous_hash")%>'></asp:Label>
 																	</ItemTemplate>
 																</asp:TemplateField>
 																<asp:TemplateField HeaderText="Time Stamp">
 																	<ItemTemplate>
-																		<asp:Label width="150" Style="word-wrap: normal; word-break: break-all;" ID="lblblockhash" runat="server" Text='<%#  Bind("block_timestamp")%>'></asp:Label>
+																		<asp:Label width="148" Style="word-wrap: normal; word-break: break-all;" ID="lblblockhash" runat="server" Text='<%#  Bind("block_timestamp")%>'></asp:Label>
 																	</ItemTemplate>
 																</asp:TemplateField>
 															</Columns>

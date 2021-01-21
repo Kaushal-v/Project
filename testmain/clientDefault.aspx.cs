@@ -41,10 +41,8 @@ namespace testmain
             con.ConnectionString = constr;
             con.Open();
             SqlDataAdapter da;
-            da = new SqlDataAdapter("select user_id from user_master where user_name='"+u_name+"'", con);
             DataTable dt = new DataTable();
-            da.Fill(dt);
-            int user_id = dt.Rows[0].Field<int>("user_id");
+            int user_id = Convert.ToInt32(Session["u_id"]);
             try
             {
                 //da = new SqlDataAdapter("select * from share_master, share_holder_master where share_master.share_id=share_holder_master.share_id and share_holder_master.user_id='" + user_id + "'", con);
@@ -72,6 +70,18 @@ namespace testmain
             gvshare_info.DataSource = dt;
             gvshare_info.DataBind();
             con.Close();
+            blockchain b1 = (blockchain)Application["obj_blockchain"];
+            List<Transaction> pendingtra = new List<Transaction>();
+            string userHash = b1.getAddress(u_name);
+            foreach (Transaction tra in b1.pendingTransactions)
+            {
+                if (tra.from == userHash || tra.to == userHash)
+                {
+                    pendingtra.Add(tra);
+                }
+            }
+            gvminerpendingtransactions.DataSource = pendingtra;
+            gvminerpendingtransactions.DataBind();
         }
     }
 }

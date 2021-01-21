@@ -138,5 +138,28 @@ namespace testmain
         {
             popupadduser.Show();
         }
+
+        protected void tbusersearch_TextChanged(object sender, EventArgs e)
+        {
+            lblnouserfound.Visible = false;
+        }
+
+        protected void btnsearchuser_Click(object sender, EventArgs e)
+        {
+            string u_name = tbusersearch.Text;
+            SqlDataAdapter da = new SqlDataAdapter("select user_id from user_master where user_name='" + u_name + "'", con);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            int u_id;
+            if (dt.Rows.Count != 0)
+            {
+                u_id = dt.Rows[0].Field<int>("user_id");
+                Response.Redirect("adminUserProfile.aspx?u_id=" + u_id);
+            }
+            else
+            {
+                lblnouserfound.Visible = true;
+            }
+        }
     }
 }

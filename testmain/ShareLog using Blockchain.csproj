@@ -73,8 +73,10 @@
     <Content Include="adminAccount.aspx">
       <BrowseToURL>~/account.aspx</BrowseToURL>
     </Content>
+    <Content Include="adminAdminProfile.aspx" />
     <Content Include="adminBlockchain.aspx" />
     <Content Include="adminDefault.aspx" />
+    <Content Include="adminMinerProfile.aspx" />
     <Content Include="adminUserProfile.aspx" />
     <Content Include="adminUsers.aspx" />
     <Content Include="blockchain.png" />
@@ -108,6 +110,13 @@
     <Compile Include="admin.Master.designer.cs">
       <DependentUpon>admin.Master</DependentUpon>
     </Compile>
+    <Compile Include="adminAdminProfile.aspx.cs">
+      <DependentUpon>adminAdminProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="adminAdminProfile.aspx.designer.cs">
+      <DependentUpon>adminAdminProfile.aspx</DependentUpon>
+    </Compile>
     <Compile Include="adminBlockchain.aspx.cs">
       <DependentUpon>adminBlockchain.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -121,6 +130,13 @@
     </Compile>
     <Compile Include="adminDefault.aspx.designer.cs">
       <DependentUpon>adminDefault.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="adminMinerProfile.aspx.cs">
+      <DependentUpon>adminMinerProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="adminMinerProfile.aspx.designer.cs">
+      <DependentUpon>adminMinerProfile.aspx</DependentUpon>
     </Compile>
     <Compile Include="adminUserProfile.aspx.cs">
       <DependentUpon>adminUserProfile.aspx</DependentUpon>

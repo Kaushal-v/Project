@@ -132,6 +132,14 @@ namespace testmain
                     con.Open();
                     SqlCommand cmd = new SqlCommand("insert into share_master(share_name, share_price, share_available_count, share_sold_count) values('" + tbshare_name.Text + "','" + tbshare_price.Text + "','" + tbshare_availc.Text + "','0')", con);
                     cmd.ExecuteNonQuery();
+                    SqlDataAdapter da = new SqlDataAdapter("select * from share_master where share_name='" + tbshare_name.Text + "'", con);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    int share_id = dt.Rows[0].Field<int>("share_id");
+                    DateTime now = DateTime.Now;
+                    string timenow = string.Format("{0:yyyy-MM-dd H:mm:ss}", now);
+                    cmd = new SqlCommand("insert into share_price_master(share_id,share_price_changing,share_date) values('" + share_id + "','" + tbshare_price.Text + "','" + timenow + "')", con);
+                    cmd.ExecuteNonQuery();
                     con.Close();
                     Response.Redirect("share.aspx");
                 }

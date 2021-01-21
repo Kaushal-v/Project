@@ -11,7 +11,7 @@ namespace testmain
 {
 
 
-    public partial class adminUserProfile
+    public partial class adminAdminProfile
     {
 
         /// <summary>
@@ -148,23 +148,5 @@ namespace testmain
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btncancel;
-
-        /// <summary>
-        /// gvhoder_share_info control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvhoder_share_info;
-
-        /// <summary>
-        /// gvminerpendingtransactions control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvminerpendingtransactions;
     }
 }

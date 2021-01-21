@@ -95,9 +95,11 @@
                 <div class="col-12">
 				        <div class="app-card app-card-stats-table h-100 shadow-sm">
 							<div class="text-left" style="float:left; padding:30px 30px 0px 30px; width:50%;">
-								<div class="text-left" style="float:left;width:50%;"><asp:TextBox placeholder="Search User" runat="server" CssClass="text-left form-control w-50 btn-sm app-btn-secondary" ID="tbusersearch" TextMode="Search"></asp:TextBox></div>
-								<div class="text-left" style="float:left; width:50%;"><asp:LinkButton ID="btnsearchuser" CssClass="btn-sm text-right app-btn-secondary" runat="server" Text="Search"></asp:LinkButton></div></div>
+								<div class="text-left" style="float:left;width:50%;"><asp:TextBox AutoPostBack="true" OnTextChanged="tbusersearch_TextChanged" placeholder="Search User" runat="server" CssClass="text-left form-control w-50 btn-sm app-btn-secondary" ID="tbusersearch" TextMode="Search"></asp:TextBox></div>								
+								<div class="text-left" style="float:left; width:50%;"><asp:LinkButton ID="btnsearchuser" OnClick="btnsearchuser_Click" CssClass="btn-sm text-right app-btn-secondary" runat="server" Text="Search"></asp:LinkButton></div>
+							</div>
 							<div class="text-right" style="float:left; padding:30px 30px 0px 30px; width:50%;"><h3><asp:LinkButton ID="btnadduser" CssClass="btn-lg app-btn-secondary" runat="server" Text="Add User"></asp:LinkButton></h3></div>
+							<div class="text-left"  style="padding:30px 30px 0px 30px;"><asp:Label runat="server" Visible="false" ForeColor="Red" Font-Size="Small" ID="lblnouserfound">No user found!!</asp:Label></div>
 					        <div class="app-card-header p-3">
 						        <div class="row justify-content-between align-items-center">
 									<div class="row g-4 mb-4">

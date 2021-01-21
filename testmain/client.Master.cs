@@ -119,6 +119,9 @@ namespace testmain
                     double chips = Convert.ToDouble(halfChips);
                     int count = Convert.ToInt32(tbpanelcount.Text);
                     double total_price = count * dt.Rows[0].Field<double>("share_price");
+                    DateTime now;
+                    string timenow;
+                    SqlCommand cmd;
                     foreach (Transaction t in b1.pendingTransactions)
                     {
                         if (t.from.Equals(b1.getAddress(u_name)))
@@ -136,9 +139,9 @@ namespace testmain
                         da.Fill(dt);
                         if (dt.Rows.Count == 0)
                         {
-                            DateTime now = DateTime.Now;
-                            string timenow = string.Format("{0:yyyy-MM-dd H:mm:ss}", now);
-                            SqlCommand cmd = new SqlCommand("insert into share_holder_master(user_id,share_id,holder_share_count,share_holder_last_updated_time) values('" + u_id + "','" + share_id + "','" + count + "','" + timenow + "')", con);
+                            now = DateTime.Now;
+                            timenow = string.Format("{0:yyyy-MM-dd H:mm:ss}", now);
+                            cmd = new SqlCommand("insert into share_holder_master(user_id,share_id,holder_share_count,share_holder_last_updated_time) values('" + u_id + "','" + share_id + "','" + count + "','" + timenow + "')", con);
                             cmd.ExecuteNonQuery();
                             da = new SqlDataAdapter("Select share_available_count,share_sold_count from share_master where share_id='" + share_id + "'", con);
                             dt = new DataTable();
@@ -147,17 +150,16 @@ namespace testmain
                             int sold_count = dt.Rows[0].Field<int>("share_sold_count") + count;
                             cmd = new SqlCommand("update share_master set share_available_count = '" + avail_count + "',share_sold_count = '" + sold_count + "' where share_id='" + share_id + "'", con);
                             cmd.ExecuteNonQuery();
-                            Response.Redirect("clientDefault.aspx");
                         }
                         else
                         {
-                            DateTime now = DateTime.Now;
+                            now = DateTime.Now;
                             da = new SqlDataAdapter("Select holder_share_count from share_holder_master where share_id='" + share_id + "' and user_id='" + u_id + "'", con);
                             dt = new DataTable();
                             da.Fill(dt);
                             int avail_count = dt.Rows[0].Field<int>("holder_share_count") + count;
-                            string timenow = string.Format("{0:yyyy-MM-dd H:mm:ss}", now);
-                            SqlCommand cmd = new SqlCommand("update share_holder_master set holder_share_count='" + avail_count + "' ,share_holder_last_updated_time='" + timenow + "' where user_id='"+u_id+"' and share_id='"+share_id+"'", con);
+                            timenow = string.Format("{0:yyyy-MM-dd H:mm:ss}", now);
+                            cmd = new SqlCommand("update share_holder_master set holder_share_count='" + avail_count + "' ,share_holder_last_updated_time='" + timenow + "' where user_id='"+u_id+"' and share_id='"+share_id+"'", con);
                             cmd.ExecuteNonQuery();
                             da = new SqlDataAdapter("Select share_available_count,share_sold_count from share_master where share_id='" + share_id + "'", con);
                             dt = new DataTable();
@@ -166,8 +168,19 @@ namespace testmain
                             int sold_count = dt.Rows[0].Field<int>("share_sold_count") + count;
                             cmd = new SqlCommand("update share_master set share_available_count = '" + total_avail_count + "',share_sold_count = '" + sold_count + "' where share_id='" + share_id + "'", con);
                             cmd.ExecuteNonQuery();
-                            Response.Redirect("clientDefault.aspx");
                         }
+                        da = new SqlDataAdapter("select * from share_master where share_id='" + share_id + "'", con);
+                        dt = new DataTable();
+                        da.Fill(dt);
+                        double original_share_price = dt.Rows[0].Field<double>("share_price");
+                        double share_price=(original_share_price * count * 0.05)+original_share_price;
+                        cmd = new SqlCommand("update share_master set share_price='" + share_price + "' where share_id='" + share_id + "'", con);
+                        cmd.ExecuteNonQuery();
+                        now = DateTime.Now;
+                        timenow = string.Format("{0:yyyy-MM-dd H:mm:ss}", now);
+                        cmd = new SqlCommand("insert into share_price_master(share_id,share_price_changing,share_date) values('" + share_id + "','" + share_price + "','"+timenow+"')", con);
+                        cmd.ExecuteNonQuery();
+                        Response.Redirect("clientDefault.aspx");
                     }
                     else
                     {
@@ -231,6 +244,17 @@ namespace testmain
                         int total_avail_count = dt.Rows[0].Field<int>("share_available_count") + count;
                         int sold_count = dt.Rows[0].Field<int>("share_sold_count") - count;
                         cmd = new SqlCommand("update share_master set share_available_count = '" + total_avail_count + "',share_sold_count = '" + sold_count + "' where share_id='" + share_id + "'", con);
+                        cmd.ExecuteNonQuery();
+                        da = new SqlDataAdapter("select * from share_master where share_id='" + share_id + "'", con);
+                        dt = new DataTable();
+                        da.Fill(dt);
+                        double original_share_price = dt.Rows[0].Field<double>("share_price");
+                        double share_price_now = original_share_price - (original_share_price * count * 0.05);
+                        cmd = new SqlCommand("update share_master set share_price='" + share_price_now + "' where share_id='" + share_id + "'", con);
+                        cmd.ExecuteNonQuery();
+                        now = DateTime.Now;
+                        timenow = string.Format("{0:yyyy-MM-dd H:mm:ss}", now);
+                        cmd = new SqlCommand("insert into share_price_master(share_id,share_price_changing,share_date) values('" + share_id + "','" + share_price + "','" + timenow + "')", con);
                         cmd.ExecuteNonQuery();
                         Response.Redirect("clientDefault.aspx");
                     }

@@ -24,21 +24,12 @@ namespace testmain
         protected global::System.Web.UI.WebControls.GridView gvshare_info;
 
         /// <summary>
-        /// lblconno control.
+        /// gvminerpendingtransactions control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblconno;
-
-        /// <summary>
-        /// tbconno control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbconno;
+        protected global::System.Web.UI.WebControls.GridView gvminerpendingtransactions;
     }
 }
