@@ -36,7 +36,7 @@
 																</asp:TemplateField>
 																<asp:TemplateField HeaderText="Chips">
 																	<ItemTemplate>
-																		<asp:Label ID="lblblockhash" runat="server" Text='<%#  Bind("transaction_chips")%>'></asp:Label>
+																		<asp:Label runat="server" Text='<%# ((double)Eval("transaction_chips")).ToString().Length < 10? Eval("transaction_chips") :(Math.Round((double)Eval("transaction_chips"),2))%>'> </asp:Label>
 																	</ItemTemplate>
 																</asp:TemplateField>
 																<asp:TemplateField HeaderText="Previous Hash">

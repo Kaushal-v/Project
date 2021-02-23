@@ -129,6 +129,18 @@ public class blockchain
         }
         return bal;
     }
+    public int getTotalTransactions()
+    {
+        int cout = 0;
+        foreach (block b in chain)
+        {
+            foreach (Transaction tra in b.transactions)
+            {
+                cout++;
+            }
+        }
+        return cout;
+    }
     public string getAddress(string u_name)
     {
         using (SHA256 sha256 = SHA256.Create())

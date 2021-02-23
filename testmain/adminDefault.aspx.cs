@@ -45,7 +45,8 @@ namespace testmain
                 da = new SqlDataAdapter("select sum(share_sold_count * share_price) as total_sales from share_master", con);
                 dt = new DataTable();
                 da.Fill(dt);
-                lbltotalsales.Text = dt.Rows[0].Field<double>("total_sales").ToString();
+                double sales = Math.Round(dt.Rows[0].Field<double>("total_sales"),7);
+                lbltotalsales.Text = sales.ToString();
                 con.Close();
             }
             catch(Exception) {

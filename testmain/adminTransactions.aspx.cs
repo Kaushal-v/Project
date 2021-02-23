@@ -8,6 +8,12 @@ using System.Data.Sql;
 using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System.IO;
+using iTextSharp.text.pdf.draw;
+using Image = iTextSharp.text.Image;
+
 namespace testmain
 {
     public partial class transacrions : System.Web.UI.Page
@@ -55,5 +61,23 @@ namespace testmain
             gvpendingtransactions.PageIndex = e.NewPageIndex;
             gvpendingtransactions.DataBind();
         }
+
+        protected void btnhome_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                blockchain b1 = (blockchain)Application["obj_blockchain"];
+                String path = $"C:\\Users\\kaush\\source\\repos\\testmain\\testmain\\ShareLog.pdf";                
+                Response.ContentType = "Application/pdf";
+                DateTime now = DateTime.Now;
+                string timenow = string.Format("{0:yyyy-MM-dd H:mm:ss}", now);
+                Response.AddHeader("Content-Disposition", "attachment;filename="+b1.name + timenow +".pdf");
+                Response.WriteFile(path);
+                Response.TransmitFile(Server.MapPath(path));
+                Response.End();
+            }
+            catch (Exception ex)
+            { Response.Write(ex.Message); }
+        }       
     }
 }
