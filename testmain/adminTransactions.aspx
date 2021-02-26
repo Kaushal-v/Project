@@ -10,7 +10,7 @@
 				        <div class="app-card app-card-stats-table h-100 shadow-sm">
 					        <div class="app-card-header p-3">
 								 <div id="app-nav-main" class="app-nav app-nav-main flex-grow-1">
-					        <asp:LinkButton runat="server" ID="btnhome" CssClass="nav-link" OnClick="btnhome_Click">
+					        <asp:LinkButton runat="server" ID="btndownload_pdf" CssClass="nav-link" OnClick="btndownload_pdf_Click">
 						        <span class="nav-icon">
 						       <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
   <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>

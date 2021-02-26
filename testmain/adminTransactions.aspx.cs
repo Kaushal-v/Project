@@ -60,24 +60,24 @@ namespace testmain
         {
             gvpendingtransactions.PageIndex = e.NewPageIndex;
             gvpendingtransactions.DataBind();
-        }
+        }       
 
-        protected void btnhome_Click(object sender, EventArgs e)
+        protected void btndownload_pdf_Click(object sender, EventArgs e)
         {
             try
             {
                 blockchain b1 = (blockchain)Application["obj_blockchain"];
-                String path = $"C:\\Users\\kaush\\source\\repos\\testmain\\testmain\\ShareLog.pdf";                
+                String path = $"C:\\Users\\kaush\\source\\repos\\testmain\\testmain\\ShareLog.pdf";
                 Response.ContentType = "Application/pdf";
                 DateTime now = DateTime.Now;
                 string timenow = string.Format("{0:yyyy-MM-dd H:mm:ss}", now);
-                Response.AddHeader("Content-Disposition", "attachment;filename="+b1.name + timenow +".pdf");
+                Response.AddHeader("Content-Disposition", "attachment;filename=" + b1.name + timenow + ".pdf");
                 Response.WriteFile(path);
                 Response.TransmitFile(Server.MapPath(path));
                 Response.End();
             }
             catch (Exception ex)
             { Response.Write(ex.Message); }
-        }       
+        }
     }
 }

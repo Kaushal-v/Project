@@ -15,13 +15,13 @@ namespace testmain
     {
 
         /// <summary>
-        /// btnhome control.
+        /// btndownload_pdf control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnhome;
+        protected global::System.Web.UI.WebControls.LinkButton btndownload_pdf;
 
         /// <summary>
         /// gvpendingtransactions control.

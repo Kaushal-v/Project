@@ -146,7 +146,7 @@
 						                
 							        </div><!--//col-->
 							        <div class="col-auto">
-								        <h4 class="app-card-title">Your Pending Transactions</h4>
+								        <h4 class="app-card-title">Pending Transactions</h4>
 							        </div><!--//col-->									
 						        </div><!--//row-->
 						    </div><!--//app-card-header-->
@@ -193,14 +193,14 @@
 									    </div><!--//icon-holder-->						                
 							        </div><!--//col-->
 							        <div class="col-auto">
-								        <h4 class="app-card-title">Blocks Mined by You</h4>
+								        <h4 class="app-card-title">Blocks Mined</h4>
 							        </div><!--//col-->									
 						        </div><!--//row-->
 						    </div><!--//app-card-header-->
 						    <div class="app-card-body px-4 w-100">
 							    <div class="item border-bottom py-3">
 									   <div class="col-auto" style="overflow-x:auto;">
-										     <asp:GridView ID="gvblocksmined" runat="server" EmptyDataText="None Blocks are mined by you" AutoGenerateColumns="False" style="border:none;" Width="100%" PageSize="5">
+										     <asp:GridView ID="gvblocksmined" runat="server" EmptyDataText="None Blocks are mined" AutoGenerateColumns="False" style="border:none;" Width="100%" PageSize="5">
 												<Columns>
 													<asp:TemplateField HeaderText="Sender Hash">
 																	<ItemTemplate>

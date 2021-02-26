@@ -99,7 +99,7 @@
 						                
 							        </div><!--//col-->
 							        <div class="col-auto">
-								        <h4 class="app-card-title">Your Shares</h4>
+								        <h4 class="app-card-title">Shares</h4>
 							        </div><!--//col-->									
 						        </div><!--//row-->
 						    </div><!--//app-card-header-->
@@ -145,7 +145,7 @@
 						                
 							        </div><!--//col-->
 							        <div class="col-auto">
-								        <h4 class="app-card-title">Your Pending Transactions</h4>
+								        <h4 class="app-card-title">Pending Transactions</h4>
 							        </div><!--//col-->									
 						        </div><!--//row-->
 						    </div><!--//app-card-header-->
