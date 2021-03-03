@@ -11,7 +11,7 @@ using System.Configuration;
 
 namespace testmain
 {
-    public partial class clientAccount : System.Web.UI.Page
+    public partial class clientAccount1 : System.Web.UI.Page
     {
         readonly SqlConnection con = new SqlConnection();
         protected void Page_Load(object sender, EventArgs e)
@@ -57,6 +57,8 @@ namespace testmain
             tbmail.Visible = true;
             btnsave.Visible = true;
             btncancel.Visible = true;
+            btn_save.Visible = false;
+            btn_cancel.Visible = false;
         }
         protected void btnsave_Click(object sender, EventArgs e)
         {
@@ -87,12 +89,75 @@ namespace testmain
             {
                 DateTime now = DateTime.Now;
                 string timenow = string.Format("{0:yyyy-MM-dd H:mm:ss}", now);
-                SqlCommand cmd = new SqlCommand("update user_master set user_type='"+new_type+"',user_date_updated='" + timenow + "',user_first_name='" + tbfname.Text + "',user_last_name='" + tblname.Text + "',user_mail_address='" + tbmail.Text + "' where user_id='" + id + "'", con);
+                SqlCommand cmd = new SqlCommand("update user_master set user_type='" + new_type + "',user_date_updated='" + timenow + "',user_first_name='" + tbfname.Text + "',user_last_name='" + tblname.Text + "',user_mail_address='" + tbmail.Text + "' where user_id='" + id + "'", con);
                 cmd.ExecuteNonQuery();
                 Session["type"] = new_type;
             }
             con.Close();
             Response.Redirect("clientAccount.aspx");
+        }
+
+        protected void btn_cochange_Click(object sender, EventArgs e)
+        {
+            btn_save.Visible = true;
+            btn_cancel.Visible = true;
+            lblconno.Visible = false;
+            tbconno.Visible = true;
+            tbconno.ReadOnly = false;
+            tbconno.TextMode = TextBoxMode.Number;
+            tbconno.MaxLength = 10;
+            btnsave.Visible = false;
+            btncancel.Visible = false;
+        }
+
+        protected void btn_passchange_Click(object sender, EventArgs e)
+        {
+            btn_save.Visible = true;
+            btn_cancel.Visible = true;
+            lbl_pass.Visible = false;
+            tb_pass.Visible = true;
+            btnsave.Visible = false;
+            btncancel.Visible = false;
+        }
+
+        protected void btn_save_Click(object sender, EventArgs e)
+        {
+            string u_name = "";
+            try
+            {
+                u_name = Session["u_name"].ToString();
+            }
+            catch (Exception)
+            {
+                Response.Redirect("signin.aspx");
+            }
+            con.Open();
+            SqlDataAdapter da = new SqlDataAdapter("select * from user_master where user_name='" + u_name + "' ", con);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            int id = dt.Rows[0].Field<int>("user_id");           
+            if (tb_pass.Visible == true)
+            {
+                string conno = dt.Rows[0].Field<int>("user_contact_no").ToString();
+                if(conno != tbconno.Text)
+                {
+                    DateTime now = DateTime.Now;
+                    string timenow = string.Format("{0:yyyy-MM-dd H:mm:ss}", now);
+                    SqlCommand cmd = new SqlCommand("update user_master set user_date_updated='" + timenow + "',user_contact_no='"+tbconno.Text+"'  where user_id='" + id + "'", con);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            else if(tbconno.Visible == true)
+            {
+                string pass = dt.Rows[0].Field<int>("user_password").ToString();
+                if (pass != tbconno.Text)
+                {
+                    DateTime now = DateTime.Now;
+                    string timenow = string.Format("{0:yyyy-MM-dd H:mm:ss}", now);
+                    SqlCommand cmd = new SqlCommand("update user_master set user_date_updated='" + timenow + "',user_contact_no='" + tbconno.Text + "'  where user_id='" + id + "'", con);
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
     }
 }

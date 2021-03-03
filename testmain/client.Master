@@ -95,7 +95,7 @@
                                 <li><a class="dropdown-item" href="clientTransactions.aspx">Transactions</a></li>
                                 <li><asp:LinkButton runat="server" ID="btnmine" CssClass="dropdown-item" href="minersPage.aspx">Mine</asp:LinkButton></li>
 								<li><hr class="dropdown-divider"></li>
-								<li><asp:LinkButton runat="server" ID="btnlogout" CssClass="dropdown-item">Log Out</asp:LinkButton></li>
+								<li><asp:LinkButton runat="server" ID="btnlogout" CssClass="dropdown-item">Log Out</asp:LinkButton></li>								
 							</ul>
 			            </div><!--//app-user-dropdown-->
 		            </div><!--//app-utilities-->

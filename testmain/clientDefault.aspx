@@ -22,7 +22,7 @@
 							        </div><!--//col-->
 							        <div class="col-auto">
 								        <h4 class="app-card-title">Shares</h4>
-							        </div><!--//col-->
+							        </div><!--//col-->									
 						        </div><!--//row-->
 						    </div><!--//app-card-header-->
 						    <div class="app-card-body px-4 w-100">
@@ -82,7 +82,7 @@
 																</asp:TemplateField>
 																<asp:TemplateField HeaderText="Chips">
 																	<ItemTemplate>
-																		<asp:Label ID="lblblockhash" runat="server" Text='<%#  Bind("amount")%>'></asp:Label>
+																		<asp:Label ID="lblblockhash" runat="server" Text='<%# ((double)Eval("amount")).ToString().Length < 4 ? Eval("amount") :(Math.Round((double)Eval("amount"),2))%>'></asp:Label>
 																	</ItemTemplate>
 																</asp:TemplateField>
 												</Columns>
