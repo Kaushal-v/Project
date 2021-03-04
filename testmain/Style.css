@@ -103,3 +103,60 @@
 .bg-pic{
     background-size:cover;
 }
+
+.app-sidepanel2 {
+    position: fixed;
+    min-height: 100vh;
+    height: 100%;
+    left: 0;
+    top: 0;
+    font-size: .875rem;
+    border-right: 1px solid #e7e9ed
+}
+
+    .app-sidepanel2 .panel-drop {
+        display: none
+    }
+
+    .app-sidepanel2 .sidepanel-inner {
+        position: relative;
+        z-index: 10;
+        background: #fff;
+        box-shadow: rgba(0,0,0,.05) 0px 8px 15px;
+        width: 250px;
+        height: 100%
+    }
+
+    .app-sidepanel2 .sidepanel-close {
+        display: none;
+        position: absolute;
+        z-index: 20;
+        right: -2rem;
+        top: 0;
+        color: #fff;
+        font-size: 2rem
+    }
+
+    .app-sidepanel2.sidepanel-hidden {
+        left: -400px
+    }
+
+    .app-sidepanel2.sidepanel-visible {
+        left: 0
+    }
+
+    .app-sidepanel2 .app-nav-main {
+        overflow-y: auto;
+        scrollbar-color: rgba(0,0,0,.1) #e7e9ed;
+        scrollbar-width: thin
+    }
+
+        .app-sidepanel2 .app-nav-main::-webkit-scrollbar {
+            width: 6px;
+            background-color: #e7e9ed
+        }
+
+        .app-sidepanel2 .app-nav-main::-webkit-scrollbar-thumb {
+            background-color: rgba(0,0,0,.1);
+            border-radius: .5rem
+        }

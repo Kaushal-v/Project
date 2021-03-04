@@ -89,13 +89,14 @@
     <Content Include="error.aspx" />
     <Content Include="Global.asax" />
     <Content Include="home.aspx" />
+    <Content Include="home_blockchain.png" />
     <Content Include="minersPage.aspx" />
     <Content Include="share.aspx" />
     <Content Include="signin.aspx" />
     <Content Include="signup.aspx" />
     <Content Include="Style.css" />
     <Content Include="adminTransactions.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="web1.config" />
     <Content Include="users.aspx" />
   </ItemGroup>
   <ItemGroup>
@@ -257,11 +258,18 @@
     <None Include="packages.config" />
     <Content Include="Main.Master" />
     <Content Include="client.Master" />
+    <Content Include="Web.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="web1.Debug.config">
+      <DependentUpon>web1.config</DependentUpon>
+    </None>
+    <None Include="web1.Release.config">
+      <DependentUpon>web1.config</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup />

@@ -15,13 +15,31 @@ namespace testmain
     {
 
         /// <summary>
-        /// btndownload_pdf control.
+        /// orders_all_tab control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btndownload_pdf;
+        protected global::System.Web.UI.WebControls.LinkButton orders_all_tab;
+
+        /// <summary>
+        /// orders_verified_tab control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton orders_verified_tab;
+
+        /// <summary>
+        /// orders_pending_tab control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton orders_pending_tab;
 
         /// <summary>
         /// gvtransactiondetails control.

@@ -106,7 +106,7 @@
 						    <div class="app-card-body px-4 w-100">
 							    <div class="item border-bottom py-3">
 									    <div class="col-auto">
-										    <asp:GridView ID="gvhoder_share_info" runat="server" DataKeyField="share_id" AutoGenerateColumns="False" EmptyDataText="No records has been added." style="border:none;" Width="100%" PageSize="5">
+										    <asp:GridView ID="gvhoder_share_info" CssClass="table app-table-hover mb-0 text-center" runat="server" DataKeyField="share_id" AutoGenerateColumns="False" EmptyDataText="No records has been added." style="border:none;" Width="100%" PageSize="5">
 												<Columns>
 													<asp:BoundField DataField="share_id" HeaderText="#"/>
 													<asp:BoundField DataField="share_name" HeaderText="Share Name"/>
@@ -154,16 +154,16 @@
 							    <div class="item border-bottom py-3">
 								    <div class="row justify-content-between align-items-center">
 									    <div class="col-auto" style="overflow-x:auto;">
-										     <asp:GridView ID="gvminerpendingtransactions" runat="server" EmptyDataText="No Pending Transactions" AutoGenerateColumns="False" style="border:none;" Width="100%" PageSize="5">
+										     <asp:GridView ID="gvminerpendingtransactions" CssClass="table app-table-hover mb-0 text-center" runat="server" EmptyDataText="No Pending Transactions" AutoGenerateColumns="False" style="border:none;" Width="100%" PageSize="5">
 												<Columns>
 													<asp:TemplateField HeaderText="Sender Hash">
 																	<ItemTemplate>
-																		<asp:Label width="270" Style="word-wrap: normal; word-break: break-all;" ID="lblblockhash" runat="server" Text='<%#  Bind("from")%>'></asp:Label>
+																		<asp:Label width="250" Style="word-wrap: normal; word-break: break-all;" ID="lblblockhash" runat="server" Text='<%#  Bind("from")%>'></asp:Label>
 																	</ItemTemplate>
 																</asp:TemplateField>
 																<asp:TemplateField HeaderText="Receiver Hash">
 																	<ItemTemplate>
-																		<asp:Label width="270" Style="word-wrap: normal; word-break: break-all;" ID="lblblockhash" runat="server" Text='<%#  Bind("to")%>'></asp:Label>
+																		<asp:Label width="250" Style="word-wrap: normal; word-break: break-all;" ID="lblblockhash" runat="server" Text='<%#  Bind("to")%>'></asp:Label>
 																	</ItemTemplate>
 																</asp:TemplateField>
 																<asp:TemplateField HeaderText="Chips">
@@ -200,16 +200,16 @@
 						    <div class="app-card-body px-4 w-100">
 							    <div class="item border-bottom py-3">
 									   <div class="col-auto" style="overflow-x:auto;">
-										     <asp:GridView ID="gvblocksmined" runat="server" EmptyDataText="None Blocks are mined" AutoGenerateColumns="False" style="border:none;" Width="100%" PageSize="5">
+										     <asp:GridView ID="gvblocksmined" runat="server" CssClass="table app-table-hover mb-0 text-center" EmptyDataText="None Blocks are mined" AutoGenerateColumns="False" style="border:none;" Width="100%" PageSize="5">
 												<Columns>
 													<asp:TemplateField HeaderText="Sender Hash">
 																	<ItemTemplate>
-																		<asp:Label width="265" Style="word-wrap: normal; word-break: break-all;" ID="lblblockhash" runat="server" Text='<%#  Bind("from")%>'></asp:Label>
+																		<asp:Label width="240" Style="word-wrap: normal; word-break: break-all;" ID="lblblockhash" runat="server" Text='<%#  Bind("from")%>'></asp:Label>
 																	</ItemTemplate>
 																</asp:TemplateField>
 																<asp:TemplateField HeaderText="Receiver Hash">
 																	<ItemTemplate>
-																		<asp:Label width="265" Style="word-wrap: normal; word-break: break-all;" ID="lblblockhash" runat="server" Text='<%#  Bind("to")%>'></asp:Label>
+																		<asp:Label width="240" Style="word-wrap: normal; word-break: break-all;" ID="lblblockhash" runat="server" Text='<%#  Bind("to")%>'></asp:Label>
 																	</ItemTemplate>
 																</asp:TemplateField>
 																<asp:TemplateField HeaderText="Reward">

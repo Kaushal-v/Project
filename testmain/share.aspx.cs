@@ -130,7 +130,7 @@ namespace testmain
                 if (tbshare_availc.Text != "" && tbshare_name.Text != "" && tbshare_price.Text != "")
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("insert into share_master(share_name, share_price, share_available_count, share_sold_count) values('" + tbshare_name.Text + "','" + tbshare_price.Text + "','" + tbshare_availc.Text + "','0')", con);
+                    SqlCommand cmd = new SqlCommand("insert into share_master(share_name, share_price, share_available_count, share_sold_count,share_received_count) values('" + tbshare_name.Text + "','" + tbshare_price.Text + "','" + tbshare_availc.Text + "','0','0')", con);
                     cmd.ExecuteNonQuery();
                     SqlDataAdapter da = new SqlDataAdapter("select * from share_master where share_name='" + tbshare_name.Text + "'", con);
                     DataTable dt = new DataTable();

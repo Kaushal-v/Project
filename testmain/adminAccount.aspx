@@ -100,10 +100,10 @@
 									    <div class="col-auto">
 										    <div class="item-label text-left"><strong>Contact No</strong></div>
 											<div class="item-data text-left"><asp:Label runat="server" ID="lblconno"></asp:Label></div>
-									        <asp:TextBox ReadOnly="true" ID="tbconno" runat="server" CssClass="item-data tb"></asp:TextBox>
+									        <asp:TextBox ReadOnly="true" ID="tbconno" Visible="false" runat="server" CssClass="item-data tb"></asp:TextBox>
 									    </div><!--//col-->
 									    <div class="col text-right">
-										    <a class="btn-sm app-btn-secondary" href="#">Change</a>
+										    <asp:LinkButton runat="server" ID="btn_cochange" OnClick="btn_cochange_Click" CssClass="btn-sm app-btn-secondary">Change</asp:LinkButton>
 									    </div><!--//col-->
 								    </div><!--//row-->
 							    </div><!--//item-->
@@ -111,14 +111,19 @@
 								    <div class="row justify-content-between align-items-center">
 									    <div class="col-auto">
 										    <div class="item-label text-left"><strong>Password</strong></div>
-									        <div class="item-data text-left">••••••••</div>
+									        <div class="item-data text-left"><asp:Label runat="server" ID="lbl_pass" Text="••••••••"></asp:Label></div>
+											 <asp:TextBox Visible="false" ID="tb_pass" runat="server" CssClass="item-data tb"></asp:TextBox>
 									    </div><!--//col-->
 									    <div class="col text-right">
-										    <a class="btn-sm app-btn-secondary" href="#">Change</a>
+											<asp:LinkButton runat="server" ID="btn_passchange" OnClick="btn_passchange_Click" CssClass="btn-sm app-btn-secondary">Change</asp:LinkButton>
 									    </div><!--//col-->
 								    </div><!--//row-->
 							    </div><!--//item-->
 						    </div><!--//app-card-body-->
+							 <div class="app-card-footer p-4 mt-auto">
+							   <asp:LinkButton runat="server" ID="btn_save" OnClick="btn_save_Click" CssClass="btn app-btn-secondary" Visible="false">Save</asp:LinkButton>
+								<asp:LinkButton runat="server" ID="btn_cancel" href="adminAccount.aspx" CssClass="btn app-btn-secondary" Visible="false">Cancel</asp:LinkButton>
+						    </div><!--//app-card-footer-->
 						</div><!--//app-card-->
 					</div>
                 </div><!--//row-->

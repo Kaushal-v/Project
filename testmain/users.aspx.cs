@@ -36,15 +36,20 @@ namespace testmain
             DataTable dt = new DataTable();
             da.Fill(dt);
             lblsubs.Text = dt.Rows[0].Field<int>("cout").ToString();
+            int user_count = dt.Rows[0].Field<int>("cout");
             da = new SqlDataAdapter("select count(*) as cout from user_master where user_type='miner'", con);
             dt = new DataTable();
-            da.Fill(dt);
+            da.Fill(dt);            
             lblminers.Text = dt.Rows[0].Field<int>("cout").ToString();
+            user_count += dt.Rows[0].Field<int>("cout");
             da = new SqlDataAdapter("select count(*) as cout from user_master where user_type='admin'", con);
             dt = new DataTable();
             da.Fill(dt);
-            lbladmins.Text = dt.Rows[0].Field<int>("cout").ToString();           
+            lbladmins.Text = dt.Rows[0].Field<int>("cout").ToString();
+            user_count += dt.Rows[0].Field<int>("cout");
             con.Close();
+            List<string> ip_list = (List<string>)Application["ip_list"];
+            lblguests.Text = (ip_list.Count).ToString();
             if (IsPostBack && tbuname.Text != "" && tbpass.Text != "")
             {
                 tbuname_changed();

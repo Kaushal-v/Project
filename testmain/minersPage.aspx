@@ -16,7 +16,7 @@
 												<div class="app-card-header p-3">
 													<h3 class="app-page-title" style="font-size:15px;">Pending Transactions</h3>
 													<div class="row justify-content-between align-items-center">
-													   <asp:GridView ID="gvpendingtransactions" BorderStyle="None" runat="server" OnPageIndexChanging="gvpendingtransactions_PageIndexChanging" Width="100%" AutoGenerateColumns="False" EmptyDataText="No records has been added." AllowPaging="True" PageSize="20" PagerStyle-HorizontalAlign="Center">
+													   <asp:GridView ID="gvpendingtransactions" CssClass="table app-table-hover mb-0 text-center" BorderStyle="None" runat="server" OnPageIndexChanging="gvpendingtransactions_PageIndexChanging" Width="100%" AutoGenerateColumns="False" EmptyDataText="No records has been added." AllowPaging="True" PageSize="20" PagerStyle-HorizontalAlign="Center">
 															<Columns>																
 																<asp:BoundField DataField="from" HeaderText="Sender Hash"/>
 																<asp:BoundField DataField="to" HeaderText="Receiver Hash"/>

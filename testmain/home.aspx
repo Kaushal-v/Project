@@ -18,7 +18,7 @@
 				        <div class="app-card app-card-stats-table h-100 shadow-sm">
 					        <div class="app-card-header p-3">
 						        <div class="row justify-content-between align-items-center">
-							   <asp:GridView ID="share_info" runat="server" DataKeyField="share_id" AutoGenerateColumns="False" style="border:none; margin-top:50px; margin-left: auto; margin-right:auto;" Width="70%" PageSize="5">
+							   <asp:GridView ID="share_info" CssClass="table app-table-hover mb-auto text-center" runat="server" DataKeyField="share_id" AutoGenerateColumns="False" style="border:none; margin-top:50px; margin-left: auto; margin-right:auto;" Width="70%" PageSize="5">
                                 <Columns>
 									<asp:BoundField DataField="share_id" HeaderText="#"/>
 									<asp:BoundField DataField="share_name" HeaderText="Share Name"/>
@@ -65,7 +65,7 @@
 					    </div><!--//app-card-->
 				    </div><!--//col-->
 			    </div><!--//row-->
-				<div class="bg-pic"><img src="https://www.hyperlinkinfosystem.com/assets/uploads/banner/1520468007.png" /></div>
+				<div class="bg-pic"><img style="width:100%;" src="home_blockchain.png" /></div>
                 <div class="row g-4 mb-4" style="padding-top:50px;">
 				    <div class="col-12 col-lg-4">
 					    <div class="app-card app-card-stat shadow-sm h-100">

@@ -26,7 +26,7 @@
 						        </div><!--//row-->
 						    </div><!--//app-card-header-->
 						    <div class="app-card-body px-4 w-100">
-							    <asp:GridView ID="gvshare_info" runat="server" DataKeyField="id" AutoGenerateColumns="False" style="border:none;" Width="100%" PageSize="5">
+							    <asp:GridView ID="gvshare_info" CssClass="table app-table-hover mb-auto text-center" runat="server" DataKeyField="id" AutoGenerateColumns="False" style="border:none;" Width="100%" PageSize="5">
                                 <Columns>
 									<asp:BoundField DataField="share_id" HeaderText="#"/>
 									<asp:BoundField DataField="share_name" HeaderText="Share Name"/>
@@ -68,7 +68,7 @@
 							    <div class="item border-bottom py-3">
 								    <div class="row justify-content-between align-items-center">
 									    <div class="col-auto" style="overflow-x:auto;">
-										     <asp:GridView ID="gvminerpendingtransactions" runat="server" EmptyDataText="No Pending Transactions" AutoGenerateColumns="False" style="border:none;" Width="100%" PageSize="5">
+										     <asp:GridView ID="gvminerpendingtransactions" CssClass="table app-table-hover mb-auto text-center" runat="server" EmptyDataText="No Pending Transactions" AutoGenerateColumns="False" style="border:none;" Width="100%" PageSize="5">
 												<Columns>
 													<asp:TemplateField HeaderText="Sender Hash">
 																	<ItemTemplate>

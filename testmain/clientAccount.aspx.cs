@@ -108,6 +108,9 @@ namespace testmain
             tbconno.MaxLength = 10;
             btnsave.Visible = false;
             btncancel.Visible = false;
+            tb_pass.Visible=false;
+            tb_pass.Text = "";
+            lbl_pass.Visible = true;
         }
 
         protected void btn_passchange_Click(object sender, EventArgs e)
@@ -118,45 +121,52 @@ namespace testmain
             tb_pass.Visible = true;
             btnsave.Visible = false;
             btncancel.Visible = false;
+            tbconno.Visible = false;
+            tb_pass.Text = "";
+            lblconno.Visible = true;
         }
 
         protected void btn_save_Click(object sender, EventArgs e)
         {
-            string u_name = "";
-            try
+            if (tbconno.Text != "" || tb_pass.Text != "")
             {
-                u_name = Session["u_name"].ToString();
-            }
-            catch (Exception)
-            {
-                Response.Redirect("signin.aspx");
-            }
-            con.Open();
-            SqlDataAdapter da = new SqlDataAdapter("select * from user_master where user_name='" + u_name + "' ", con);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            int id = dt.Rows[0].Field<int>("user_id");           
-            if (tb_pass.Visible == true)
-            {
-                string conno = dt.Rows[0].Field<int>("user_contact_no").ToString();
-                if(conno != tbconno.Text)
+                string u_name = "";
+                try
                 {
-                    DateTime now = DateTime.Now;
-                    string timenow = string.Format("{0:yyyy-MM-dd H:mm:ss}", now);
-                    SqlCommand cmd = new SqlCommand("update user_master set user_date_updated='" + timenow + "',user_contact_no='"+tbconno.Text+"'  where user_id='" + id + "'", con);
-                    cmd.ExecuteNonQuery();
+                    u_name = Session["u_name"].ToString();
                 }
-            }
-            else if(tbconno.Visible == true)
-            {
-                string pass = dt.Rows[0].Field<int>("user_password").ToString();
-                if (pass != tbconno.Text)
+                catch (Exception)
                 {
-                    DateTime now = DateTime.Now;
-                    string timenow = string.Format("{0:yyyy-MM-dd H:mm:ss}", now);
-                    SqlCommand cmd = new SqlCommand("update user_master set user_date_updated='" + timenow + "',user_contact_no='" + tbconno.Text + "'  where user_id='" + id + "'", con);
-                    cmd.ExecuteNonQuery();
+                    Response.Redirect("signin.aspx");
                 }
+                con.Open();
+                SqlDataAdapter da = new SqlDataAdapter("select * from user_master where user_name='" + u_name + "' ", con);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                int id = dt.Rows[0].Field<int>("user_id");
+                if (tb_pass.Visible == true)
+                {
+                    string pass = dt.Rows[0].Field<string>("user_password");
+                    if (pass != tb_pass.Text)
+                    {                    
+                        DateTime now = DateTime.Now;
+                        string timenow = string.Format("{0:yyyy-MM-dd H:mm:ss}", now);
+                        SqlCommand cmd = new SqlCommand("update user_master set user_date_updated='" + timenow + "',user_password='" + tb_pass.Text + "'  where user_id='" + id + "'", con);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                else if (tbconno.Visible == true)
+                {
+                    string conno = dt.Rows[0].Field<string>("user_contact_no");
+                    if (conno != tbconno.Text)
+                    {
+                        DateTime now = DateTime.Now;
+                        string timenow = string.Format("{0:yyyy-MM-dd H:mm:ss}", now);
+                        SqlCommand cmd = new SqlCommand("update user_master set user_date_updated='" + timenow + "',user_contact_no='" + tbconno.Text + "'  where user_id='" + id + "'", con);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                Response.Redirect("clientAccount.aspx");
             }
         }
     }

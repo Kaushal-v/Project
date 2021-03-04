@@ -37,7 +37,7 @@ namespace testmain
             ddlpanelshare.Items.Insert(0, new ListItem("Select", "Select"));
         }
         protected void Page_Load(object sender, EventArgs e)
-        {
+        {            
             if (!this.IsPostBack)
             {
                 bind_data_default();
@@ -246,19 +246,18 @@ namespace testmain
                             cmd = new SqlCommand("update share_holder_master set holder_share_count='" + avail_count + "' ,share_holder_last_updated_time='" + timenow + "' where user_id='" + u_id + "' and share_id='" + share_id + "'", con);
                             cmd.ExecuteNonQuery();
                         }
-                        da = new SqlDataAdapter("Select share_price,share_available_count,share_sold_count from share_master where share_id='" + share_id + "'", con);
+                        da = new SqlDataAdapter("Select share_price,share_available_count,share_received_count from share_master where share_id='" + share_id + "'", con);
                         dt = new DataTable();
                         da.Fill(dt);
-                        int total_avail_count = dt.Rows[0].Field<int>("share_available_count") + count;
-                        int sold_count = dt.Rows[0].Field<int>("share_sold_count") - count;
+                        int sold_count = dt.Rows[0].Field<int>("share_received_count") + count;
                         double last_price = dt.Rows[0].Field<double>("share_price");
-                        cmd = new SqlCommand("update share_master set share_available_count = '" + total_avail_count + "',share_sold_count = '" + sold_count + "' where share_id='" + share_id + "'", con);
+                        cmd = new SqlCommand("update share_master set share_received_count = '" + sold_count + "' where share_id='" + share_id + "'", con);
                         cmd.ExecuteNonQuery();
                         da = new SqlDataAdapter("select * from share_master where share_id='" + share_id + "'", con);
                         dt = new DataTable();
                         da.Fill(dt);
                         double original_share_price = dt.Rows[0].Field<double>("share_price");
-                        double share_price_now = original_share_price - (original_share_price * count * 0.03);
+                        double share_price_now = original_share_price - (original_share_price * count * 0.02);
                         cmd = new SqlCommand("update share_master set share_price='" + share_price_now + "' where share_id='" + share_id + "'", con);
                         cmd.ExecuteNonQuery();
                         now = DateTime.Now;

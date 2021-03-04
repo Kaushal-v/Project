@@ -102,7 +102,79 @@ namespace testmain
             tbmail.Visible = true;
             btnsave.Visible = true;
             btncancel.Visible = true;
-        }       
+        }
+
+        protected void btn_cochange_Click(object sender, EventArgs e)
+        {
+            btn_save.Visible = true;
+            btn_cancel.Visible = true;
+            lblconno.Visible = false;
+            tbconno.Visible = true;
+            tbconno.ReadOnly = false;
+            tbconno.TextMode = TextBoxMode.Number;
+            tbconno.MaxLength = 10;
+            btnsave.Visible = false;
+            btncancel.Visible = false;
+            tb_pass.Visible = false;
+            lbl_pass.Visible = true;
+        }
+
+        protected void btn_passchange_Click(object sender, EventArgs e)
+        {
+            btn_save.Visible = true;
+            btn_cancel.Visible = true;
+            lbl_pass.Visible = false;
+            tb_pass.Visible = true;
+            btnsave.Visible = false;
+            btncancel.Visible = false;
+            tbconno.Visible = false;
+            lblconno.Visible = true;
+        }
+
+        protected void btn_save_Click(object sender, EventArgs e)
+        {
+            if (tbconno.Text != "" || tb_pass.Text != "")
+            {
+                string u_name = "";
+                try
+                {
+                    u_name = Session["u_name"].ToString();
+                }
+                catch (Exception)
+                {
+                    Response.Redirect("signin.aspx");
+                }
+                con.Open();
+                SqlDataAdapter da = new SqlDataAdapter("select * from user_master where user_name='" + u_name + "' ", con);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                int id = dt.Rows[0].Field<int>("user_id");
+                if (tb_pass.Visible == true)
+                {
+                    string pass = dt.Rows[0].Field<string>("user_password");
+                    if (pass != tb_pass.Text)
+                    {
+                        DateTime now = DateTime.Now;
+                        string timenow = string.Format("{0:yyyy-MM-dd H:mm:ss}", now);
+                        SqlCommand cmd = new SqlCommand("update user_master set user_date_updated='" + timenow + "',user_password='" + tb_pass.Text + "'  where user_id='" + id + "'", con);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                else if (tbconno.Visible == true)
+                {
+                    string conno = dt.Rows[0].Field<string>("user_contact_no");
+                    if (conno != tbconno.Text)
+                    {
+                        DateTime now = DateTime.Now;
+                        string timenow = string.Format("{0:yyyy-MM-dd H:mm:ss}", now);
+                        SqlCommand cmd = new SqlCommand("update user_master set user_date_updated='" + timenow + "',user_contact_no='" + tbconno.Text + "'  where user_id='" + id + "'", con);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            Response.Redirect("adminAccount.aspx");
+
+        }
 
         //protected void tbuname_TextChanged(object sender, EventArgs e)
         //{

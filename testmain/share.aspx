@@ -64,7 +64,21 @@
 				<div class="row g-4 mb-4">
                 <div class="col-12">
 				        <div class="app-card app-card-stats-table h-100 shadow-sm">
-							<div class="text-right" style="padding:30px 30px 0px 30px;"><h3><asp:LinkButton ID="btnaddshare" CssClass="btn-lg app-btn-secondary" runat="server" Text="Add Share"></asp:LinkButton></h3></div>
+							<div class="text-right" style="padding:30px 30px 0px 30px;">
+								<div class="row align-items-center gx-3" style="width:50%; float:left;">
+									 <div class="col-auto">
+								        <div class="app-icon-holder">
+										    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-folder" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path d="M9.828 4a3 3 0 0 1-2.12-.879l-.83-.828A1 1 0 0 0 6.173 2H2.5a1 1 0 0 0-1 .981L1.546 4h-1L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3v1z"></path>
+  <path fill-rule="evenodd" d="M13.81 4H2.19a1 1 0 0 0-.996 1.09l.637 7a1 1 0 0 0 .995.91h10.348a1 1 0 0 0 .995-.91l.637-7A1 1 0 0 0 13.81 4zM2.19 3A2 2 0 0 0 .198 5.181l.637 7A2 2 0 0 0 2.826 14h10.348a2 2 0 0 0 1.991-1.819l.637-7A2 2 0 0 0 13.81 3H2.19z"></path>
+</svg>
+									    </div><!--//icon-holder-->
+						                
+							        </div><!--//col-->
+							        <div class="col-auto">
+								        <h4 class="app-card-title">Share Details</h4>
+							        </div><!--//col-->
+						        </div><!--//row--><!--//col--><div><h3><asp:LinkButton ID="btnaddshare" CssClass="btn-lg app-btn-secondary" runat="server" Text="Add Share"></asp:LinkButton></h3></div></div>
 					        <div class="app-card-header p-3">
 						        <div class="row justify-content-between align-items-center">
 									<div class="row g-4 mb-4">
@@ -72,14 +86,12 @@
 											<div class="app-card app-card-stats-table h-100 shadow-sm">
 												<div class="app-card-header p-3 border-bottom-0">
 															<div class="row align-items-center gx-3">
-																<div class="col-auto">																	
-																	<h4 class="app-card-title" style="font-size:25px;"><asp:Label Visible="false" runat="server" ID="lblsharedetails">Share Details</asp:Label></h4>
-																</div><!--//col-->
+																
 															</div><!--//row-->
 														</div><!--//app-card-header-->
 												<div class="app-card-header p-3">
 													<div class="row justify-content-between align-items-center">
-													   <asp:GridView ID="gvsharedetails" BorderStyle="None" runat="server" Width="100%" OnRowCommand="gvsharedetails_RowCommand" OnRowDeleting="gvsharedetails_RowDeleting" AutoGenerateColumns="False" DataKeyNames="share_id" EmptyDataText="No records has been added.">
+													   <asp:GridView ID="gvsharedetails" CssClass="table app-table-hover mb-0 text-left" BorderStyle="None" runat="server" Width="100%" OnRowCommand="gvsharedetails_RowCommand" OnRowDeleting="gvsharedetails_RowDeleting" AutoGenerateColumns="False" DataKeyNames="share_id" EmptyDataText="No records has been added.">
 															<Columns>
 																<asp:BoundField DataField="share_id" HeaderText="#"/>
 																<asp:BoundField DataField="share_name" HeaderText="Share Name"/>

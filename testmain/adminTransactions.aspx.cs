@@ -34,33 +34,48 @@ namespace testmain
             btn.CssClass = "nav-link";
             string constr = ConfigurationManager.ConnectionStrings["ConString"].ConnectionString;
             con.ConnectionString = constr;
-            con.Open();
-            SqlDataAdapter da = new SqlDataAdapter("select * from blockchain_master,transaction_master where blockchain_master.block_hash=transaction_master.block_hash order by blockchain_master.block_timestamp desc", con);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            gvtransactiondetails.DataSource = dt;
-            gvtransactiondetails.DataBind();
-            blockchain b1 = (blockchain)Application["obj_blockchain"];
-            if (b1.pendingTransactions != null)
+            if (!IsPostBack)
             {
-
-                gvpendingtransactions.DataSource = b1.pendingTransactions;
-                gvpendingtransactions.DataBind();
+                con.Open();
+                blockchain b1 = (blockchain)Application["obj_blockchain"];
+                SqlDataAdapter da = new SqlDataAdapter("select * from blockchain_master,transaction_master where blockchain_master.block_hash=transaction_master.block_hash order by blockchain_master.block_timestamp desc", con);
+                DataTable dt = new DataTable(), dtverified = new DataTable();
+                da.Fill(dtverified);
+                dt.Columns.Add("block_hash");
+                dt.Columns.Add("transaction_sender_hash");
+                dt.Columns.Add("transaction_receiver_hash");
+                dt.Columns.Add("block_previous_hash");
+                dt.Columns.Add("block_timestamp");
+                dt.Columns.Add("status");
+                dtverified.Columns.Add("status");
+                dt.Columns.Add("transaction_chips");
+                foreach (Transaction t1 in b1.pendingTransactions)
+                {
+                    DataRow row = dt.NewRow();
+                    row["block_hash"] = "-";
+                    row["transaction_sender_hash"] = t1.from;
+                    row["transaction_receiver_hash"] = t1.to;
+                    row["block_previous_hash"] = "-";
+                    row["block_timestamp"] = "-";
+                    row["status"] = "Pending";
+                    row["transaction_chips"] = t1.amount;
+                    dt.Rows.Add(row);
+                }
+                foreach (DataRow row in dtverified.Rows)
+                {
+                    row["status"] = "Verified";
+                    dt.ImportRow(row);
+                }
+                gvtransactiondetails.DataSource = dt;
+                gvtransactiondetails.DataBind();                
+                con.Close();
             }
-            con.Close();
         }
-
         protected void gvtransactiondetails_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             gvtransactiondetails.PageIndex = e.NewPageIndex;
-            gvtransactiondetails.DataBind();
+            DataBind();
         }
-
-        protected void gvpendingtransactions_PageIndexChanging(object sender, GridViewPageEventArgs e)
-        {
-            gvpendingtransactions.PageIndex = e.NewPageIndex;
-            gvpendingtransactions.DataBind();
-        }       
 
         protected void btndownload_pdf_Click(object sender, EventArgs e)
         {
@@ -73,11 +88,107 @@ namespace testmain
                 string timenow = string.Format("{0:yyyy-MM-dd H:mm:ss}", now);
                 Response.AddHeader("Content-Disposition", "attachment;filename=" + b1.name + timenow + ".pdf");
                 Response.WriteFile(path);
+                //Response.Redirect("http://docs.google.com/viewer?url=" + path);
                 Response.TransmitFile(Server.MapPath(path));
                 Response.End();
             }
             catch (Exception ex)
             { Response.Write(ex.Message); }
+        }
+
+        protected void orders_all_tab_Click(object sender, EventArgs e)
+        {
+            orders_verified_tab.CssClass = "flex-sm-fill text-sm-center nav-link";
+            orders_pending_tab.CssClass = "flex-sm-fill text-sm-center nav-link";
+            orders_all_tab.CssClass = "flex-sm-fill text-sm-center nav-link active";
+            con.Open();
+            blockchain b1 = (blockchain)Application["obj_blockchain"];
+            SqlDataAdapter da = new SqlDataAdapter("select * from blockchain_master,transaction_master where blockchain_master.block_hash=transaction_master.block_hash order by blockchain_master.block_timestamp desc", con);
+            DataTable dt = new DataTable(), dtverified = new DataTable();
+            da.Fill(dtverified);
+            dt.Columns.Add("block_hash");
+            dt.Columns.Add("transaction_sender_hash");
+            dt.Columns.Add("transaction_receiver_hash");
+            dt.Columns.Add("block_previous_hash");
+            dt.Columns.Add("block_timestamp");
+            dt.Columns.Add("status");
+            dt.Columns.Add("transaction_chips");
+            dtverified.Columns.Add("status");
+            foreach (Transaction t1 in b1.pendingTransactions)
+            {
+                DataRow row = dt.NewRow();
+                row["block_hash"] = "-";
+                row["transaction_sender_hash"] = t1.from;
+                row["transaction_receiver_hash"] = t1.to;
+                row["block_previous_hash"] = "-";
+                row["block_timestamp"] = "-";
+                row["status"] = "Pending";
+                row["transaction_chips"] = t1.amount;
+                dt.Rows.Add(row);
+            }
+            foreach (DataRow row in dtverified.Rows)
+            {
+                row["status"] = "Verified";
+                dt.ImportRow(row);
+            }
+            gvtransactiondetails.DataSource = dt;
+            gvtransactiondetails.DataBind();
+            con.Close();
+        }
+
+        protected void orders_verified_tab_Click(object sender, EventArgs e)
+        {
+            orders_verified_tab.CssClass = "flex-sm-fill text-sm-center nav-link active";
+            orders_pending_tab.CssClass = "flex-sm-fill text-sm-center nav-link";
+            orders_all_tab.CssClass = "flex-sm-fill text-sm-center nav-link";
+            con.Open();
+            SqlDataAdapter da = new SqlDataAdapter("select * from blockchain_master,transaction_master where blockchain_master.block_hash=transaction_master.block_hash order by blockchain_master.block_timestamp desc", con);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            dt.Columns.Add("status");
+            foreach(DataRow row in dt.Rows)
+            {
+                row["status"] = "Verified";
+            }
+            gvtransactiondetails.DataSource = dt;
+            gvtransactiondetails.DataBind();
+            con.Close();
+        }
+
+        protected void orders_pending_tab_Click(object sender, EventArgs e)
+        {
+            orders_verified_tab.CssClass = "flex-sm-fill text-sm-center nav-link";
+            orders_pending_tab.CssClass = "flex-sm-fill text-sm-center nav-link active";
+            orders_all_tab.CssClass = "flex-sm-fill text-sm-center nav-link";
+            blockchain b1 = (blockchain)Application["obj_blockchain"];
+            DataTable dt = new DataTable();
+            dt.Columns.Add("block_hash");
+            dt.Columns.Add("transaction_sender_hash");
+            dt.Columns.Add("transaction_receiver_hash");
+            dt.Columns.Add("block_previous_hash");
+            dt.Columns.Add("block_timestamp");
+            dt.Columns.Add("status");
+            dt.Columns.Add("transaction_chips");
+            foreach (Transaction t1 in b1.pendingTransactions)
+            {
+                DataRow row = dt.NewRow();
+                row["block_hash"] = "-";
+                row["transaction_sender_hash"] = t1.from;
+                row["transaction_receiver_hash"] = t1.to;
+                row["block_previous_hash"] = "-";
+                row["block_timestamp"] = "-";
+                row["status"] = "Pending";
+                row["transaction_chips"] = t1.amount;
+                dt.Rows.Add(row);
+            }
+            gvtransactiondetails.DataSource = dt;
+            gvtransactiondetails.DataBind();
+        }
+
+        protected void gvtransactiondetails_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            //Label lbl1 = gvtransactiondetails.Rows[1].Cells[1].FindControl("lblblockhash") as Label;
+            //Label lbl2 = e.Row.FindControl("lblblockhash") as Label;
         }
     }
 }
