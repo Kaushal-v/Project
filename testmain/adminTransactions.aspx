@@ -73,7 +73,7 @@
 																</asp:TemplateField>
 																<asp:TemplateField HeaderText="Status">
 																	<ItemTemplate>
-																		<asp:Label CssClass="badge alert-success" Style="word-wrap: normal; word-break: break-all;" ID="Label5" runat="server" Text='<%#  Bind("status")%>'></asp:Label>
+																		<asp:Label Style="word-wrap: normal; word-break: break-all;" ID="Label5" runat="server" Text='<%#  Bind("status")%>'></asp:Label>
 																	</ItemTemplate>
 																</asp:TemplateField>
 																<asp:TemplateField HeaderText="Chips">

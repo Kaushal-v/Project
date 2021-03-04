@@ -24,12 +24,12 @@ namespace testmain
         protected global::System.Web.UI.WebControls.GridView gvshare_info;
 
         /// <summary>
-        /// gvminerpendingtransactions control.
+        /// gvtransactiondetails control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvminerpendingtransactions;
+        protected global::System.Web.UI.WebControls.GridView gvtransactiondetails;
     }
 }

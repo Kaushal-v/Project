@@ -183,12 +183,24 @@ namespace testmain
             }
             gvtransactiondetails.DataSource = dt;
             gvtransactiondetails.DataBind();
-        }
+        }               
 
         protected void gvtransactiondetails_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            //Label lbl1 = gvtransactiondetails.Rows[1].Cells[1].FindControl("lblblockhash") as Label;
-            //Label lbl2 = e.Row.FindControl("lblblockhash") as Label;
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                DataRowView v = (DataRowView)e.Row.DataItem;
+
+                if (e.Row.Cells.Count > 0 && e.Row.Cells[0] != null && e.Row.Cells[0].Controls.Count > 0)
+                {
+                    Label lbl = e.Row.Cells[5].Controls[1] as Label;
+                    if (lbl != null)
+                    {
+                        if (lbl.Text == "Verified") { lbl.CssClass = "badge bg-success"; }
+                        else if (lbl.Text == "Pending") { lbl.CssClass = "badge bg-warning"; }
+                    }
+                }
+            }            
         }
     }
 }

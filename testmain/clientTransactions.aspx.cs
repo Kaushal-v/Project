@@ -30,6 +30,8 @@ namespace testmain
                 dt.Columns.Add("transaction_receiver_hash");
                 dt.Columns.Add("block_previous_hash");
                 dt.Columns.Add("block_timestamp");
+                dt.Columns.Add("status");
+                dtverified.Columns.Add("status");
                 dt.Columns.Add("transaction_chips");
                 foreach (Transaction t1 in b1.pendingTransactions)
                 {
@@ -39,18 +41,20 @@ namespace testmain
                     row["transaction_receiver_hash"] = t1.to;
                     row["block_previous_hash"] = "-";
                     row["block_timestamp"] = "-";
+                    row["status"] = "Pending";
                     row["transaction_chips"] = t1.amount;
                     dt.Rows.Add(row);
                 }
                 foreach (DataRow row in dtverified.Rows)
                 {
+                    row["status"] = "Verified";
                     dt.ImportRow(row);
                 }
                 gvtransactiondetails.DataSource = dt;
                 gvtransactiondetails.DataBind();
                 con.Close();
             }
-        }       
+        }
         protected void gvtransactiondetails_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             gvtransactiondetails.PageIndex = e.NewPageIndex;
@@ -91,7 +95,9 @@ namespace testmain
             dt.Columns.Add("transaction_receiver_hash");
             dt.Columns.Add("block_previous_hash");
             dt.Columns.Add("block_timestamp");
+            dt.Columns.Add("status");
             dt.Columns.Add("transaction_chips");
+            dtverified.Columns.Add("status");
             foreach (Transaction t1 in b1.pendingTransactions)
             {
                 DataRow row = dt.NewRow();
@@ -100,11 +106,13 @@ namespace testmain
                 row["transaction_receiver_hash"] = t1.to;
                 row["block_previous_hash"] = "-";
                 row["block_timestamp"] = "-";
+                row["status"] = "Pending";
                 row["transaction_chips"] = t1.amount;
                 dt.Rows.Add(row);
             }
             foreach (DataRow row in dtverified.Rows)
             {
+                row["status"] = "Verified";
                 dt.ImportRow(row);
             }
             gvtransactiondetails.DataSource = dt;
@@ -121,6 +129,11 @@ namespace testmain
             SqlDataAdapter da = new SqlDataAdapter("select * from blockchain_master,transaction_master where blockchain_master.block_hash=transaction_master.block_hash order by blockchain_master.block_timestamp desc", con);
             DataTable dt = new DataTable();
             da.Fill(dt);
+            dt.Columns.Add("status");
+            foreach (DataRow row in dt.Rows)
+            {
+                row["status"] = "Verified";
+            }
             gvtransactiondetails.DataSource = dt;
             gvtransactiondetails.DataBind();
             con.Close();
@@ -132,8 +145,46 @@ namespace testmain
             orders_pending_tab.CssClass = "flex-sm-fill text-sm-center nav-link active";
             orders_all_tab.CssClass = "flex-sm-fill text-sm-center nav-link";
             blockchain b1 = (blockchain)Application["obj_blockchain"];
-            gvtransactiondetails.DataSource = b1.pendingTransactions;
+            DataTable dt = new DataTable();
+            dt.Columns.Add("block_hash");
+            dt.Columns.Add("transaction_sender_hash");
+            dt.Columns.Add("transaction_receiver_hash");
+            dt.Columns.Add("block_previous_hash");
+            dt.Columns.Add("block_timestamp");
+            dt.Columns.Add("status");
+            dt.Columns.Add("transaction_chips");
+            foreach (Transaction t1 in b1.pendingTransactions)
+            {
+                DataRow row = dt.NewRow();
+                row["block_hash"] = "-";
+                row["transaction_sender_hash"] = t1.from;
+                row["transaction_receiver_hash"] = t1.to;
+                row["block_previous_hash"] = "-";
+                row["block_timestamp"] = "-";
+                row["status"] = "Pending";
+                row["transaction_chips"] = t1.amount;
+                dt.Rows.Add(row);
+            }
+            gvtransactiondetails.DataSource = dt;
             gvtransactiondetails.DataBind();
-        }       
+        }
+
+        protected void gvtransactiondetails_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                DataRowView v = (DataRowView)e.Row.DataItem;
+
+                if (e.Row.Cells.Count > 0 && e.Row.Cells[0] != null && e.Row.Cells[0].Controls.Count > 0)
+                {
+                    Label lbl = e.Row.Cells[5].Controls[1] as Label;
+                    if (lbl != null)
+                    {
+                        if (lbl.Text == "Verified") { lbl.CssClass = "badge bg-success"; }
+                        else if (lbl.Text == "Pending") { lbl.CssClass = "badge bg-warning"; }
+                    }
+                }
+            }
+        }
     }
 }

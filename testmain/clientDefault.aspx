@@ -6,7 +6,7 @@
 		    <div class="container-xl">
 			    
 			    <h1 class="app-page-title">Home</h1>
-                <div class="row gy-4">
+                <div class="row gy-4 mb-4">
 	                <div class="col-12 col-lg-6">
 		                <div class="app-card app-card-account shadow-sm d-flex flex-column align-items-start">
 						    <div class="app-card-header p-3 border-bottom-0">
@@ -42,12 +42,14 @@
 						    </div><!--//app-card-body-->
 						   
 						</div><!--//app-card-->
-	                </div><!--//col-->
-	                <div class="col-12 col-lg-6">
+	                </div><!--//col-->	               
+                </div><!--//row-->
+				<div class="row mb-4 gy-4">
+	                <div class="col-12 col-lg-12">
 		                <div class="app-card app-card-account shadow-sm d-flex flex-column align-items-start">
 						    <div class="app-card-header p-3 border-bottom-0">
 						        <div class="row align-items-center gx-3">
-							         <div class="col-auto">
+							        <div class="col-auto">
 								        <div class="app-icon-holder">
 										    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-card-list" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
   <path fill-rule="evenodd" d="M14.5 3h-13a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"></path>
@@ -60,7 +62,7 @@
 						                
 							        </div><!--//col-->
 							        <div class="col-auto">
-								        <h4 class="app-card-title">Your Pending Transactions</h4>
+								        <h4 class="app-card-title">Your Transactions</h4>
 							        </div><!--//col-->									
 						        </div><!--//row-->
 						    </div><!--//app-card-header-->
@@ -68,33 +70,54 @@
 							    <div class="item border-bottom py-3">
 								    <div class="row justify-content-between align-items-center">
 									    <div class="col-auto" style="overflow-x:auto;">
-										     <asp:GridView ID="gvminerpendingtransactions" CssClass="table app-table-hover mb-auto text-center" runat="server" EmptyDataText="No Pending Transactions" AutoGenerateColumns="False" style="border:none;" Width="100%" PageSize="5">
-												<Columns>
-													<asp:TemplateField HeaderText="Sender Hash">
+										     <asp:GridView ID="gvtransactiondetails" CssClass="table app-table-hover mb-0 text-left" OnRowDataBound="gvtransactiondetails_RowDataBound" BorderStyle="None" runat="server" OnPageIndexChanging="gvtransactiondetails_PageIndexChanging" Width="100%" AutoGenerateColumns="False" DataKeyNames="block_hash" EmptyDataText="No records has been added." AllowPaging="True" PageSize="5" PagerStyle-HorizontalAlign="Center">
+															<Columns>
+																<asp:TemplateField HeaderText="Hash">
 																	<ItemTemplate>
-																		<asp:Label width="265" Style="word-wrap: normal; word-break: break-all;" ID="lblblockhash" runat="server" Text='<%#  Bind("from")%>'></asp:Label>
+																		<asp:Label CssClass="cell" width="248" Style="word-wrap: normal; word-break: break-all;" ID="lblblockhash" runat="server" Text='<%#  Bind("block_hash")%>'></asp:Label>
+																	</ItemTemplate>
+																</asp:TemplateField>
+																<asp:TemplateField HeaderText="Sender Hash">
+																	<ItemTemplate>
+																		<asp:Label width="228" Style="word-wrap: normal; word-break: break-all;" ID="Label1" runat="server" Text='<%#  Bind("transaction_sender_hash")%>'></asp:Label>
 																	</ItemTemplate>
 																</asp:TemplateField>
 																<asp:TemplateField HeaderText="Receiver Hash">
 																	<ItemTemplate>
-																		<asp:Label width="265" Style="word-wrap: normal; word-break: break-all;" ID="lblblockhash" runat="server" Text='<%#  Bind("to")%>'></asp:Label>
+																		<asp:Label width="228" Style="word-wrap: normal; word-break: break-all;" ID="Label2" runat="server" Text='<%#  Bind("transaction_receiver_hash")%>'></asp:Label>
+																	</ItemTemplate>
+																</asp:TemplateField>																
+																<asp:TemplateField HeaderText="Previous Hash">
+																	<ItemTemplate>
+																		<asp:Label width="228" Style="word-wrap: normal; word-break: break-all;" ID="Label3" runat="server" Text='<%#  Bind("block_previous_hash")%>'></asp:Label>
+																	</ItemTemplate>
+																</asp:TemplateField>
+																<asp:TemplateField HeaderText="Time Stamp">
+																	<ItemTemplate>
+																		<asp:Label width="128" Style="word-wrap: normal; word-break: break-all;" ID="Label4" runat="server" Text='<%#  Bind("block_timestamp")%>'></asp:Label>
+																	</ItemTemplate>
+																</asp:TemplateField>
+																<asp:TemplateField HeaderText="Status">
+																	<ItemTemplate>
+																		<asp:Label Style="word-wrap: normal; word-break: break-all;" ID="Label5" runat="server" Text='<%#  Bind("status")%>'></asp:Label>
 																	</ItemTemplate>
 																</asp:TemplateField>
 																<asp:TemplateField HeaderText="Chips">
 																	<ItemTemplate>
-																		<asp:Label ID="lblblockhash" runat="server" Text='<%# ((double)Eval("amount")).ToString().Length < 4 ? Eval("amount") :(Math.Round((double)Eval("amount"),2))%>'></asp:Label>
+																		<asp:Label runat="server" ID="Label5" Text='<%# Bind("transaction_chips")%>'> </asp:Label>
 																	</ItemTemplate>
 																</asp:TemplateField>
-												</Columns>
-												<AlternatingRowStyle BackColor="White" />
-											</asp:GridView>
+															</Columns>
+
+<PagerStyle HorizontalAlign="Center"></PagerStyle>
+														</asp:GridView>
 									    </div><!--//col-->
 								    </div><!--//row-->
 							    </div><!--//item-->		
-						    </div><!--//app-card-body-->
+							</div>
 						</div><!--//app-card-->
-					</div>
-                </div><!--//row-->
+	                </div><!--//col-->					
+				</div>
 		    </div><!--//container-fluid-->
 	    </div><!--//app-content-->
 </asp:Content>
