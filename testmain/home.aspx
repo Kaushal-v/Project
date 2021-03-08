@@ -20,9 +20,12 @@
 						        <div class="row justify-content-between align-items-center">
 							   <asp:GridView ID="share_info" CssClass="table app-table-hover mb-auto text-center" runat="server" DataKeyField="share_id" AutoGenerateColumns="False" style="border:none; margin-top:50px; margin-left: auto; margin-right:auto;" Width="70%" PageSize="5">
                                 <Columns>
-									<asp:BoundField DataField="share_id" HeaderText="#"/>
 									<asp:BoundField DataField="share_name" HeaderText="Share Name"/>
-									<asp:BoundField DataField="share_price" HeaderText="Price"/>                                   
+									<asp:TemplateField HeaderText="Price">
+                                        <ItemTemplate>
+                                            <asp:Label ID="share_price" runat="server" Text='<%#  Math.Round(Convert.ToDouble(Eval("share_price")),3) %>'></asp:Label>
+                                        </ItemTemplate>
+				                    </asp:TemplateField>                                   
 									<asp:TemplateField HeaderText="Change">
                                         <ItemTemplate>
                                             <asp:Label ID="lblchange" runat="server" Text="0"></asp:Label>

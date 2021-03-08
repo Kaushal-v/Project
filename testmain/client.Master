@@ -72,7 +72,7 @@
 		<cc1:ModalPopupExtender ID="popupbuysell" runat="server" TargetControlID="btnbuysell" PopupControlID="panelbuysell"></cc1:ModalPopupExtender>
         <div>
             <header class="app-header fixed-top">
-            <div class="app-branding app-sidepanel" style="border:none;">
+            <div class="app-branding app-sidepanel2" style="border:none;float:left; width:40%;">
 		        <a class="app-logo" href="clientDefault.aspx"><img class="logo-icon mr-2" src="blockchain.png" alt="logo"><span class="logo-text">ShareLog</span></a>
 		    </div><!--//app-branding--> 
         <div class="app-header-inner">  
@@ -84,7 +84,7 @@
 		            <div class="app-utilities col-auto">					        
 			            <div class="app-utility-item">
 				            <asp:LinkButton runat="server" ID="btnbuysell" CssClass="p-4">Buy / Sell</asp:LinkButton>
-							 <asp:LinkButton runat="server" ID="btntransfer" CssClass="p-4">Transfer</asp:LinkButton>
+							 <asp:LinkButton runat="server" ID="btntransfer" Visible="false" CssClass="p-4">Transfer</asp:LinkButton>
 					    </div><!--//app-utility-item-->
 			            
 			            <div class="app-utility-item app-user-dropdown dropdown">
@@ -167,7 +167,7 @@
         <!-- Content -->
         <h6 class="text-uppercase font-weight-bold">About us</h6>
         <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-        <p></p>
+        <p>This site is about online share market. Here users can buy and sell their shares. Main things about this site is blockchain concept is used. Here, user can also see and download their transaction history. Users can buy/sell shares from/to not just from/to admin but also from/to other users.</p>
 
       </div>
       <!-- Grid column -->

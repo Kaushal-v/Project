@@ -69,6 +69,15 @@ namespace testmain
         protected global::System.Web.UI.WebControls.Label lblshareprice1;
 
         /// <summary>
+        /// lblchange1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblchange1;
+
+        /// <summary>
         /// lblshare2 control.
         /// </summary>
         /// <remarks>
@@ -85,6 +94,15 @@ namespace testmain
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblshareprice2;
+
+        /// <summary>
+        /// lblchange2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblchange2;
 
         /// <summary>
         /// lblshare3 control.
@@ -105,6 +123,15 @@ namespace testmain
         protected global::System.Web.UI.WebControls.Label lblshareprice3;
 
         /// <summary>
+        /// lblchange3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblchange3;
+
+        /// <summary>
         /// lblshare4 control.
         /// </summary>
         /// <remarks>
@@ -121,6 +148,15 @@ namespace testmain
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblshareprice4;
+
+        /// <summary>
+        /// lblchange4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblchange4;
 
         /// <summary>
         /// lblshare5 control.
@@ -141,6 +177,15 @@ namespace testmain
         protected global::System.Web.UI.WebControls.Label lblshareprice5;
 
         /// <summary>
+        /// lblchange5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblchange5;
+
+        /// <summary>
         /// lblshare6 control.
         /// </summary>
         /// <remarks>
@@ -157,6 +202,15 @@ namespace testmain
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblshareprice6;
+
+        /// <summary>
+        /// lblchange6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblchange6;
 
         /// <summary>
         /// lblshare7 control.
@@ -177,6 +231,15 @@ namespace testmain
         protected global::System.Web.UI.WebControls.Label lblshareprice7;
 
         /// <summary>
+        /// lblchange7 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblchange7;
+
+        /// <summary>
         /// lblshare8 control.
         /// </summary>
         /// <remarks>
@@ -195,6 +258,15 @@ namespace testmain
         protected global::System.Web.UI.WebControls.Label lblshareprice8;
 
         /// <summary>
+        /// lblchange8 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblchange8;
+
+        /// <summary>
         /// lblshare9 control.
         /// </summary>
         /// <remarks>
@@ -211,5 +283,14 @@ namespace testmain
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblshareprice9;
+
+        /// <summary>
+        /// lblchange9 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblchange9;
     }
 }

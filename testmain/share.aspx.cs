@@ -77,6 +77,14 @@ namespace testmain
                 Session["share_id"] = e.CommandArgument.ToString();
                 Page_Load(sender, e);
             }
+            else if(e.CommandName == "deleteshare")
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand("delete share_master where share_id='" + e.CommandArgument + "'",con);
+                cmd.ExecuteNonQuery();
+                con.Close();
+                Response.Redirect("share.aspx");
+            }
         }
 
         protected void btnpanelcancel_Click(object sender, EventArgs e)

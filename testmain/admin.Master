@@ -204,7 +204,7 @@
         <!-- Content -->
         <h6 class="text-uppercase font-weight-bold">About us</h6>
         <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-        <p></p>
+        <p style="text-align:justify;">It is an Online Share Market. From where users can buy and sell shares online. Blockchain is used for each transaction made by selling or buying any share. So, any user connected to the Blockchain can see the whole ledger of the transactions.</p>
 
       </div>
       <!-- Grid column -->

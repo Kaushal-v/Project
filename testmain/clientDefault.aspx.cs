@@ -44,29 +44,33 @@ namespace testmain
             DataTable dt = new DataTable();
             int user_id = Convert.ToInt32(Session["u_id"]);
             try
-            {
-                //da = new SqlDataAdapter("select * from share_master, share_holder_master where share_master.share_id=share_holder_master.share_id and share_holder_master.user_id='" + user_id + "'", con);
-                //if (dt.Rows[0].Field<string>("share_name") != "")
-                //{
-                //    if (gvshare_info.Columns[3].Visible != false)
-                //    {
-                //        gvshare_info.Columns[3].Visible = false;
-                //        BoundField bfield = new BoundField();
-                //        bfield.HeaderText = "Purchesed Count";
-                //        bfield.DataField = "holder_share_count";
-                //        gvshare_info.Columns.Add(bfield);
-                //    }
-                //}
-                //else
-                //{
-                    da = new SqlDataAdapter("select * from share_master", con);
-                //}
+            {                
+                da = new SqlDataAdapter("select * from share_master", con);
+                dt = new DataTable();
+                da.Fill(dt);
+                dt.Columns.Add("user_share");               
+                int count = dt.Rows.Count;
+                foreach (DataRow row in dt.Rows)
+                {
+                    int share_id = Convert.ToInt32(row["share_id"]);
+                    da = new SqlDataAdapter("select * from share_master,share_holder_master where user_id='"+user_id+"' and share_master.share_id='"+share_id+"' and share_master.share_id=share_holder_master.share_id", con);
+                    DataTable dtholder = new DataTable();
+                    da.Fill(dtholder);
+                    if (dtholder.Rows.Count != 0)
+                    {
+                        row["user_share"] = dtholder.Rows[0].Field<int>("holder_share_count");
+                    }
+                    else
+                    {
+                        row["user_share"] = 0;
+                    }
+                }
             }
             catch(Exception)
             {
-                da = new SqlDataAdapter("select * from share_master", con);
+                
             }
-            da.Fill(dt);
+            //da.Fill(dt);
             gvshare_info.DataSource = dt;
             gvshare_info.DataBind();
             con.Close();

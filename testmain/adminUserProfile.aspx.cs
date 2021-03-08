@@ -77,18 +77,39 @@ namespace testmain
                     dt = new DataTable();
                     da.Fill(dt);                    
                     lblmain.Text = dt.Rows[0].Field<string>("user_name");
-                    da = new SqlDataAdapter("select * from share_master, share_holder_master where share_master.share_id=share_holder_master.share_id and share_holder_master.user_id='" + u_id + "'", con);
-                    da.Fill(dt);
-                    DataRow row = dt.Rows[0];                   
-                    if (string.IsNullOrEmpty(dt.Rows[0].Field<string>("share_name")))
-                    {
-                        dt.Rows.Remove(row);
-                    }
-                    if (dt.Rows.Count == 0)
+                    dt = new DataTable();
+                    int user_id = Convert.ToInt32(Request.QueryString["u_id"]);
+                    try
                     {
                         da = new SqlDataAdapter("select * from share_master", con);
-                        da.Fill(dt);                      
+                        dt = new DataTable();
+                        da.Fill(dt);
+                        dt.Columns.Add("user_share");
+                        int count = dt.Rows.Count;
+                        foreach (DataRow row in dt.Rows)
+                        {
+                            int share_id = Convert.ToInt32(row["share_id"]);
+                            da = new SqlDataAdapter("select * from share_master,share_holder_master where user_id='" + user_id + "' and share_master.share_id='" + share_id + "' and share_master.share_id=share_holder_master.share_id", con);
+                            DataTable dtholder = new DataTable();
+                            da.Fill(dtholder);
+                            if (dtholder.Rows.Count != 0)
+                            {
+                                row["user_share"] = dtholder.Rows[0].Field<int>("holder_share_count");
+                            }
+                            else
+                            {
+                                row["user_share"] = 0;
+                            }
+                        }
                     }
+                    catch (Exception)
+                    {
+
+                    }
+                    //da.Fill(dt);
+                    gvhoder_share_info.DataSource = dt;
+                    gvhoder_share_info.DataBind();
+                    con.Close();
                     gvhoder_share_info.DataSource = dt;
                     gvhoder_share_info.DataBind();
                     con.Close();

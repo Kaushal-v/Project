@@ -103,7 +103,12 @@
 .bg-pic{
     background-size:cover;
 }
-
+.label-up{
+    color:green;
+}
+.label-down {
+    color: red;
+}
 .app-sidepanel2 {
     position: fixed;
     min-height: 100vh;

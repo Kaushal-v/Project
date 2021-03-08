@@ -93,7 +93,6 @@
 													<div class="row justify-content-between align-items-center">
 													   <asp:GridView ID="gvsharedetails" CssClass="table app-table-hover mb-0 text-left" BorderStyle="None" runat="server" Width="100%" OnRowCommand="gvsharedetails_RowCommand" OnRowDeleting="gvsharedetails_RowDeleting" AutoGenerateColumns="False" DataKeyNames="share_id" EmptyDataText="No records has been added.">
 															<Columns>
-																<asp:BoundField DataField="share_id" HeaderText="#"/>
 																<asp:BoundField DataField="share_name" HeaderText="Share Name"/>
 																<asp:BoundField DataField="share_price" HeaderText="Price"/>                                   																								
 																<asp:TemplateField HeaderText="Change">
@@ -110,12 +109,11 @@
 																<asp:BoundField DataField="share_sold_count" HeaderText="Sold"/>                                   																								
 																<asp:TemplateField HeaderText="Chart">
 																   <ItemTemplate>
-
 																	</ItemTemplate>
 																</asp:TemplateField>
 																<asp:TemplateField HeaderText="Edit">
 																   <ItemTemplate>
-																		<asp:LinkButton ID="btndelete" runat="server" Text="Delete"></asp:LinkButton>
+																		<asp:LinkButton CommandName="deleteshare" CommandArgument='<%# Bind("share_id") %>' ID="btndelete" runat="server" Text="Delete"></asp:LinkButton>
 																	</ItemTemplate>
 																</asp:TemplateField>
 															</Columns>

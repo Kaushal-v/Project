@@ -10,7 +10,7 @@
 				    <div class="col-auto">
 					     <div class="page-utilities">
 						    <div class="row g-2 justify-content-start justify-content-md-end align-items-center">							    
-							    <div class="col-auto">
+							    <%--<div class="col-auto">
 								    
 								    <select class="form-select w-auto" >
 										  <option selected value="option-1">All</option>
@@ -19,7 +19,7 @@
 										  <option value="option-4">Last 3 months</option>
 										  
 									</select>
-							    </div>
+							    </div>--%>
 							    <div class="col-auto">						    
 								    <asp:LinkButton runat="server" CssClass="btn app-btn-secondary" OnClick="btndownload_pdf_Click">
 									    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-download mr-1" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -78,7 +78,7 @@
 																</asp:TemplateField>
 																<asp:TemplateField HeaderText="Chips">
 																	<ItemTemplate>
-																		<asp:Label runat="server" ID="Label5" Text='<%# Bind("transaction_chips")%>'> </asp:Label>
+																		<asp:Label runat="server" ID="Label5" Text='<%# Math.Round(Convert.ToDouble(Eval("transaction_chips")),3)%>'> </asp:Label>
 																	</ItemTemplate>
 																</asp:TemplateField>																
 															</Columns>

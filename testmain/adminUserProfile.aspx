@@ -107,7 +107,6 @@
 									    <div class="col-auto">
 										    <asp:GridView ID="gvhoder_share_info" CssClass="table app-table-hover mb-0 text-center" runat="server" DataKeyField="share_id" AutoGenerateColumns="False" EmptyDataText="No records has been added." style="border:none;" Width="100%" PageSize="5">
 												<Columns>
-													<asp:BoundField DataField="share_id" HeaderText="#"/>
 													<asp:BoundField DataField="share_name" HeaderText="Share Name"/>
 													<asp:BoundField DataField="share_price" HeaderText="Price"/>                                   
 													<asp:TemplateField HeaderText="Change">
@@ -115,7 +114,7 @@
 															<asp:Label ID="lblchange" runat="server" Text="0"></asp:Label>
 														</ItemTemplate>
 													</asp:TemplateField>
-													<asp:BoundField DataField="holder_share_count" HeaderText="Share Count"/>                                   
+													<asp:BoundField DataField="user_share" HeaderText="Share Count"/>                                   
 												</Columns>
 												<AlternatingRowStyle BackColor="White" />
 											</asp:GridView>
@@ -166,7 +165,7 @@
 																</asp:TemplateField>
 																<asp:TemplateField HeaderText="Chips">
 																	<ItemTemplate>
-																		<asp:Label ID="lblblockhash" runat="server" Text='<%#  Bind("amount")%>'></asp:Label>
+																		<asp:Label ID="lblblockhash" runat="server" Text='<%# Math.Round(Convert.ToDouble(Eval("amount")),3)%>'></asp:Label>
 																	</ItemTemplate>
 																</asp:TemplateField>
 												</Columns>

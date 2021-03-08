@@ -28,21 +28,30 @@
 						    <div class="app-card-body px-4 w-100">
 							    <asp:GridView ID="gvshare_info" CssClass="table app-table-hover mb-auto text-center" runat="server" DataKeyField="id" AutoGenerateColumns="False" style="border:none;" Width="100%" PageSize="5">
                                 <Columns>
-									<asp:BoundField DataField="share_id" HeaderText="#"/>
 									<asp:BoundField DataField="share_name" HeaderText="Share Name"/>
-									<asp:BoundField DataField="share_price" HeaderText="Price"/>                                   
-									<%--<asp:TemplateField HeaderText="Purchesed Count">
+									<asp:TemplateField HeaderText="Price">
                                         <ItemTemplate>
-                                            <asp:Label ID="lblchange" runat="server" Text="0"></asp:Label>
+                                            <asp:Label ID="share_price" runat="server" Text='<%#  Math.Round(Convert.ToDouble(Eval("share_price")),3) %>'></asp:Label>
                                         </ItemTemplate>
-				                    </asp:TemplateField>--%>
+				                    </asp:TemplateField>
+									<asp:TemplateField HeaderText="Purchesed Count">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblusercount" runat="server" Text='<%#  Eval("user_share") %>'></asp:Label>
+                                        </ItemTemplate>
+				                    </asp:TemplateField>
                                 </Columns>
                                 <AlternatingRowStyle BackColor="White" />
                             </asp:GridView>
 						    </div><!--//app-card-body-->
 						   
 						</div><!--//app-card-->
-	                </div><!--//col-->	               
+	                </div><!--//col-->	
+					 <div class="col-12 col-lg-6">
+		                <%--<div class="app-card app-card-account shadow-sm d-flex flex-column align-items-start">--%>
+						   
+						   
+<%--						</div><!--//app-card-->--%>
+	                </div><!--//col-->
                 </div><!--//row-->
 				<div class="row mb-4 gy-4">
 	                <div class="col-12 col-lg-12">
@@ -74,7 +83,7 @@
 															<Columns>
 																<asp:TemplateField HeaderText="Hash">
 																	<ItemTemplate>
-																		<asp:Label CssClass="cell" width="248" Style="word-wrap: normal; word-break: break-all;" ID="lblblockhash" runat="server" Text='<%#  Bind("block_hash")%>'></asp:Label>
+																		<asp:Label CssClass="cell" width="228" Style="word-wrap: normal; word-break: break-all;" ID="lblblockhash" runat="server" Text='<%#  Bind("block_hash")%>'></asp:Label>
 																	</ItemTemplate>
 																</asp:TemplateField>
 																<asp:TemplateField HeaderText="Sender Hash">
@@ -104,7 +113,7 @@
 																</asp:TemplateField>
 																<asp:TemplateField HeaderText="Chips">
 																	<ItemTemplate>
-																		<asp:Label runat="server" ID="Label5" Text='<%# Bind("transaction_chips")%>'> </asp:Label>
+																		<asp:Label runat="server" ID="Label5" Text='<%# Math.Round(Convert.ToDouble(Eval("transaction_chips")),3)%>'> </asp:Label>
 																	</ItemTemplate>
 																</asp:TemplateField>
 															</Columns>

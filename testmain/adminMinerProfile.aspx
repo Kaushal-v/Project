@@ -108,7 +108,6 @@
 									    <div class="col-auto">
 										    <asp:GridView ID="gvhoder_share_info" CssClass="table app-table-hover mb-0 text-center" runat="server" DataKeyField="share_id" AutoGenerateColumns="False" EmptyDataText="No records has been added." style="border:none;" Width="100%" PageSize="5">
 												<Columns>
-													<asp:BoundField DataField="share_id" HeaderText="#"/>
 													<asp:BoundField DataField="share_name" HeaderText="Share Name"/>
 													<asp:BoundField DataField="share_price" HeaderText="Price"/>                                   
 													<asp:TemplateField HeaderText="Change">
