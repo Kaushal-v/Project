@@ -52,7 +52,7 @@ namespace testmain
                 }
                 gvtransactiondetails.DataSource = dt;
                 gvtransactiondetails.DataBind();
-                con.Close();
+                con.Close();                
             }
         }
         protected void gvtransactiondetails_PageIndexChanging(object sender, GridViewPageEventArgs e)

@@ -31,7 +31,7 @@
 								<div class="text-right"><asp:Label runat="server" Visible="false" ForeColor="Red" Font-Size="Small" ID="lblpassnotcorrect">Please chose password more than 8 characters!!</asp:Label></div>
 							</div>
 							 <div class="email mb-3">
-                                <lable style="margin-left:12px;">As Miner:</lable>
+                                <Lable style="margin-left:12px;">As Miner:</Lable>
                                 <asp:CheckBox ID="cbminer" runat="server"></asp:CheckBox>
                             </div>
 							<div class="text-center">

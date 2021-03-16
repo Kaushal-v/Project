@@ -12,6 +12,20 @@ namespace testmain
         protected void Page_Load(object sender, EventArgs e)
         {
             lblcuryear.Text = DateTime.Now.Year.ToString();
-        }
+            string type = "";
+            try
+            {
+                type = Session["type"].ToString();
+                if (type == "admin")
+                {
+                    Response.Redirect("adminDefault.aspx");
+                }
+                else if (type == "sub" || type == "miner")
+                {
+                    Response.Redirect("clientDefault.aspx");
+                }
+            }
+            catch(Exception) { }
+        }    
     }
 }

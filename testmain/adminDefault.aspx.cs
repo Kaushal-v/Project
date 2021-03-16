@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data.Sql;
 using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
+using System.Web.UI.DataVisualization.Charting;
+using DocumentFormat.OpenXml.Spreadsheet;
+using javax.swing.text.html;
+using iTextSharp.tool.xml.html;
+using HTML = iTextSharp.tool.xml.html.HTML;
+using Newtonsoft.Json;
+using Microsoft.AspNetCore.Mvc;
 
 namespace testmain
 {
@@ -17,7 +20,7 @@ namespace testmain
         protected void Page_Load(object sender, EventArgs e)
         {           
             string constr = ConfigurationManager.ConnectionStrings["ConString"].ConnectionString;
-            con.ConnectionString = constr;
+            con.ConnectionString = constr;            
             try
             {
                 if (Session["type"].ToString() != "admin")
@@ -26,7 +29,9 @@ namespace testmain
                 }           
             }
             catch (Exception) {
-                Response.Redirect("signin.aspx");            }
+                Response.Redirect("signin.aspx");            
+            }
+
             try
             {
                 con.Open();
@@ -58,6 +63,10 @@ namespace testmain
                 List<Label> lblprice = new List<Label>() { lblshareprice1, lblshareprice2, lblshareprice3, lblshareprice4, lblshareprice5, lblshareprice6, lblshareprice7, lblshareprice8, lblshareprice9 };
                 List<Label> lblchange = new List<Label>() { lblchange1, lblchange2, lblchange3, lblchange4, lblchange5, lblchange6, lblchange7, lblchange8, lblchange9 };
                 int count = (dt.Rows.Count<=9? dt.Rows.Count : 9);
+                if(count == 0)
+                {
+                    lblnodatafound.Visible = true;
+                }
                 for(int i = 0; i < count; i++)
                 {
                     try
@@ -77,7 +86,7 @@ namespace testmain
                         else if(change > 0)
                         {
                             lblchange[i].Text = "+" + change.ToString();
-                            lblchange[i].CssClass = "label-down";
+                            lblchange[i].CssClass = "label-up";
                         }
                     }
                     catch (Exception)
@@ -91,6 +100,52 @@ namespace testmain
                 lbltotal_shares.Text = "0";
                 lblsoldshares.Text = "0";
             }
-        }        
+            Bindchart();
+        }
+        private void Bindchart()
+        {                       
+            List<double> thisweekprice = new List<double>();
+            List<double> lastweekprice = new List<double>();
+            con.Open();
+            for (int i = -6; i <= 0; i++) {
+                DateTime lday = DateTime.Today.AddDays(i);
+                DateTime tday = DateTime.Today.AddDays(i+1);
+                string ldays = string.Format("{0:yyyy-MM-dd H:mm:ss}", lday);
+                string tdays = string.Format("{0:yyyy-MM-dd H:mm:ss}", tday);
+                SqlDataAdapter da = new SqlDataAdapter("select sum(user_share_meta_count * share_price)as price from user_share_meta where user_share_meta_ope='buy' and user_share_meta_time between '" + ldays + "' and '" + tdays + "'", con);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                try
+                {
+                    thisweekprice.Add(dt.Rows[0].Field<double>("price"));
+                }
+                catch (Exception)
+                {
+                    thisweekprice.Add(0);
+                }
+            }
+            for (int i = -13; i <= -7; i++)
+            {
+                DateTime lday = DateTime.Today.AddDays(i);
+                DateTime tday = DateTime.Today.AddDays(i + 1);
+                string ldays = string.Format("{0:yyyy-MM-dd H:mm:ss}", lday);
+                string tdays = string.Format("{0:yyyy-MM-dd H:mm:ss}", tday);
+                SqlDataAdapter da = new SqlDataAdapter("select sum(user_share_meta_count * share_price)as price from user_share_meta where user_share_meta_ope='buy' and user_share_meta_time between '" + ldays + "' and '" + tdays + "'", con);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                try
+                {
+                    lastweekprice.Add(dt.Rows[0].Field<double>("price"));
+                }
+                catch (Exception)
+                {
+                    lastweekprice.Add(0);
+                }
+            }            
+            con.Close();
+            //var thisweek = JsonConvert.SerializeObject(thisweekprice);
+            lit1.Text= JsonConvert.SerializeObject(thisweekprice).ToString();
+            lit2.Text = JsonConvert.SerializeObject(lastweekprice).ToString();
+        }
     }
 }

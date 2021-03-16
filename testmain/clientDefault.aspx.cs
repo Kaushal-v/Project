@@ -8,13 +8,68 @@ using System.Data.Sql;
 using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
+using Newtonsoft.Json;
 
 namespace testmain
-{
+{    
     public partial class clientDefault : System.Web.UI.Page
     {
         readonly SqlConnection con = new SqlConnection();
-
+        private void Bindchart()
+        {
+            int u_id =0;
+            try
+            {
+                u_id = Convert.ToInt32(Session["u_id"]);
+            }
+            catch (Exception)
+            {
+                Response.Redirect("signin.aspx");
+            }
+            List<double> thisweekprice = new List<double>();
+            List<double> lastweekprice = new List<double>();
+            con.Open();
+            for (int i = -6; i <= 0; i++)
+            {
+                DateTime lday = DateTime.Today.AddDays(i);
+                DateTime tday = DateTime.Today.AddDays(i + 1);
+                string ldays = string.Format("{0:yyyy-MM-dd H:mm:ss}", lday);
+                string tdays = string.Format("{0:yyyy-MM-dd H:mm:ss}", tday);
+                SqlDataAdapter da = new SqlDataAdapter("select sum(user_share_meta_count * share_price)as price from user_share_meta where user_id='"+u_id+"' and user_share_meta_ope='buy' and user_share_meta_time between '" + ldays + "' and '" + tdays + "'", con);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                try
+                {
+                    thisweekprice.Add(dt.Rows[0].Field<double>("price"));
+                }
+                catch (Exception)
+                {
+                    thisweekprice.Add(0);
+                }
+            }
+            for (int i = -13; i <= -7; i++)
+            {
+                DateTime lday = DateTime.Today.AddDays(i);
+                DateTime tday = DateTime.Today.AddDays(i + 1);
+                string ldays = string.Format("{0:yyyy-MM-dd H:mm:ss}", lday);
+                string tdays = string.Format("{0:yyyy-MM-dd H:mm:ss}", tday);
+                SqlDataAdapter da = new SqlDataAdapter("select sum(user_share_meta_count * share_price)as price from user_share_meta where user_id='" + u_id + "' and user_share_meta_ope='buy' and user_share_meta_time between '" + ldays + "' and '" + tdays + "'", con);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                try
+                {
+                    lastweekprice.Add(dt.Rows[0].Field<double>("price"));
+                }
+                catch (Exception)
+                {
+                    lastweekprice.Add(0);
+                }
+            }
+            con.Close();
+            //var thisweek = JsonConvert.SerializeObject(thisweekprice);
+            lit1.Text = JsonConvert.SerializeObject(thisweekprice).ToString();
+            lit2.Text = JsonConvert.SerializeObject(lastweekprice).ToString();
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -115,6 +170,7 @@ namespace testmain
             gvtransactiondetails.DataSource = dt;
             gvtransactiondetails.DataBind();
             con.Close();
+            Bindchart();
         }
 
         protected void gvtransactiondetails_RowDataBound(object sender, GridViewRowEventArgs e)

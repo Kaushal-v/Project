@@ -20,6 +20,7 @@ namespace testmain
         {
             string constr = ConfigurationManager.ConnectionStrings["ConString"].ConnectionString;
             con.ConnectionString = constr;
+            ddlpanelshare.Items.Clear();
             using (SqlConnection con = new SqlConnection(constr))
             {
                 using (SqlCommand cmd = new SqlCommand("select * from share_master"))
@@ -42,8 +43,10 @@ namespace testmain
             {
                 bind_data_default();
             }
+            string type = "";
             try
             {
+                type = Session["type"].ToString();
                 btnchips.Text = "Chips ";
                 string u_name = Session["u_name"].ToString();
                 try
@@ -57,6 +60,10 @@ namespace testmain
                 catch(Exception) 
                 {
                     Response.Redirect("signin.aspx");
+                }
+                if (type == "admin")
+                {
+                    Response.Redirect("adminDefault.aspx");
                 }
                 string constr = ConfigurationManager.ConnectionStrings["ConString"].ConnectionString;
                 con.ConnectionString = constr;
@@ -104,7 +111,7 @@ namespace testmain
                     blockchain b1 = (blockchain)Application["obj_blockchain"];
                     string companyHash = b1.getAddress(companyName);
                     con.Open();
-                    SqlDataAdapter da = new SqlDataAdapter("Select share_price from share_master where share_id='" + share_id + "'", con);
+                    SqlDataAdapter da = new SqlDataAdapter("Select * from share_master where share_id='" + share_id + "'", con);
                     DataTable dt = new DataTable();
                     da.Fill(dt);
                     string halfChips = lblpanelchips.Text.Substring(5);
@@ -112,6 +119,7 @@ namespace testmain
                     double chips = Convert.ToDouble(halfChips);
                     int count = Convert.ToInt32(tbpanelcount.Text);
                     double total_price = count * dt.Rows[0].Field<double>("share_price");
+                    int avail_share = dt.Rows[0].Field<int>("share_available_count");
                     DateTime now;
                     string timenow;
                     SqlCommand cmd;
@@ -124,65 +132,74 @@ namespace testmain
                     }
                     if (chips > total_price)
                     {
-                        lblnotamount.Visible = false;
-                        string u_nameHash = b1.getAddress(u_name);
-                        b1.CreateTransaction(new Transaction(u_nameHash, companyHash, total_price));
-                        da = new SqlDataAdapter("Select * from share_holder_master where share_id='" + share_id + "' and user_id='" + u_id + "'", con);
-                        dt = new DataTable();
-                        da.Fill(dt);
-                        if (dt.Rows.Count == 0)
-                        {
-                            now = DateTime.Now;
-                            timenow = string.Format("{0:yyyy-MM-dd H:mm:ss}", now);
-                            cmd = new SqlCommand("insert into share_holder_master(user_id,share_id,holder_share_count,share_holder_last_updated_time) values('" + u_id + "','" + share_id + "','" + count + "','" + timenow + "')", con);
-                            cmd.ExecuteNonQuery();                           
-                            da = new SqlDataAdapter("Select share_price,share_available_count,share_sold_count from share_master where share_id='" + share_id + "'", con);
+                        if (count<=avail_share) {
+                            lblnotamount.Visible = false;
+                            string u_nameHash = b1.getAddress(u_name);
+                            b1.CreateTransaction(new Transaction(u_nameHash, companyHash, total_price));
+                            da = new SqlDataAdapter("Select * from share_holder_master where share_id='" + share_id + "' and user_id='" + u_id + "'", con);
                             dt = new DataTable();
                             da.Fill(dt);
-                            int avail_count = dt.Rows[0].Field<int>("share_available_count") - count;
-                            int sold_count = dt.Rows[0].Field<int>("share_sold_count") + count;
-                            double last_price = dt.Rows[0].Field<double>("share_price");
-                            cmd = new SqlCommand("insert into user_share_meta(user_id,share_id,user_share_meta_count,user_share_meta_ope,user_share_meta_time,share_price) values('" + u_id + "','" + share_id + "','" + count + "','buy','" + timenow + "','"+ last_price +"')", con);
+                            if (dt.Rows.Count == 0)
+                            {
+                                now = DateTime.Now;
+                                timenow = string.Format("{0:yyyy-MM-dd H:mm:ss}", now);
+                                cmd = new SqlCommand("insert into share_holder_master(user_id,share_id,holder_share_count,share_holder_last_updated_time) values('" + u_id + "','" + share_id + "','" + count + "','" + timenow + "')", con);
+                                cmd.ExecuteNonQuery();
+                                da = new SqlDataAdapter("Select share_price,share_available_count,share_sold_count from share_master where share_id='" + share_id + "'", con);
+                                dt = new DataTable();
+                                da.Fill(dt);
+                                int avail_count = dt.Rows[0].Field<int>("share_available_count") - count;
+                                int sold_count = dt.Rows[0].Field<int>("share_sold_count") + count;
+                                double last_price = dt.Rows[0].Field<double>("share_price");
+                                cmd = new SqlCommand("insert into user_share_meta(user_id,share_id,user_share_meta_count,user_share_meta_ope,user_share_meta_time,share_price) values('" + u_id + "','" + share_id + "','" + count + "','buy','" + timenow + "','" + last_price + "')", con);
+                                cmd.ExecuteNonQuery();
+                                cmd = new SqlCommand("update share_master set share_available_count = '" + avail_count + "',share_sold_count = '" + sold_count + "' where share_id='" + share_id + "'", con);
+                                cmd.ExecuteNonQuery();
+                            }
+                            else
+                            {
+                                now = DateTime.Now;
+                                da = new SqlDataAdapter("Select holder_share_count from share_holder_master where share_id='" + share_id + "' and user_id='" + u_id + "'", con);
+                                dt = new DataTable();
+                                da.Fill(dt);
+                                int avail_count = dt.Rows[0].Field<int>("holder_share_count") + count;
+                                timenow = string.Format("{0:yyyy-MM-dd H:mm:ss}", now);
+                                cmd = new SqlCommand("update share_holder_master set holder_share_count='" + avail_count + "' ,share_holder_last_updated_time='" + timenow + "' where user_id='" + u_id + "' and share_id='" + share_id + "'", con);
+                                cmd.ExecuteNonQuery();
+                                da = new SqlDataAdapter("Select share_price,share_available_count,share_sold_count from share_master where share_id='" + share_id + "'", con);
+                                dt = new DataTable();
+                                da.Fill(dt);
+                                int total_avail_count = dt.Rows[0].Field<int>("share_available_count") - count;
+                                int sold_count = dt.Rows[0].Field<int>("share_sold_count") + count;
+                                double last_price = dt.Rows[0].Field<double>("share_price");
+                                cmd = new SqlCommand("update share_master set share_available_count = '" + total_avail_count + "',share_sold_count = '" + sold_count + "' where share_id='" + share_id + "'", con);
+                                cmd.ExecuteNonQuery();
+                                cmd = new SqlCommand("insert into user_share_meta(user_id,share_id,user_share_meta_count,user_share_meta_ope,user_share_meta_time,share_price) values('" + u_id + "','" + share_id + "','" + count + "','buy','" + timenow + "','" + last_price + "')", con);
+                                cmd.ExecuteNonQuery();
+                            }
+                            da = new SqlDataAdapter("select * from share_master where share_id='" + share_id + "'", con);
+                            dt = new DataTable();
+                            da.Fill(dt);
+                            double original_share_price = dt.Rows[0].Field<double>("share_price");
+                            double share_price = (original_share_price * count * 0.02) + original_share_price;
+                            cmd = new SqlCommand("update share_master set share_price='" + share_price + "' where share_id='" + share_id + "'", con);
                             cmd.ExecuteNonQuery();
-                            cmd = new SqlCommand("update share_master set share_available_count = '" + avail_count + "',share_sold_count = '" + sold_count + "' where share_id='" + share_id + "'", con);
+                            now = DateTime.Now;
+                            timenow = string.Format("{0:yyyy-MM-dd H:mm:ss}", now);
+                            cmd = new SqlCommand("insert into share_price_master(share_id,share_price_changing,share_date) values('" + share_id + "','" + share_price + "','" + timenow + "')", con);
                             cmd.ExecuteNonQuery();
+                            Response.Redirect("clientDefault.aspx");
                         }
                         else
                         {
-                            now = DateTime.Now;
-                            da = new SqlDataAdapter("Select holder_share_count from share_holder_master where share_id='" + share_id + "' and user_id='" + u_id + "'", con);
-                            dt = new DataTable();
-                            da.Fill(dt);
-                            int avail_count = dt.Rows[0].Field<int>("holder_share_count") + count;
-                            timenow = string.Format("{0:yyyy-MM-dd H:mm:ss}", now);
-                            cmd = new SqlCommand("update share_holder_master set holder_share_count='" + avail_count + "' ,share_holder_last_updated_time='" + timenow + "' where user_id='"+u_id+"' and share_id='"+share_id+"'", con);
-                            cmd.ExecuteNonQuery();
-                            da = new SqlDataAdapter("Select share_price,share_available_count,share_sold_count from share_master where share_id='" + share_id + "'", con);
-                            dt = new DataTable();
-                            da.Fill(dt);
-                            int total_avail_count = dt.Rows[0].Field<int>("share_available_count") - count;
-                            int sold_count = dt.Rows[0].Field<int>("share_sold_count") + count;
-                            double last_price = dt.Rows[0].Field<double>("share_price");
-                            cmd = new SqlCommand("update share_master set share_available_count = '" + total_avail_count + "',share_sold_count = '" + sold_count + "' where share_id='" + share_id + "'", con);
-                            cmd.ExecuteNonQuery();
-                            cmd = new SqlCommand("insert into user_share_meta(user_id,share_id,user_share_meta_count,user_share_meta_ope,user_share_meta_time,share_price) values('" + u_id + "','" + share_id + "','" + count + "','buy','" + timenow + "','"+ last_price +"')", con);
-                            cmd.ExecuteNonQuery();
+                            lblsharenot.Visible = true;
+                            lblconfirm.Visible = false;
+                            lblnotamount.Visible = false;
                         }
-                        da = new SqlDataAdapter("select * from share_master where share_id='" + share_id + "'", con);
-                        dt = new DataTable();
-                        da.Fill(dt);
-                        double original_share_price = dt.Rows[0].Field<double>("share_price");
-                        double share_price=(original_share_price * count * 0.02)+original_share_price;
-                        cmd = new SqlCommand("update share_master set share_price='" + share_price + "' where share_id='" + share_id + "'", con);
-                        cmd.ExecuteNonQuery();
-                        now = DateTime.Now;
-                        timenow = string.Format("{0:yyyy-MM-dd H:mm:ss}", now);
-                        cmd = new SqlCommand("insert into share_price_master(share_id,share_price_changing,share_date) values('" + share_id + "','" + share_price + "','"+timenow+"')", con);
-                        cmd.ExecuteNonQuery();
-                        Response.Redirect("clientDefault.aspx");
                     }
                     else
                     {
+                        lblsharenot.Visible = false;
                         lblconfirm.Visible = false;
                         lblnotamount.Visible = true;
                     }
@@ -190,6 +207,7 @@ namespace testmain
                 }
                 else
                 {
+                    lblsharenot.Visible = false;
                     lblnotamount.Visible = false;
                     lblconfirm.Visible = true;
                 }
@@ -286,6 +304,9 @@ namespace testmain
 
         protected void ddlpanelshare_SelectedIndexChanged(object sender, EventArgs e)
         {
+            lblnotamount.Visible=false;
+            lblsharenot.Visible = false;
+            lblconfirm.Visible = false;
             int u_id = Convert.ToInt32(Session["u_id"].ToString());
             share_id = ddlpanelshare.SelectedItem.Value;
             ddlpanelshare.ClearSelection();
@@ -336,7 +357,7 @@ namespace testmain
             bind_data_default();
             lblpanelsharec.Text = "avalable Shares ";
             lblpanelsharec.Visible = false;
-            btnpanelconfirm.Text = "Buy";
+            btnpanelconfirm.Text = "Buy";            
             popupbuysell.Show();
         }
 
@@ -351,6 +372,7 @@ namespace testmain
             btnpanelconfirm.Text = "Sell";
             string constr = ConfigurationManager.ConnectionStrings["ConString"].ConnectionString;
             con.ConnectionString = constr;
+            ddlpanelshare.Items.Clear();
             using (SqlConnection con = new SqlConnection(constr))
             {
                 using (SqlCommand cmd = new SqlCommand("select * from share_master,share_holder_master where share_master.share_id=share_holder_master.share_id and share_holder_master.user_id='"+u_id+"'"))

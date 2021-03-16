@@ -48,7 +48,7 @@
 										<div class="align-content-center">
 											<div class="auth-form login-form">         
 												<div class="email mb-3">
-													<asp:DropDownList AutoPostBack="true" ID="ddlpanelshare" OnSelectedIndexChanged="ddlpanelshare_SelectedIndexChanged" CssClass="form-control" runat="server"></asp:DropDownList>
+													<asp:DropDownList AutoPostBack="true" ID="ddlpanelshare" AppendDataBoundItems="true" OnSelectedIndexChanged="ddlpanelshare_SelectedIndexChanged" CssClass="form-control" runat="server"></asp:DropDownList>
 													<div class="text-left"><asp:Label runat="server" Visible="false" Font-Size="Small" ID="lblprice">Share Price: </asp:Label></div>
 												</div><!--//form-group-->
 												<div class="password mb-3">			
@@ -56,6 +56,7 @@
 													<asp:TextBox ID="tbpanelcount" runat="server" TextMode="Number" max="50" min="1" CssClass="form-control" placeholder="Count" required="required" ></asp:TextBox>
 													<div class="text-right"><asp:Label runat="server" Visible="false" Font-Size="Small" ForeColor="Red" ID="lblconfirm">Enter correct details!!</asp:Label></div>
 													<div class="text-right"><asp:Label runat="server" Visible="false" Font-Size="Small" ForeColor="Red" ID="lblnotamount">You do not have enough amount!!</asp:Label></div>
+                                                    <div class="text-right"><asp:Label runat="server" Visible="false" Font-Size="Small" ForeColor="Red" ID="lblsharenot">Not enough shares are available!!</asp:Label></div>
 												</div>
 											</div>
 										</div>
@@ -108,7 +109,7 @@
                 <asp:ContentPlaceHolder ID="clientContent" runat="server">
                 </asp:ContentPlaceHolder>
             </div>
-			<footer class="page-footer font-small carousel-dark">
+			  <footer class="page-footer font-small carousel-dark">
 
   <div >
     <div class="container">
@@ -162,12 +163,12 @@
     <div class="row mt-3">
 
       <!-- Grid column -->
-      <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+      <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4" style="width:50%; text-align:justify">
 
         <!-- Content -->
         <h6 class="text-uppercase font-weight-bold">About us</h6>
         <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-        <p>This site is about online share market. Here users can buy and sell their shares. Main things about this site is blockchain concept is used. Here, user can also see and download their transaction history. Users can buy/sell shares from/to not just from/to admin but also from/to other users.</p>
+        <p>It is an Online Share Market. From where users can buy and sell shares online. Blockchain is used for each transaction made by selling or buying any share. So, any user connected to the Blockchain can see the whole ledger of the transactions.</p>
 
       </div>
       <!-- Grid column -->
@@ -179,10 +180,10 @@
         <h6 class="text-uppercase font-weight-bold">Members</h6>
         <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
         <p>
-          <a href="#!">Kaushal Vaghasiya</a>
+          <a href="#!">Kaushal Vaghasiya (186620307059)</a>
         </p>
         <p>
-          <a href="#!">Smit Meghapara</a>
+          <a href="#!">Smit Meghapara (186620307036)</a>
         </p>        
 
       </div>
@@ -224,10 +225,8 @@
     <script src="admin/assets/plugins/popper.min.js"></script>
     <script src="admin/assets/plugins/bootstrap/js/bootstrap.min.js"></script>  
 
-    <!-- Charts JS -->
-    <script src="admin/assets/plugins/chart.js/chart.min.js"></script> 
-    <script src="admin/assets/js/index-charts.js"></script> 
-    
+    <!-- Charts JS -->   
+    <script src="admin/assets/plugins/chart.js/chart.min.js"></script>
     <!-- Page Specific JS -->
     <script src="admin/assets/js/app.js"></script> 
 </body>

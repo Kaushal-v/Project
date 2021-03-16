@@ -15,6 +15,24 @@ namespace testmain
     {
 
         /// <summary>
+        /// lit1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal lit1;
+
+        /// <summary>
+        /// lit2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal lit2;
+
+        /// <summary>
         /// lbltotalsales control.
         /// </summary>
         /// <remarks>
@@ -292,5 +310,14 @@ namespace testmain
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblchange9;
+
+        /// <summary>
+        /// lblnodatafound control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblnodatafound;
     }
 }

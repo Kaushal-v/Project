@@ -91,8 +91,13 @@
 														</div><!--//app-card-header-->
 												<div class="app-card-header p-3">
 													<div class="row justify-content-between align-items-center">
-													   <asp:GridView ID="gvsharedetails" CssClass="table app-table-hover mb-0 text-left" BorderStyle="None" runat="server" Width="100%" OnRowCommand="gvsharedetails_RowCommand" OnRowDeleting="gvsharedetails_RowDeleting" AutoGenerateColumns="False" DataKeyNames="share_id" EmptyDataText="No records has been added.">
+													   <asp:GridView ID="gvsharedetails" CssClass="table app-table-hover mb-0 text-left" BorderStyle="None" runat="server" Width="100%" OnRowCommand="gvsharedetails_RowCommand" OnRowDeleting="gvsharedetails_RowDeleting" AutoGenerateColumns="False" DataKeyNames="share_id" EmptyDataText="No records has been added." OnRowDataBound="gvsharedetails_RowDataBound" >
 															<Columns>
+																<asp:TemplateField HeaderText="Share id">
+																	<ItemTemplate>
+																		<asp:Label ID="lblshareid" runat="server" Text='<%# Bind("share_id")%>'></asp:Label>
+																	</ItemTemplate>
+																</asp:TemplateField>
 																<asp:BoundField DataField="share_name" HeaderText="Share Name"/>
 																<asp:BoundField DataField="share_price" HeaderText="Price"/>                                   																								
 																<asp:TemplateField HeaderText="Change">
@@ -106,7 +111,8 @@
 																		<asp:LinkButton ID="btnadd" CommandName="addshare" CommandArgument='<%# Bind("share_id") %>' runat="server" Text="Add"></asp:LinkButton>
 																	</ItemTemplate>
 																</asp:TemplateField>
-																<asp:BoundField DataField="share_sold_count" HeaderText="Sold"/>                                   																								
+																<asp:BoundField DataField="share_sold_count" HeaderText="Sold"/>
+																<asp:BoundField DataField="share_received_count" HeaderText="Received"/>
 																<asp:TemplateField HeaderText="Chart">
 																   <ItemTemplate>
 																	</ItemTemplate>

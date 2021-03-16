@@ -18,8 +18,13 @@
 				        <div class="app-card app-card-stats-table h-100 shadow-sm">
 					        <div class="app-card-header p-3">
 						        <div class="row justify-content-between align-items-center">
-							   <asp:GridView ID="share_info" CssClass="table app-table-hover mb-auto text-center" runat="server" DataKeyField="share_id" AutoGenerateColumns="False" style="border:none; margin-top:50px; margin-left: auto; margin-right:auto;" Width="70%" PageSize="5">
+							   <asp:GridView ID="share_info" OnRowDataBound="share_info_RowDataBound" CssClass="table app-table-hover mb-auto text-center" runat="server" DataKeyField="share_id" AutoGenerateColumns="False" style="border:none; margin-top:50px; margin-left: auto; margin-right:auto;" Width="70%" PageSize="5">
                                 <Columns>
+									<asp:TemplateField HeaderText="share_id" Visible="false">
+									 <ItemTemplate>
+                                            <asp:Label ID="share_id" runat="server" Text='<%#  Bind("share_id") %>'></asp:Label>
+                                        </ItemTemplate>
+				                    </asp:TemplateField> 
 									<asp:BoundField DataField="share_name" HeaderText="Share Name"/>
 									<asp:TemplateField HeaderText="Price">
                                         <ItemTemplate>
@@ -28,7 +33,7 @@
 				                    </asp:TemplateField>                                   
 									<asp:TemplateField HeaderText="Change">
                                         <ItemTemplate>
-                                            <asp:Label ID="lblchange" runat="server" Text="0"></asp:Label>
+                                            <asp:Label ID="lblchange" runat="server"></asp:Label>
                                         </ItemTemplate>
 				                    </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Trade">
