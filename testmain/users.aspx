@@ -21,13 +21,15 @@
 													<div class="text-right"><asp:Label runat="server" Visible="false" ForeColor="Red" Font-Size="Small" ID="lblunamenot">Username is not available!!</asp:Label></div>
 												</div>
 												<div class="email mb-3">
-													<asp:TextBox ID="tbmail" runat="server" TextMode="Email" CssClass="form-control" placeholder="Email" required="required" ></asp:TextBox>
+													<asp:TextBox runat="server" ID="tbmail" TextMode="Email" CssClass="form-control" OnTextChanged="tbmail_TextChanged" placeholder="Email"></asp:TextBox>
+													<div class="text-right"><asp:Label runat="server" Visible="false" ForeColor="Red" Font-Size="Small" ID="lblmail">Enter valid mail address!!</asp:Label></div>
 												</div>
 												<div class="password mb-3">			
-													<asp:TextBox ID="tbconno" runat="server" TextMode="Number" MaxLength="10" CssClass="form-control" placeholder="Contact No" required="required" ></asp:TextBox>
+													<asp:TextBox ID="tbconno" runat="server" OnTextChanged="tbconno_TextChanged" TextMode="Number" MaxLength="10" CssClass="form-control" placeholder="Contact No" required="required" ></asp:TextBox>
+													<div class="text-right"><asp:Label runat="server" Visible="false" ForeColor="Red" Font-Size="Small" ID="lblphone">Enter valid contact number!!</asp:Label></div>
 												</div>
 												<div class="email mb-3">
-													<asp:TextBox ID="tbpass" runat="server" CssClass="form-control" TextMode="Password" OnTextChanged="tbpass_TextChanged" placeholder="Password" required="required" ></asp:TextBox>
+													<asp:TextBox ID="tbpass" runat="server" CssClass="form-control" TextMode="Password" OnTextChanged="tbpass_TextChanged" placeholder="Password" required="required"></asp:TextBox>
 													<div class="text-right"><asp:Label runat="server" Visible="false" ForeColor="Red" Font-Size="Small" ID="lblpassnotcorrect">Please chose password more than 8 characters!!</asp:Label></div>
 												</div>
 												<div class="email mb-3">

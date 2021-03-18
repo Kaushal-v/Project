@@ -6,10 +6,10 @@
 	<asp:Literal id="lit1" Visible="false" runat="server" />
 	<asp:Literal id="lit2" Visible="false" runat="server" />
 <script>
-    var thisweekdatajson = JSON.parse('<%=lit1.Text%>');
-    var lastweekdatajson = JSON.parse('<%=lit2.Text%>');
+    var thisweekdatajson = JSON.parse('<%=lit1.Text%>')
+	var lastweekdatajson = JSON.parse('<%=lit2.Text%>')
     var thisweekdata = parseInt(thisweekdatajson[0]);
-    console.log(thisweekdata);
+    console.log(thisweekdata)
     window.chartColors = {
         green: '#75c181',
         gray: '#a9b5c9',

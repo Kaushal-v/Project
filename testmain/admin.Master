@@ -164,23 +164,23 @@
 
           <!-- Facebook -->
           <a class="fb-ic">
-            <i class="fab fa-facebook-f white-text mr-4"> </i>
+            <asp:HyperLink runat="server" Target="_blank" NavigateUrl="https://www.facebook.com/"><i class="fab fa-facebook-f white-text mr-4"></i></asp:HyperLink>
           </a>
           <!-- Twitter -->
           <a class="tw-ic">
-            <i class="fab fa-twitter white-text mr-4"> </i>
+            <asp:HyperLink runat="server" Target="_blank" NavigateUrl="https://www.twitter.com/"><i class="fab fa-twitter white-text mr-4"> </i></asp:HyperLink>
           </a>
           <!-- Google +-->
           <a class="gplus-ic">
-            <i class="fab fa-google-plus-g white-text mr-4"> </i>
+            <asp:HyperLink runat="server" Target="_blank" NavigateUrl="https://www.googleplus.com/"><i class="fab fa-google-plus-g white-text mr-4"> </i></asp:HyperLink>
           </a>
           <!--Linkedin -->
           <a class="li-ic">
-            <i class="fab fa-linkedin-in white-text mr-4"> </i>
+            <asp:HyperLink runat="server" Target="_blank" NavigateUrl="https://www.linkedin.com/"><i class="fab fa-linkedin-in white-text mr-4"> </i></asp:HyperLink>
           </a>
           <!--Instagram-->
           <a class="ins-ic">
-            <i class="fab fa-instagram white-text"> </i>
+           <asp:HyperLink runat="server" Target="_blank" NavigateUrl="https://www.instagram.com/"> <i class="fab fa-instagram white-text"> </i></asp:HyperLink>
           </a>
 
         </div>
@@ -205,7 +205,8 @@
         <h6 class="text-uppercase font-weight-bold">About us</h6>
         <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
         <p>It is an Online Share Market. From where users can buy and sell shares online. Blockchain is used for each transaction made by selling or buying any share. So, any user connected to the Blockchain can see the whole ledger of the transactions.</p>
-
+		  <br />
+          <h5>Guide : Prof. Akash N Siddhpura </h5>
       </div>
       <!-- Grid column -->
 
@@ -249,7 +250,7 @@
   <!-- Footer Links -->
 
   <!-- Copyright -->
-  <div class="footer-copyright text-center py-3">© 2020 Copyright:
+  <div class="footer-copyright text-center py-3">© Copyright:
     <a href="home.aspx"> ShareLog <asp:Label runat="server" ID="lblcuryear"></asp:Label></a>
   </div>
   <!-- Copyright -->

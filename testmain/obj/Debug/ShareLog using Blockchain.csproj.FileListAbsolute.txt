@@ -59,7 +59,6 @@ C:\Users\kaush\source\repos\testmain\testmain\obj\Debug\testmain.pdb
 C:\Users\kaush\source\repos\testmain\testmain\bin\itextsharp.dll
 C:\Users\kaush\source\repos\testmain\testmain\bin\itextsharp.xml
 C:\Users\kaush\source\repos\testmain\testmain\obj\Debug\ShareLog using Blockchain.csproj.CoreCompileInputs.cache
-C:\Users\kaush\source\repos\testmain\testmain\obj\Debug\ShareLog using Blockchain.csprojAssemblyReference.cache
 C:\Users\kaush\source\repos\testmain\testmain\bin\BouncyCastle.Crypto.dll
 C:\Users\kaush\source\repos\testmain\testmain\bin\DocumentFormat.OpenXml.dll
 C:\Users\kaush\source\repos\testmain\testmain\bin\IKVM.AWT.WinForms.dll
@@ -167,3 +166,4 @@ C:\Users\kaush\source\repos\testmain\testmain\bin\System.Numerics.Vectors.xml
 C:\Users\kaush\source\repos\testmain\testmain\bin\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\kaush\source\repos\testmain\testmain\bin\System.Text.Encodings.Web.xml
 C:\Users\kaush\source\repos\testmain\testmain\bin\System.Threading.Tasks.Extensions.xml
+C:\Users\kaush\source\repos\testmain\testmain\obj\Debug\ShareLog using Blockchain.csprojAssemblyReference.cache

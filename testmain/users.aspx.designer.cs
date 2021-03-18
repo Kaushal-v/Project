@@ -69,6 +69,15 @@ namespace testmain
         protected global::System.Web.UI.WebControls.TextBox tbmail;
 
         /// <summary>
+        /// lblmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblmail;
+
+        /// <summary>
         /// tbconno control.
         /// </summary>
         /// <remarks>
@@ -76,6 +85,15 @@ namespace testmain
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbconno;
+
+        /// <summary>
+        /// lblphone control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblphone;
 
         /// <summary>
         /// tbpass control.

@@ -38,15 +38,7 @@ namespace testmain
 
         protected void Application_Error(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    Session.Clear();
-            //}
-            //catch(Exception)
-            //{
-
-            //}
-            //Response.Redirect("signin.aspx");
+            
         }
 
         protected void Session_End(object sender, EventArgs e)

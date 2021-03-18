@@ -34,7 +34,7 @@
 									    <div class="col-auto">
 										    <div class="item-label text-left"><strong>First Name</strong></div>
 											 <div class="item-data text-left"><asp:Label runat="server" ID="lblfname"></asp:Label></div>
-									        <asp:TextBox Visible="false" ID="tbfname" runat="server" CssClass="item-data tb"></asp:TextBox>
+									        <asp:TextBox AutoCompleteType="Disabled" Visible="false" ID="tbfname" runat="server" CssClass="item-data tb"></asp:TextBox>
 									    </div><!--//col-->
 								    </div><!--//row-->
 							    </div><!--//item-->
@@ -43,7 +43,7 @@
 									    <div class="col-auto">
 										    <div class="item-label text-left"><strong>Last Name</strong></div>
 											<div class="item-data text-left"><asp:Label runat="server" ID="lbllname"></asp:Label></div>
-									        <asp:TextBox Visible="false" ID="tblname" runat="server" CssClass="item-data tb"></asp:TextBox>
+									        <asp:TextBox AutoCompleteType="Disabled" Visible="false" ID="tblname" runat="server" CssClass="item-data tb"></asp:TextBox>
 									    </div><!--//col-->
 								    </div><!--//row-->
 							    </div><!--//item-->
@@ -52,7 +52,7 @@
 									    <div class="col-auto">
 										    <div class="item-label text-left"><strong>User Name</strong></div>
 											<div class="item-data text-left"><asp:Label runat="server" ID="lbluname"></asp:Label></div>
-									        <asp:TextBox Visible="false" ID="tbuname" runat="server" CssClass="item-data tb"></asp:TextBox>
+									        <asp:TextBox AutoCompleteType="Disabled" Visible="false" ID="tbuname" runat="server" CssClass="item-data tb"></asp:TextBox>
 									    </div><!--//col-->
 										<div class="col text-right">
 										    <asp:Label runat="server" ID="lblunamenotavail" CssClass="btn-sm" ForeColor="#ff3300" Visible="false">username is not availble</asp:Label>
@@ -64,7 +64,7 @@
 									    <div class="col-auto">
 										    <div class="item-label text-left"><strong>Email Address</strong></div>
 											<div class="item-data text-left"><asp:Label runat="server" ID="lblmail"></asp:Label></div>
-									        <asp:TextBox Visible="false" ID="tbmail" runat="server" CssClass="item-data tb"></asp:TextBox>
+									        <asp:TextBox AutoCompleteType="Disabled" Visible="false" ID="tbmail" runat="server" CssClass="item-data tb"></asp:TextBox>
 									    </div><!--//col-->
 								    </div><!--//row-->
 							    </div><!--//item-->
@@ -100,7 +100,7 @@
 									    <div class="col-auto">
 										    <div class="item-label text-left"><strong>Contact No</strong></div>
 											<div class="item-data text-left"><asp:Label runat="server" ID="lblconno"></asp:Label></div>
-									        <asp:TextBox ReadOnly="true" ID="tbconno" Visible="false" runat="server" CssClass="item-data tb"></asp:TextBox>
+									        <asp:TextBox AutoCompleteType="Disabled" ReadOnly="true" ID="tbconno" Visible="false" runat="server" CssClass="item-data tb"></asp:TextBox>
 									    </div><!--//col-->
 									    <div class="col text-right">
 										    <asp:LinkButton runat="server" ID="btn_cochange" OnClick="btn_cochange_Click" CssClass="btn-sm app-btn-secondary">Change</asp:LinkButton>
@@ -112,7 +112,7 @@
 									    <div class="col-auto">
 										    <div class="item-label text-left"><strong>Password</strong></div>
 									        <div class="item-data text-left"><asp:Label runat="server" ID="lbl_pass" Text="••••••••"></asp:Label></div>
-											 <asp:TextBox Visible="false" ID="tb_pass" runat="server" CssClass="item-data tb"></asp:TextBox>
+											 <asp:TextBox AutoCompleteType="Disabled" Visible="false" ID="tb_pass" runat="server" CssClass="item-data tb"></asp:TextBox>
 									    </div><!--//col-->
 									    <div class="col text-right">
 											<asp:LinkButton runat="server" ID="btn_passchange" OnClick="btn_passchange_Click" CssClass="btn-sm app-btn-secondary">Change</asp:LinkButton>

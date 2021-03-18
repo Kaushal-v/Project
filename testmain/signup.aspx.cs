@@ -8,6 +8,7 @@ using System.Data.Sql;
 using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
+using System.Text.RegularExpressions;
 
 namespace testmain
 {
@@ -16,7 +17,7 @@ namespace testmain
         readonly SqlConnection con = new SqlConnection();
         Boolean boolu_name = true;
         Boolean boolpass = true;
-
+        Boolean boolphone = true;
         protected void Page_Load(object sender, EventArgs e)
         {
             string constr = ConfigurationManager.ConnectionStrings["ConString"].ConnectionString;
@@ -27,12 +28,13 @@ namespace testmain
             {
                 u_namet_changed();
                 passt_changed();
+                phone_validation();
             }
         }
 
         protected void Signup_Click(object sender, EventArgs e)
         {
-            if (!boolu_name && !boolpass)
+            if (!boolu_name && !boolpass && !boolphone)
             {
                 string u_name = u_namet.Text.ToLower();
                 string l_name = l_namet.Text;
@@ -66,8 +68,11 @@ namespace testmain
             }
             if (boolu_name) { lblunamenot.Visible = true; }
             else { lblunamenot.Visible = false; }
+            if (boolphone) { lblphone.Visible = true; }
+            else { lblphone.Visible = false; }
             if (boolpass) { lblpassnotcorrect.Visible = true; }
             else { lblpassnotcorrect.Visible = false; }
+
         }
         protected void u_namet_changed()
         {
@@ -107,6 +112,22 @@ namespace testmain
             passt_changed();
         }
 
+        protected void phone_validation()
+        {
+            if (!(con_not.Text.Length == 10))
+            {
+                boolphone = true;
+            }
+            else
+            {
+                boolphone = false;
+            }
+        }
+
+        protected void con_not_TextChanged(object sender, EventArgs e)
+        {
+            phone_validation();
+        }
         //protected void google_Click(object sender, EventArgs e)
         //{
 

@@ -8,17 +8,16 @@ using System.Data.Sql;
 using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
-
+using System.Text.RegularExpressions;
 
 namespace testmain
 {
     public partial class WebForm1 : System.Web.UI.Page
     {
         readonly SqlConnection con = new SqlConnection();
-        Boolean boolu_name = true;
-        Boolean boolpass = true;
+        Boolean boolu_name = true,boolpass = true,boolmail=true,boolphone=true;
         protected void Page_Load(object sender, EventArgs e)
-        {
+        {                 
             LinkButton btn = (LinkButton)Master.FindControl("btnhome");
             btn.CssClass = "nav-link";
             btn = (LinkButton)Master.FindControl("btnusers");
@@ -54,6 +53,8 @@ namespace testmain
             {
                 tbuname_changed();
                 tbpass_changed();
+                mail_validate();
+                phone_validation();
             }
         }
       
@@ -85,11 +86,34 @@ namespace testmain
             {
                 boolpass = false;
             }
-        }        
-
-        protected void btnpanelconfirm_Click(object sender, EventArgs e)
+        }   
+        protected void mail_validate()
         {
-            if (!boolu_name && !boolpass && ddlusertype.SelectedValue != "Select")
+            Regex regex = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", RegexOptions.CultureInvariant | RegexOptions.Singleline);
+            bool isValidEmail = regex.IsMatch(tbmail.Text);
+            if (!isValidEmail)
+            {
+                boolmail = true;
+            }
+            else
+            {
+                boolmail = false;
+            }
+        }
+        protected void phone_validation()
+        {            
+            if (!(tbconno.Text.Length==10))
+            {
+                boolphone = true;
+            }
+            else
+            {
+                boolphone = false;
+            }
+        }
+        protected void btnpanelconfirm_Click(object sender, EventArgs e)
+        {            
+            if (!boolu_name && !boolpass && ddlusertype.SelectedValue != "Select" && !boolmail && !boolphone)
             {
                 string u_name = tbuname.Text.ToLower();
                 string l_name = tblname.Text;
@@ -109,13 +133,16 @@ namespace testmain
             }
             if (boolu_name) { lblunamenot.Visible = true; }
             else { lblunamenot.Visible = false; }
+            if (boolmail) { lblmail.Visible = true; }
+            else { lblmail.Visible = false; }
+            if (boolphone) { lblphone.Visible = true; }
+            else { lblphone.Visible = false; }
             if (ddlusertype.SelectedValue == "Select") { lblselectvalid.Visible = true; }
             else { lblselectvalid.Visible = false; }
             if (boolpass) { lblpassnotcorrect.Visible = true; }
-            else { lblpassnotcorrect.Visible = false; }
+            else { lblpassnotcorrect.Visible = false; }             
             popupadduser.Show();
         }
-
         protected void tbpass_TextChanged(object sender, EventArgs e)
         {
             tbpass_changed();
@@ -142,6 +169,16 @@ namespace testmain
         protected void ddlusertype_SelectedIndexChanged(object sender, EventArgs e)
         {
             popupadduser.Show();
+        }
+
+        protected void tbconno_TextChanged(object sender, EventArgs e)
+        {
+            phone_validation();
+        }
+
+        protected void tbmail_TextChanged(object sender, EventArgs e)
+        {
+            mail_validate();
         }
 
         protected void tbusersearch_TextChanged(object sender, EventArgs e)

@@ -12,7 +12,7 @@
 										<div class="align-content-center">
 											<div class="auth-form login-form">         												
 												<div class="password mb-3">			
-													<asp:TextBox ID="tbpanelchangename" runat="server" CssClass="form-control" placeholder="Name" required="required" ></asp:TextBox>
+													<asp:TextBox AutoCompleteType="Disabled" ID="tbpanelchangename" runat="server" CssClass="form-control" placeholder="Name" required="required" ></asp:TextBox>
 													<div class="text-right"><asp:Label runat="server" Visible="false" Font-Size="Small" ForeColor="Red" ID="lblpanelchangenameconfirm">Enter correct details!!</asp:Label></div>
 												</div>
 											</div>
@@ -36,7 +36,7 @@
 										<div class="align-content-center">
 											<div class="auth-form login-form">         												
 												<div class="password mb-3">			
-													<asp:TextBox ID="tbpanelchangeproofofd" runat="server" CssClass="form-control" placeholder="Proof of Difficulty" required="required" ></asp:TextBox>
+													<asp:TextBox AutoCompleteType="Disabled" ID="tbpanelchangeproofofd" runat="server" CssClass="form-control" placeholder="Proof of Difficulty" required="required" ></asp:TextBox>
 													<div class="text-right"><asp:Label runat="server" Visible="false" Font-Size="Small" ForeColor="Red" ID="lblpanelchangeproofofdconfirm">Enter correct details!!</asp:Label></div>
 												</div>
 											</div>
@@ -60,7 +60,7 @@
 										<div class="align-content-center">
 											<div class="auth-form login-form">         												
 												<div class="password mb-3">			
-													<asp:TextBox ID="tbpanelchangeminereward" runat="server" CssClass="form-control" placeholder="Mining Reward" required="required" ></asp:TextBox>
+													<asp:TextBox AutoCompleteType="Disabled" ID="tbpanelchangeminereward" runat="server" CssClass="form-control" placeholder="Mining Reward" required="required" ></asp:TextBox>
 													<div class="text-right"><asp:Label runat="server" Visible="false" Font-Size="Small" ForeColor="Red" ID="lblpanelchangeminerewardconfirm">Enter correct details!!</asp:Label></div>
 												</div>
 											</div>

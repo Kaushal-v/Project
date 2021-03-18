@@ -13,11 +13,11 @@
 											<div class="auth-form login-form">         												
 												<div class="password mb-3">		
 													<div class="text-left"><label>Insert amount of shares:</label></div>
-													<asp:TextBox ID="tbpanelcount" runat="server" TextMode="Number" min="1" max="100" CssClass="form-control" placeholder="Count" required="required" ></asp:TextBox>
+													<asp:TextBox AutoCompleteType="Disabled" ID="tbpanelcount" runat="server" TextMode="Number" min="1" max="100" CssClass="form-control" placeholder="Count" required="required" ></asp:TextBox>
 													<div class="text-right"><asp:Label runat="server" Visible="false" ForeColor="Red" ID="lblconfirm">Enter correct count!!</asp:Label></div>
 												</div>
 											</div>
-										</div>
+										</div>				
 										<div class="text-left" style="width:50%;float:left;padding:10px;">
 											<asp:LinkButton ID="btnpanelcancel" OnClick="btnpanelcancel_Click" CssClass="text-left" runat="server" Text="Cancel"></asp:LinkButton>
 										</div>
@@ -36,10 +36,10 @@
 													<asp:TextBox ID="tbshare_name" runat="server" CssClass="form-control" placeholder="Name" required="required" ></asp:TextBox>
 												</div><!--//form-group-->
 												<div class="email mb-3">
-													<asp:TextBox ID="tbshare_price" runat="server" TextMode="Number" min="0" CssClass="form-control" placeholder="Price" required="required" ></asp:TextBox>
+													<asp:TextBox AutoCompleteType="Disabled" ID="tbshare_price" runat="server" TextMode="Number" min="0" CssClass="form-control" placeholder="Price" required="required" ></asp:TextBox>
 												</div>
 												<div class="password mb-3">			
-													<asp:TextBox ID="tbshare_availc" runat="server" TextMode="Number" MaxLength="2" min="0" CssClass="form-control" placeholder="Count" required="required" ></asp:TextBox>
+													<asp:TextBox AutoCompleteType="Disabled" ID="tbshare_availc" runat="server" TextMode="Number" MaxLength="2" min="0" CssClass="form-control" placeholder="Count" required="required" ></asp:TextBox>
 													<div class="text-right"><asp:Label runat="server" Visible="false" Font-Size="Small" ForeColor="Red" ID="lblpanel2confirm">Enter correct details!!</asp:Label></div>
 												</div>
 											</div>
@@ -98,8 +98,12 @@
 																		<asp:Label ID="lblshareid" runat="server" Text='<%# Bind("share_id")%>'></asp:Label>
 																	</ItemTemplate>
 																</asp:TemplateField>
-																<asp:BoundField DataField="share_name" HeaderText="Share Name"/>
-																<asp:BoundField DataField="share_price" HeaderText="Price"/>                                   																								
+																<asp:BoundField DataField="share_name" HeaderText="Share Name"/>														
+																<asp:TemplateField HeaderText="price">
+																	<ItemTemplate>
+																		<asp:Label ID="lblprice" runat="server" Text='<%# Bind("share_price") %>'></asp:Label>
+																	</ItemTemplate>
+																</asp:TemplateField>
 																<asp:TemplateField HeaderText="Change">
 																	<ItemTemplate>
 																		<asp:Label ID="lblchange" runat="server" Text="0"></asp:Label>
@@ -113,7 +117,7 @@
 																</asp:TemplateField>
 																<asp:BoundField DataField="share_sold_count" HeaderText="Sold"/>
 																<asp:BoundField DataField="share_received_count" HeaderText="Received"/>
-																<asp:TemplateField HeaderText="Chart">
+																<asp:TemplateField Visible="false" HeaderText="Chart">
 																   <ItemTemplate>
 																	</ItemTemplate>
 																</asp:TemplateField>

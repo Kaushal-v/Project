@@ -106,7 +106,6 @@ namespace testmain
         {                       
             List<double> thisweekprice = new List<double>();
             List<double> lastweekprice = new List<double>();
-            con.Open();
             for (int i = -6; i <= 0; i++) {
                 DateTime lday = DateTime.Today.AddDays(i);
                 DateTime tday = DateTime.Today.AddDays(i+1);

@@ -11,11 +11,11 @@
 						<div class="auth-form login-form">         
 							<div class="email mb-3">
 								<label class="sr-only" for="signin-email">Email</label>
-								<asp:TextBox ID="u_namet" runat="server" CssClass="form-control signin-email" placeholder="User Name" required="required"></asp:TextBox>
+								<asp:TextBox AutoCompleteType="Disabled" ID="u_namet" runat="server" CssClass="form-control signin-email" placeholder="User Name" required="required"></asp:TextBox>
 							</div><!--//form-group-->
 							<div class="password mb-3">
 								<label class="sr-only" for="signin-password">Password</label>
-								<asp:TextBox ID="passt" runat="server" TextMode="password" CssClass="form-control signin-password" placeholder="Password" required="required" OnTextChanged="passt_TextChanged"></asp:TextBox>
+								<asp:TextBox AutoCompleteType="Disabled" ID="passt" runat="server" TextMode="password" CssClass="form-control signin-password" placeholder="Password" required="required" OnTextChanged="passt_TextChanged"></asp:TextBox>
 								<div class="text-right"><asp:Label runat="server" Visible="false" ForeColor="Red" Font-Size="Small" ID="lblconfirm">Incorrect username or password!!</asp:Label></div>
 								<div class="extra mt-3 row justify-content-between">
 									<div class="col-6">
