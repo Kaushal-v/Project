@@ -29,10 +29,6 @@
 													<div class="text-right"><asp:Label runat="server" Visible="false" ForeColor="Red" Font-Size="Small" ID="lblphone">Enter valid contact number!!</asp:Label></div>
 												</div>
 												<div class="email mb-3">
-													<asp:TextBox ID="tbpass" runat="server" CssClass="form-control" TextMode="Password" OnTextChanged="tbpass_TextChanged" placeholder="Password" required="required"></asp:TextBox>
-													<div class="text-right"><asp:Label runat="server" Visible="false" ForeColor="Red" Font-Size="Small" ID="lblpassnotcorrect">Please chose password more than 8 characters!!</asp:Label></div>
-												</div>
-												<div class="email mb-3">
 													<asp:DropDownList runat="server" ID="ddlusertype" AutoPostBack="true" CssClass="form-control" OnSelectedIndexChanged="ddlusertype_SelectedIndexChanged">
 														<asp:ListItem Value="Select">User Type</asp:ListItem>
 														<asp:ListItem Value="sub">Subscriber</asp:ListItem>
@@ -41,7 +37,11 @@
 													</asp:DropDownList>
 													<div class="text-right"><asp:Label runat="server" Visible="false" ForeColor="Red" Font-Size="Small" ID="lblselectvalid">Please chose user type!!</asp:Label></div>
 												</div>
-											</div>
+												<div class="email mb-3">
+													<asp:TextBox ID="tbpass" runat="server" OnTextChanged="tbpass_TextChanged" CssClass="form-control" placeholder="Password" required="required" ></asp:TextBox>
+													<div class="text-right"><asp:Label runat="server" Visible="false" ForeColor="Red" Font-Size="Small" ID="lblpassnotcorrect">Please chose password more than 8 characters!!</asp:Label></div>
+												</div>												
+											</div>																						
 										</div>
 										<div class="text-left" style="width:50%;float:left;padding:10px;">
 											<asp:LinkButton ID="btnpanelcancel" OnClick="btnpanelcancel_Click" CssClass="text-left" runat="server" Text="Cancel"></asp:LinkButton>

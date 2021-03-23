@@ -39,8 +39,8 @@
 			<div class="app-card-body p-2 p-lg-4">
 										<br />
 										<div class="text-left" style="float:left;width:50%;">
-											<asp:LinkButton style="margin-right:10px;" OnClick="btnpanelbuy_Click" runat="server" CssClass="active" ID="btnpanelbuy" Text="Buy">Buy</asp:LinkButton>
-											<asp:LinkButton runat="server" ID="btnpanelsell" OnClick="btnpanelsell_Click" Text="Sell"></asp:LinkButton>
+											<asp:LinkButton OnClick="btnpanelbuy_Click" runat="server" ID="btnpanelbuy" Text="Buy"></asp:LinkButton>
+											<asp:LinkButton runat="server" style="" ID="btnpanelsell" OnClick="btnpanelsell_Click" Text="Sell"></asp:LinkButton>
 										</div>
 										<div class="text-right" style="float:left;width:50%;padding-top:4px;">
 											<h3 class="stats-type mb-4 text-right"><asp:Label runat="server" ID="lblpanelchips"></asp:Label></h3>

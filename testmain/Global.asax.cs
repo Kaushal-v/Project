@@ -15,9 +15,9 @@ namespace testmain
             List<string> ip_list= new List<string> { };
             Application["ip_list"] = ip_list;
             blockchain b1 = new blockchain(2, 5,"ShareLog");
-            string dhaval = b1.getAddress("smit_09");
-            b1.CreateTransaction(new Transaction("user1Address", dhaval, 5));
-            b1.mineBlock(dhaval);
+            //string dhaval = b1.getAddress("smit_09");
+            //b1.CreateTransaction(new Transaction("user1Address", dhaval, 5));
+            //b1.mineBlock(dhaval);
             Application["obj_blockchain"] = b1;
         }
 

@@ -96,24 +96,6 @@ namespace testmain
         protected global::System.Web.UI.WebControls.Label lblphone;
 
         /// <summary>
-        /// tbpass control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbpass;
-
-        /// <summary>
-        /// lblpassnotcorrect control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblpassnotcorrect;
-
-        /// <summary>
         /// ddlusertype control.
         /// </summary>
         /// <remarks>
@@ -130,6 +112,24 @@ namespace testmain
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblselectvalid;
+
+        /// <summary>
+        /// tbpass control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbpass;
+
+        /// <summary>
+        /// lblpassnotcorrect control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblpassnotcorrect;
 
         /// <summary>
         /// btnpanelcancel control.

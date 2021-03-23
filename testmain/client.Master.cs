@@ -81,6 +81,8 @@ namespace testmain
             }
             catch (Exception) {  }
             lblcuryear.Text = DateTime.Now.Year.ToString();
+            btnpanelbuy.Attributes.Add("Style", "color:grey;margin-right:10px;text-decoration:underline;");
+            btnpanelbuy.Attributes["onclick"] = "return false";
         }
         protected void btnlogoutc_Click(object sender, EventArgs e)
         {
@@ -349,13 +351,17 @@ namespace testmain
 
         protected void btnpanelbuy_Click(object sender, EventArgs e)
         {
+            btnpanelbuy.Attributes.Add("Style", "color:grey;margin-right:10px;text-decoration:underline;");
+            btnpanelbuy.Attributes["onclick"] = "return false";
+            btnpanelsell.Attributes["onclick"] = "return true";
+            btnpanelsell.Attributes.Add("Style", "color:none");
             lblnotamount.Visible = false;
             lblconfirm.Visible = false;
             tbpanelcount.Text = "";
             lblprice.Visible = false;
             lblpanelsharec.Visible = false;
             bind_data_default();
-            lblpanelsharec.Text = "avalable Shares ";
+            lblpanelsharec.Text = "available shares ";
             lblpanelsharec.Visible = false;
             btnpanelconfirm.Text = "Buy";            
             popupbuysell.Show();
@@ -363,6 +369,10 @@ namespace testmain
 
         protected void btnpanelsell_Click(object sender, EventArgs e)
         {
+            btnpanelsell.Attributes.Add("Style", "color:grey;text-decoration:underline;");
+            btnpanelbuy.Attributes["onclick"] = "return true";
+            btnpanelsell.Attributes["onclick"] = "return false";
+            btnpanelbuy.Attributes.Add("Style", "margin-right:10px;");
             lblnotamount.Visible = false;
             lblconfirm.Visible = false;
             tbpanelcount.Text = "";

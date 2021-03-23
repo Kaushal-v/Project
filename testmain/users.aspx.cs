@@ -15,7 +15,7 @@ namespace testmain
     public partial class WebForm1 : System.Web.UI.Page
     {
         readonly SqlConnection con = new SqlConnection();
-        Boolean boolu_name = true,boolpass = true,boolmail=true,boolphone=true;
+        Boolean boolu_name = true,boolpass = true,boolmail=true,boolphone=true;        
         protected void Page_Load(object sender, EventArgs e)
         {                 
             LinkButton btn = (LinkButton)Master.FindControl("btnhome");
@@ -49,7 +49,7 @@ namespace testmain
             con.Close();
             List<string> ip_list = (List<string>)Application["ip_list"];
             lblguests.Text = (ip_list.Count).ToString();
-            if (IsPostBack && tbuname.Text != "" && tbpass.Text != "")
+            if (IsPostBack)
             {
                 tbuname_changed();
                 tbpass_changed();
@@ -77,7 +77,7 @@ namespace testmain
         }        
         protected void tbpass_changed()
         {
-            string pass = tbpass.Text;
+            String pass = tbpass.Text;
             if (pass.Length < 8)
             {
                 boolpass = true;
@@ -128,7 +128,13 @@ namespace testmain
                 con.Open();
                 SqlCommand cmd = new SqlCommand("insert into user_master(user_name, user_first_name, user_last_name, user_display_name, user_date_created, user_mail_address ,user_contact_no, user_password, user_type, user_active, user_last_login) values('" + u_name + "','" + f_name + "','" + l_name + "','" + d_name + "','" + timenow + "','" + mail + "','" + con_no + "','" + pass + "','" + type + "','true','" + timenow + "')", con);
                 cmd.ExecuteNonQuery();
-                con.Close();                
+                con.Close();
+                if (ddlusertype.SelectedValue != "admin")
+                {
+                    blockchain b1 = (blockchain)Application["obj_blockchain"];
+                    string u_hash = b1.getAddress(u_name);
+                    b1.CreateTransaction(new Transaction("null", u_hash, 10));
+                }
                 Response.Redirect("users.aspx");
             }
             if (boolu_name) { lblunamenot.Visible = true; }
@@ -143,9 +149,10 @@ namespace testmain
             else { lblpassnotcorrect.Visible = false; }             
             popupadduser.Show();
         }
+
         protected void tbpass_TextChanged(object sender, EventArgs e)
-        {
-            tbpass_changed();
+        {            
+            tbpass_changed();            
         }
 
         protected void tbuname_TextChanged(object sender, EventArgs e)
@@ -164,11 +171,12 @@ namespace testmain
             lblselectvalid.Visible = false;
             lblpassnotcorrect.Visible = false;
             lblunamenot.Visible = false;
+            ddlusertype.SelectedIndex = 0;
         }
 
         protected void ddlusertype_SelectedIndexChanged(object sender, EventArgs e)
         {
-            popupadduser.Show();
+            popupadduser.Show();     
         }
 
         protected void tbconno_TextChanged(object sender, EventArgs e)
