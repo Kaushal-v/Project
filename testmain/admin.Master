@@ -6,7 +6,7 @@
 
 <html>
 <head runat="server">
-    <title>Dash Board</title>
+    <title>ShareLog - DashBoard</title>
         <link rel="stylesheet" href="Style.css" />
     <link rel="shortcut icon" href="admin/favicon.ico"> 
     

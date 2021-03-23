@@ -6,7 +6,7 @@
 
 <html>
 <head runat="server">
-    <title></title>
+    <title>ShareLog - Home</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
             <link rel="stylesheet" href="Style.css" />

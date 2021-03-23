@@ -4,7 +4,7 @@
 
 <html>
 <head runat="server">
-    <title>Home Page</title>
+    <title>ShareLog - Buy and Sell Shares Online</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <link rel="stylesheet" href="Style.css" />
