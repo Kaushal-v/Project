@@ -1,1 +1,1 @@
-# ShareLog using Blockchain
+# ShareLog
